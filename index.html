@@ -1,0 +1,688 @@
+<!DOCTYPE html>
+<html lang="en" class="dark">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Autonomous Agent Architecture - Spatial Platform</title>
+    <link rel="manifest" href="/manifest.json">
+    <meta name="theme-color" content="#09090b">
+    <link rel="apple-touch-icon" href="https://raw.githubusercontent.com/lucide-icons/lucide/main/icons/map.svg">
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script src="https://cdn.jsdelivr.net/npm/marked/marked.min.js"></script>
+    <script>
+      if ('serviceWorker' in navigator) {
+        window.addEventListener('load', () => {
+          navigator.serviceWorker.register('/sw.js');
+        });
+      }
+    </script>
+    <script>
+        tailwind.config = {
+            darkMode: 'class',
+            theme: {
+                extend: {
+                    fontFamily: {
+                        sans: ['Inter', 'ui-sans-serif', 'system-ui', '-apple-system', 'BlinkMacSystemFont', 'Segoe UI', 'Roboto', 'Helvetica Neue', 'Arial', 'sans-serif'],
+                    },
+                    colors: {
+                        obsidian: {
+                            900: '#09090b',
+                            800: '#18181b',
+                            700: '#27272a',
+                            600: '#3f3f46'
+                        },
+                        hazard: '#f43f5e',
+                        accent: '#3b82f6'
+                    }
+                }
+            }
+        }
+    </script>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css" />
+    <script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"></script>
+    <script src="https://unpkg.com/lucide@latest"></script>
+    <style>
+        body { font-family: 'Inter', sans-serif; }
+        .glass-panel {
+            background: rgba(24, 24, 27, 0.85);
+            backdrop-filter: blur(12px);
+            -webkit-backdrop-filter: blur(12px);
+            border: 1px solid rgba(255, 255, 255, 0.08);
+        }
+        #map { position: absolute; top: 0; left: 0; width: 100%; height: 100%; z-index: 0; background: #09090b; }
+        
+        .custom-scrollbar::-webkit-scrollbar { width: 4px; }
+        .custom-scrollbar::-webkit-scrollbar-thumb { background: #3f3f46; border-radius: 4px; }
+        
+        /* Map Customizations */
+        .leaflet-control-zoom { border: 1px solid rgba(255,255,255,0.1) !important; box-shadow: 0 4px 6px -1px rgba(0,0,0,0.1) !important; border-radius: 8px !important; overflow: hidden; margin-right: 24px !important; margin-bottom: 24px !important; }
+        .leaflet-control-zoom a { background-color: #18181b !important; color: #a1a1aa !important; border-bottom: 1px solid rgba(255,255,255,0.05) !important; }
+        .leaflet-control-zoom a:hover { background-color: #27272a !important; color: #fff !important; }
+        
+        .custom-tooltip {
+            background: rgba(9, 9, 11, 0.95) !important;
+            color: #f4f4f5 !important;
+            border: 1px solid rgba(255, 255, 255, 0.1) !important;
+            border-radius: 6px !important;
+            padding: 12px !important;
+            box-shadow: 0 10px 25px -5px rgba(0, 0, 0, 0.5) !important;
+            font-family: 'Inter', sans-serif !important;
+        }
+        .leaflet-tooltip-left:before, .leaflet-tooltip-right:before, .leaflet-tooltip-top:before, .leaflet-tooltip-bottom:before { display: none !important; }
+        
+        /* Dropzone hover */
+        .dropzone-hover { border-color: #3b82f6 !important; background-color: rgba(59, 130, 246, 0.05) !important; }
+
+        /* Range slider styling */
+        input[type=range] {
+            -webkit-appearance: none;
+            width: 100%;
+            background: transparent;
+        }
+        input[type=range]::-webkit-slider-thumb {
+            -webkit-appearance: none;
+            height: 16px;
+            width: 16px;
+            border-radius: 50%;
+            background: #f4f4f5;
+            cursor: pointer;
+            margin-top: -6px;
+            box-shadow: 0 2px 4px rgba(0,0,0,0.2);
+        }
+        input[type=range]::-webkit-slider-runnable-track {
+            width: 100%;
+            height: 4px;
+            cursor: pointer;
+            background: #3f3f46;
+            border-radius: 2px;
+        }
+        
+        /* Markdown formatting for memo */
+        .prose h1, .prose h2, .prose h3, .prose h4 { color: #f4f4f5; font-weight: 600; margin-top: 1rem; margin-bottom: 0.5rem; }
+        .prose p, .prose li { color: #a1a1aa; line-height: 1.6; font-size: 0.875rem; }
+        .prose ul { list-style-type: disc; padding-left: 1.25rem; margin-bottom: 1rem; }
+        .prose strong { color: #e4e4e7; font-weight: 600; }
+        .prose hr { border-color: #27272a; margin: 1rem 0; border-width: 1px; }
+        .prose code { font-family: ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, monospace; background: #27272a; padding: 0.125rem 0.25rem; border-radius: 0.25rem; font-size: 0.75rem; color: #d4d4d8;}
+        
+        /* Drawer transitions */
+        .drawer-transition { transition: transform 0.3s cubic-bezier(0.4, 0, 0.2, 1); }
+
+        /* Dark Mode OSM Inversion Hack */
+        .leaflet-tile-pane {
+            filter: invert(100%) hue-rotate(180deg) brightness(85%) contrast(95%) grayscale(20%);
+        }
+    </style>
+</head>
+<body class="bg-obsidian-900 text-zinc-100 h-screen w-screen overflow-hidden relative selection:bg-zinc-700">
+
+    <!-- Hero Map Container -->
+    <div id="map"></div>
+
+    <!-- Floating Top Metric Cards (Executive Strip) -->
+    <div class="absolute top-6 left-1/2 -translate-x-1/2 z-[1000] w-full max-w-5xl px-6 pointer-events-none">
+        <div class="grid grid-cols-4 gap-4">
+            <!-- Card 1 -->
+            <div class="glass-panel p-4 rounded-xl pointer-events-auto shadow-xl flex flex-col">
+                <div class="flex items-center justify-between text-zinc-400 text-xs font-medium uppercase tracking-wider mb-2">
+                    <span>Quick-Commerce</span>
+                    <i data-lucide="shopping-bag" class="w-4 h-4 text-zinc-300"></i>
+                </div>
+                <div class="flex items-baseline gap-2 mt-auto">
+                    <span id="kpiCoverage" class="text-2xl font-semibold text-zinc-100">--%</span>
+                </div>
+                <span class="text-[10px] text-zinc-500 mt-1">10-Min Catchment Reach</span>
+            </div>
+            
+            <!-- Card 2 -->
+            <div class="glass-panel p-4 rounded-xl pointer-events-auto shadow-xl flex flex-col">
+                <div class="flex items-center justify-between text-zinc-400 text-xs font-medium uppercase tracking-wider mb-2">
+                    <span>Healthcare Deserts</span>
+                    <i data-lucide="activity" class="w-4 h-4 text-hazard"></i>
+                </div>
+                <div class="flex items-baseline gap-2 mt-auto">
+                    <span id="kpiDeserts" class="text-2xl font-semibold text-zinc-100">--</span>
+                </div>
+                <span class="text-[10px] text-zinc-500 mt-1">Unserved Wards Resolved</span>
+            </div>
+            
+            <!-- Card 3 -->
+            <div class="glass-panel p-4 rounded-xl pointer-events-auto shadow-xl flex flex-col">
+                <div class="flex items-center justify-between text-zinc-400 text-xs font-medium uppercase tracking-wider mb-2">
+                    <span>Avg Response</span>
+                    <i data-lucide="ambulance" class="w-4 h-4 text-zinc-300"></i>
+                </div>
+                <div class="flex items-baseline gap-2 mt-auto">
+                    <span id="kpiDistance" class="text-2xl font-semibold text-zinc-100">--</span>
+                    <span class="text-xs text-zinc-400 font-medium">km</span>
+                </div>
+                <span class="text-[10px] text-zinc-500 mt-1">Ambulance Transit Radius</span>
+            </div>
+            
+            <!-- Card 4 -->
+            <div class="glass-panel p-4 rounded-xl pointer-events-auto shadow-xl flex flex-col">
+                <div class="flex items-center justify-between text-zinc-400 text-xs font-medium uppercase tracking-wider mb-2">
+                    <span>Target Demo</span>
+                    <i data-lucide="users" class="w-4 h-4 text-zinc-300"></i>
+                </div>
+                <div class="flex items-baseline gap-2 mt-auto">
+                    <span id="kpiPop" class="text-2xl font-semibold text-zinc-100">--</span>
+                </div>
+                <span class="text-[10px] text-zinc-500 mt-1">Total Population (2026)</span>
+            </div>
+        </div>
+    </div>
+
+    <!-- Left Collapsible Control Drawer -->
+    <div id="leftDrawer" class="absolute top-28 left-6 bottom-6 w-80 glass-panel rounded-xl shadow-2xl z-[1000] flex flex-col drawer-transition">
+        
+        <div class="p-5 border-b border-white/5 flex items-center justify-between">
+            <h2 class="font-semibold text-zinc-100">Platform Controls</h2>
+            <button onclick="toggleLeftDrawer()" class="text-zinc-400 hover:text-zinc-100 transition-colors">
+                <i data-lucide="panel-left-close" class="w-5 h-5"></i>
+            </button>
+        </div>
+
+        <div class="p-5 flex-1 overflow-y-auto custom-scrollbar flex flex-col gap-6">
+            <!-- Data Ingestion Mode Toggle -->
+            <div class="flex items-center justify-between p-1 bg-obsidian-900/80 rounded-lg border border-zinc-800">
+                <button id="btnUploadMode" onclick="setInputMode('upload')" class="flex-1 py-1.5 text-xs font-semibold rounded-md bg-zinc-800 text-zinc-100 shadow-sm transition-colors">File Upload</button>
+                <button id="btnDrawMode" onclick="setInputMode('draw')" class="flex-1 py-1.5 text-xs font-semibold rounded-md text-zinc-500 hover:text-zinc-300 transition-colors">Map Draw</button>
+            </div>
+
+            <!-- Upload Mode Section -->
+            <div id="uploadSection">
+                <label class="text-[10px] font-semibold text-zinc-500 uppercase tracking-widest block mb-3">Data Source</label>
+                <div id="dropzone" class="border border-dashed border-zinc-700 rounded-lg p-5 text-center cursor-pointer transition-colors hover:border-zinc-500 bg-obsidian-900/50 relative group">
+                    <input type="file" id="csvFile" accept=".csv,.xlsx,.xls,.geojson,.json" class="absolute inset-0 opacity-0 cursor-pointer" onchange="updateFileLabel()">
+                    <i data-lucide="database" class="w-6 h-6 text-zinc-500 group-hover:text-zinc-300 mx-auto mb-2 transition-colors"></i>
+                    <p id="fileLabel" class="text-sm text-zinc-300 font-medium truncate px-2">Upload Dataset</p>
+                    <p class="text-[10px] text-zinc-500 mt-1">.csv, .xlsx, .geojson</p>
+                </div>
+            </div>
+
+            <!-- Draw Mode Section (Hidden initially) -->
+            <div id="drawSection" class="hidden">
+                <label class="text-[10px] font-semibold text-zinc-500 uppercase tracking-widest block mb-3">Map Draw</label>
+                <div class="bg-obsidian-900/50 border border-zinc-800 rounded-lg p-4 text-center">
+                    <i data-lucide="map-pin" class="w-6 h-6 text-accent mx-auto mb-2"></i>
+                    <p class="text-xs text-zinc-300 mb-3">Click anywhere on the map to place custom nodes.</p>
+                    <div class="flex items-center justify-between text-xs text-zinc-400 mb-1">
+                        <span>Nodes Placed:</span>
+                        <span id="customNodeCount" class="font-semibold text-zinc-100">0</span>
+                    </div>
+                    <button onclick="clearCustomNodes()" class="mt-3 w-full py-1.5 bg-zinc-800 hover:bg-zinc-700 text-zinc-300 rounded text-[11px] font-semibold transition-colors">
+                        Clear Map
+                    </button>
+                </div>
+            </div>
+
+            <!-- Logistics Parameters -->
+            <div>
+                <label class="text-[10px] font-semibold text-zinc-500 uppercase tracking-widest block mb-3">Parameters</label>
+                <div class="bg-obsidian-900/50 p-4 rounded-lg border border-zinc-800">
+                    <div class="flex justify-between text-sm text-zinc-300 mb-4">
+                        <span>Fulfillment Hubs (K)</span>
+                        <span id="kVal" class="font-semibold text-zinc-100">3</span>
+                    </div>
+                    <input type="range" id="kInput" min="2" max="6" value="3" oninput="document.getElementById('kVal').innerText = this.value">
+                    <div class="flex justify-between text-[10px] text-zinc-500 mt-2">
+                        <span>2</span>
+                        <span>6</span>
+                    </div>
+                </div>
+            </div>
+            
+            <!-- Map Legend embedded in drawer -->
+            <div class="mt-auto pt-4 border-t border-white/5">
+                <label class="text-[10px] font-semibold text-zinc-500 uppercase tracking-widest block mb-3">Layers & Legend</label>
+                <div class="space-y-2 text-xs text-zinc-400">
+                    <label class="flex items-center gap-3 cursor-pointer group">
+                        <input type="checkbox" id="layer-qcommerce" checked onchange="toggleLayer('qcommerce')" class="accent-zinc-500 w-3.5 h-3.5 cursor-pointer">
+                        <div class="w-4 h-4 rounded shadow-sm bg-zinc-700 border border-zinc-600 flex items-center justify-center shrink-0"><i data-lucide="shopping-cart" class="w-2.5 h-2.5 text-zinc-300"></i></div>
+                        <span class="group-hover:text-zinc-200 transition-colors">Q-Commerce Hubs</span>
+                    </label>
+                    <label class="flex items-center gap-3 cursor-pointer group">
+                        <input type="checkbox" id="layer-emergency" checked onchange="toggleLayer('emergency')" class="accent-zinc-500 w-3.5 h-3.5 cursor-pointer">
+                        <div class="w-4 h-4 rounded shadow-sm bg-hazard border border-rose-600 flex items-center justify-center shrink-0"><i data-lucide="cross" class="w-2.5 h-2.5 text-white"></i></div>
+                        <span class="group-hover:text-zinc-200 transition-colors">Emergency Dispatch</span>
+                    </label>
+                    <label class="flex items-center gap-3 cursor-pointer group">
+                        <input type="checkbox" id="layer-desert" checked onchange="toggleLayer('desert')" class="accent-zinc-500 w-3.5 h-3.5 cursor-pointer">
+                        <span class="w-2.5 h-2.5 rounded-full bg-hazard shadow-[0_0_8px_rgba(244,63,94,0.6)] shrink-0 ml-0.5"></span>
+                        <span class="group-hover:text-zinc-200 transition-colors">Healthcare Deserts</span>
+                    </label>
+                    <label class="flex items-center gap-3 cursor-pointer group">
+                        <input type="checkbox" id="layer-standard" checked onchange="toggleLayer('standard')" class="accent-zinc-500 w-3.5 h-3.5 cursor-pointer">
+                        <span class="w-2 h-2 rounded-full bg-zinc-500 shrink-0 ml-1"></span>
+                        <span class="group-hover:text-zinc-200 transition-colors">Standard Wards</span>
+                    </label>
+                    <label class="flex items-center gap-3 cursor-pointer group mt-2 pt-2 border-t border-white/5">
+                        <input type="checkbox" id="layer-buffers" checked onchange="toggleLayer('buffers')" class="accent-zinc-500 w-3.5 h-3.5 cursor-pointer">
+                        <span class="w-4 h-0 border-b border-dashed border-zinc-500 shrink-0"></span>
+                        <span class="group-hover:text-zinc-200 transition-colors text-[10px]">Show Transit Buffers</span>
+                    </label>
+                </div>
+            </div>
+        </div>
+
+        <div class="p-4 border-t border-white/5">
+            <button onclick="runOptimization()" class="w-full py-2.5 bg-zinc-100 hover:bg-white text-zinc-900 rounded-lg text-sm font-semibold shadow-md transition-colors active:scale-[0.98] flex items-center justify-center gap-2">
+                <i data-lucide="zap" class="w-4 h-4"></i> Execute Analysis
+            </button>
+        </div>
+    </div>
+    
+    <!-- Left Drawer Toggle Button (Hidden by default, shown when drawer closed) -->
+    <button id="leftDrawerBtn" onclick="toggleLeftDrawer()" class="absolute top-28 left-6 z-[900] glass-panel p-3 rounded-lg text-zinc-400 hover:text-zinc-100 shadow-lg hidden">
+        <i data-lucide="panel-left-open" class="w-5 h-5"></i>
+    </button>
+
+    <!-- Right Executive Briefing Drawer -->
+    <div id="rightDrawer" class="absolute top-28 right-6 bottom-6 w-96 glass-panel rounded-xl shadow-2xl z-[1000] flex flex-col drawer-transition translate-x-[110%]">
+        <div class="p-5 border-b border-white/5 flex items-center justify-between">
+            <h2 class="font-semibold text-zinc-100 flex items-center gap-2">
+                <i data-lucide="file-text" class="w-4 h-4 text-zinc-400"></i> Policy Brief
+            </h2>
+            <div class="flex items-center gap-2">
+                <button onclick="copyMemo()" class="text-zinc-400 hover:text-zinc-100 transition-colors p-1" title="Copy to clipboard">
+                    <i data-lucide="copy" class="w-4 h-4"></i>
+                </button>
+                <button onclick="toggleRightDrawer()" class="text-zinc-400 hover:text-zinc-100 transition-colors p-1">
+                    <i data-lucide="x" class="w-5 h-5"></i>
+                </button>
+            </div>
+        </div>
+        <div class="p-6 flex-1 overflow-y-auto custom-scrollbar prose prose-invert max-w-none" id="policyBrief">
+            <p class="text-zinc-500 text-sm mt-4 text-center">Run analysis to generate executive memo.</p>
+        </div>
+    </div>
+    
+    <!-- Right Drawer Toggle Button -->
+    <button id="rightDrawerBtn" onclick="toggleRightDrawer()" class="absolute top-28 right-6 z-[900] glass-panel p-3 rounded-lg text-zinc-400 hover:text-zinc-100 shadow-lg">
+        <i data-lucide="file-text" class="w-5 h-5"></i>
+    </button>
+
+    <!-- Subtle Bottom-Left Cookie Pill -->
+    <div id="cookiePill" class="absolute bottom-6 left-6 z-[2000] glass-panel px-4 py-3 rounded-full shadow-lg flex items-center gap-4 text-xs hidden transform transition-all translate-y-20">
+        <span class="text-zinc-300">We use essential cookies to cache map states.</span>
+        <div class="flex items-center gap-2 border-l border-white/10 pl-4">
+            <button onclick="acceptCookies()" class="font-semibold text-zinc-100 hover:text-white">Accept</button>
+            <button onclick="rejectCookies()" class="text-zinc-500 hover:text-zinc-300">Decline</button>
+        </div>
+    </div>
+
+    <script>
+        // Initialize Icons
+        lucide.createIcons();
+
+        // UI State
+        let leftDrawerOpen = true;
+        let rightDrawerOpen = false;
+
+        function toggleLeftDrawer() {
+            const drawer = document.getElementById('leftDrawer');
+            const btn = document.getElementById('leftDrawerBtn');
+            leftDrawerOpen = !leftDrawerOpen;
+            if (leftDrawerOpen) {
+                drawer.classList.remove('-translate-x-[110%]');
+                btn.classList.add('hidden');
+            } else {
+                drawer.classList.add('-translate-x-[110%]');
+                btn.classList.remove('hidden');
+            }
+        }
+
+        function toggleRightDrawer() {
+            const drawer = document.getElementById('rightDrawer');
+            const btn = document.getElementById('rightDrawerBtn');
+            rightDrawerOpen = !rightDrawerOpen;
+            if (rightDrawerOpen) {
+                drawer.classList.remove('translate-x-[110%]');
+                btn.classList.add('hidden');
+            } else {
+                drawer.classList.add('translate-x-[110%]');
+                btn.classList.remove('hidden');
+            }
+        }
+
+        // Map Initialization (CartoDB Dark Matter)
+        const map = L.map('map', { zoomControl: false, attributionControl: false }).setView([19.2830, 72.8580], 12);
+        L.control.zoom({ position: 'bottomright' }).addTo(map);
+        
+        // Add standard OSM attribution
+        L.control.attribution({ position: 'bottomright', prefix: false }).addAttribution('&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors').addTo(map);
+
+        // Standard OSM map (very detailed), which is then inverted by our CSS to be dark
+        L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
+            maxZoom: 19
+        }).addTo(map);
+
+        const layerGroups = {
+            qcommerce: L.layerGroup().addTo(map),
+            emergency: L.layerGroup().addTo(map),
+            desert: L.layerGroup().addTo(map),
+            standard: L.layerGroup().addTo(map),
+            buffers: L.layerGroup().addTo(map)
+        };
+
+        function toggleLayer(layerName) {
+            const cb = document.getElementById('layer-' + layerName);
+            if (cb.checked) {
+                map.addLayer(layerGroups[layerName]);
+            } else {
+                map.removeLayer(layerGroups[layerName]);
+            }
+        }
+
+        // Custom SVGs for Hubs
+        const groceryIconSvg = `<svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="text-zinc-800"><circle cx="9" cy="21" r="1"></circle><circle cx="20" cy="21" r="1"></circle><path d="M1 1h4l2.68 13.39a2 2 0 0 0 2 1.61h9.72a2 2 0 0 0 2-1.61L23 6H6"></path></svg>`;
+        const medicalIconSvg = `<svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="text-white"><path d="M12 2v20M2 12h20"/></svg>`;
+
+        const createIcon = (svg, bgColor, borderColor) => L.divIcon({
+            html: `<div style="background-color: ${bgColor}; border: 1px solid ${borderColor}; box-shadow: 0 4px 6px -1px rgba(0,0,0,0.3); border-radius: 6px; width: 28px; height: 28px; display: flex; align-items: center; justify-content: center;">${svg}</div>`,
+            className: '',
+            iconSize: [28, 28],
+            iconAnchor: [14, 14]
+        });
+
+        // Data Ingestion State
+        let currentInputMode = 'upload'; // 'upload' or 'draw'
+        let customNodes = [];
+        let customNodesLayer = L.layerGroup().addTo(map);
+
+        function setInputMode(mode) {
+            currentInputMode = mode;
+            const btnUpload = document.getElementById('btnUploadMode');
+            const btnDraw = document.getElementById('btnDrawMode');
+            const uploadSec = document.getElementById('uploadSection');
+            const drawSec = document.getElementById('drawSection');
+
+            if (mode === 'upload') {
+                btnUpload.className = "flex-1 py-1.5 text-xs font-semibold rounded-md bg-zinc-800 text-zinc-100 shadow-sm transition-colors";
+                btnDraw.className = "flex-1 py-1.5 text-xs font-semibold rounded-md text-zinc-500 hover:text-zinc-300 transition-colors";
+                uploadSec.classList.remove('hidden');
+                drawSec.classList.add('hidden');
+                map.getContainer().style.cursor = '';
+            } else {
+                btnDraw.className = "flex-1 py-1.5 text-xs font-semibold rounded-md bg-zinc-800 text-zinc-100 shadow-sm transition-colors";
+                btnUpload.className = "flex-1 py-1.5 text-xs font-semibold rounded-md text-zinc-500 hover:text-zinc-300 transition-colors";
+                drawSec.classList.remove('hidden');
+                uploadSec.classList.add('hidden');
+                map.getContainer().style.cursor = 'crosshair';
+            }
+        }
+
+        // Map Drawing Logic
+        map.on('click', function(e) {
+            if (currentInputMode !== 'draw') return;
+            
+            const lat = e.latlng.lat;
+            const lon = e.latlng.lng;
+            const id = customNodes.length + 1;
+            
+            customNodes.push({
+                ward_id: `Custom_${id}`,
+                latitude: lat,
+                longitude: lon,
+                population: 25000 // default dummy population
+            });
+            
+            document.getElementById('customNodeCount').innerText = customNodes.length;
+            
+            const marker = L.circleMarker([lat, lon], {
+                radius: 4,
+                fillColor: '#3b82f6',
+                color: '#60a5fa',
+                weight: 1,
+                opacity: 1,
+                fillOpacity: 0.8
+            }).bindTooltip(`Custom Node ${id}`, {className: 'custom-tooltip', direction: 'top'});
+            
+            marker.addTo(customNodesLayer);
+        });
+
+        function clearCustomNodes() {
+            customNodes = [];
+            document.getElementById('customNodeCount').innerText = '0';
+            customNodesLayer.clearLayers();
+        }
+
+        // Interactions
+        function updateFileLabel() {
+            const input = document.getElementById('csvFile');
+            if (input.files.length > 0) {
+                document.getElementById('fileLabel').innerText = input.files[0].name;
+            }
+        }
+
+        // Drag and drop visual feedback
+        const dropzone = document.getElementById('dropzone');
+        dropzone.addEventListener('dragover', (e) => { e.preventDefault(); dropzone.classList.add('dropzone-hover'); });
+        dropzone.addEventListener('dragleave', () => dropzone.classList.remove('dropzone-hover'));
+        dropzone.addEventListener('drop', (e) => {
+            e.preventDefault();
+            dropzone.classList.remove('dropzone-hover');
+            if(e.dataTransfer.files.length) {
+                document.getElementById('csvFile').files = e.dataTransfer.files;
+                updateFileLabel();
+            }
+        });
+
+        // Data processing & API call
+        async function runOptimization() {
+            Object.values(layerGroups).forEach(g => g.clearLayers());
+            // We intentionally do not clear customNodesLayer so user can see what they drew
+            
+            const btn = document.querySelector('button[onclick="runOptimization()"]');
+            const originalText = btn.innerHTML;
+            btn.innerHTML = `<i data-lucide="loader-2" class="w-4 h-4 animate-spin"></i> Analyzing...`;
+            lucide.createIcons();
+
+            const formData = new FormData();
+            
+            if (currentInputMode === 'upload') {
+                const fileInput = document.getElementById('csvFile');
+                if (fileInput.files.length > 0) {
+                    formData.append('file', fileInput.files[0]);
+                }
+            } else {
+                if (customNodes.length === 0) {
+                    alert('Please click on the map to add at least one custom node.');
+                    btn.innerHTML = originalText;
+                    lucide.createIcons();
+                    return;
+                }
+                formData.append('custom_wards', JSON.stringify(customNodes));
+            }
+            
+            formData.append('num_dark_stores', document.getElementById('kInput').value);
+
+            try {
+                const response = await fetch('/api/optimize', { method: 'POST', body: formData });
+                const res = await response.json();
+                
+                if (res.status !== 'success') {
+                    alert('Analysis Error: ' + res.message);
+                    btn.innerHTML = originalText;
+                    lucide.createIcons();
+                    return;
+                }
+
+                // Update Executive Strip KPIs
+                document.getElementById('kpiCoverage').innerText = res.metrics.blinkit_coverage_pct + '%';
+                document.getElementById('kpiDeserts').innerText = res.metrics.emergency_deserts_count;
+                document.getElementById('kpiDistance').innerText = res.metrics.emergency_avg_dist_km;
+                document.getElementById('kpiPop').innerText = (res.metrics.total_population_2026 / 1000).toFixed(1) + 'k';
+
+                const bounds = L.latLngBounds();
+
+                // Render Dark Stores
+                res.dark_stores.forEach(h => {
+                    const radiusBuffer = L.circle([h.lat, h.lon], {
+                        radius: 2200,
+                        color: '#a1a1aa',
+                        fillColor: '#a1a1aa',
+                        fillOpacity: 0.05,
+                        weight: 1,
+                        dashArray: '4, 4'
+                    });
+                    radiusBuffer.bindTooltip("10-Min Catchment Radius (2.2km)", {className: 'custom-tooltip', direction: 'top'});
+                    radiusBuffer.addTo(layerGroups.buffers);
+
+                    const hubMarker = L.marker([h.lat, h.lon], { icon: createIcon(groceryIconSvg, '#e4e4e7', '#a1a1aa') });
+                    hubMarker.bindTooltip(`<div class="font-semibold text-xs">Q-Commerce Fulfillment Hub #${h.id}</div>`, { className: 'custom-tooltip', direction: 'top', offset: [0, -14] });
+                    hubMarker.addTo(layerGroups.qcommerce);
+                });
+
+                // Render Emergency Hub
+                const em = res.emergency_hub;
+                const emBuffer = L.circle([em.lat, em.lon], {
+                    radius: 3500,
+                    color: '#f43f5e',
+                    fillColor: '#f43f5e',
+                    fillOpacity: 0.08,
+                    weight: 1,
+                    dashArray: '4, 4'
+                });
+                emBuffer.bindTooltip("Emergency Transit Radius (3.5km)", {className: 'custom-tooltip', direction: 'top'});
+                emBuffer.addTo(layerGroups.buffers);
+
+                const emMarker = L.marker([em.lat, em.lon], { icon: createIcon(medicalIconSvg, '#f43f5e', '#fda4af') });
+                emMarker.bindTooltip(`<div class="font-semibold text-xs text-hazard">Emergency Dispatch Station</div>`, { className: 'custom-tooltip', direction: 'top', offset: [0, -14] });
+                emMarker.addTo(layerGroups.emergency);
+
+                // Render Wards (Added AFTER buffers so they sit on top and receive hover events reliably)
+                res.wards.forEach(w => {
+                    const isDesert = w.hospitals_count === 0;
+                    const color = isDesert ? '#f43f5e' : '#71717a';
+                    const radius = isDesert ? 5.5 : 4.5;
+                    const opacity = isDesert ? 1 : 0.6;
+                    
+                    bounds.extend([w.latitude, w.longitude]);
+
+                    const marker = L.circleMarker([w.latitude, w.longitude], {
+                        radius: radius,
+                        fillColor: color,
+                        color: isDesert ? '#fda4af' : '#a1a1aa',
+                        weight: isDesert ? 1.5 : 1,
+                        opacity: opacity,
+                        fillOpacity: opacity
+                    });
+
+                    const displayName = w.ward_name ? w.ward_name : w.ward_id;
+                    const idText = w.ward_name && w.ward_name !== w.ward_id ? ` <span class="text-zinc-500 font-normal">(${w.ward_id})</span>` : '';
+
+                    const tooltipContent = `
+                        <div class="space-y-2 min-w-[180px]">
+                            <div class="flex items-center justify-between border-b border-white/10 pb-2">
+                                <span class="font-semibold text-zinc-100">${displayName}${idText}</span>
+                                ${isDesert 
+                                    ? '<span class="text-[9px] font-bold px-1.5 py-0.5 rounded bg-hazard/20 text-hazard border border-hazard/30 uppercase">Desert</span>' 
+                                    : '<span class="text-[9px] font-bold px-1.5 py-0.5 rounded bg-zinc-800 text-zinc-400 border border-zinc-700 uppercase">Standard</span>'
+                                }
+                            </div>
+                            <div class="grid grid-cols-2 gap-2 text-xs">
+                                <div class="text-zinc-400">Pop (2026)</div>
+                                <div class="text-right font-medium text-zinc-200">${w.est_population_2026.toLocaleString()}</div>
+                                <div class="text-zinc-400">Hospitals</div>
+                                <div class="text-right font-medium text-zinc-200">${w.hospitals_count}</div>
+                                <div class="text-zinc-400">Demand Idx</div>
+                                <div class="text-right font-medium text-zinc-200">${w.blinkit_demand_score}</div>
+                            </div>
+                        </div>
+                    `;
+
+                    marker.bindTooltip(tooltipContent, {
+                        className: 'custom-tooltip',
+                        direction: 'top',
+                        offset: [0, -6]
+                    });
+
+                    const targetLayer = isDesert ? layerGroups.desert : layerGroups.standard;
+                    marker.addTo(targetLayer);
+                });
+
+                // Auto fit bounds with padding
+                if (res.wards.length > 0) {
+                    map.fitBounds(bounds, { padding: [50, 50], maxZoom: 14 });
+                }
+
+                // Render Policy Memo with Marked.js
+                const policyBriefContainer = document.getElementById('policyBrief');
+                if (typeof marked !== 'undefined') {
+                    policyBriefContainer.innerHTML = marked.parse(res.llm_report);
+                } else {
+                    policyBriefContainer.innerText = res.llm_report;
+                }
+                
+                // Auto-open right drawer to show results
+                if (!rightDrawerOpen) toggleRightDrawer();
+
+            } catch (err) {
+                alert('Connection Error: ' + err.message);
+            } finally {
+                btn.innerHTML = originalText;
+                lucide.createIcons();
+            }
+        }
+
+        // Memo Copy Function
+        function copyMemo() {
+            const memoText = document.getElementById('policyBrief').innerText;
+            navigator.clipboard.writeText(memoText).then(() => {
+                const btn = document.querySelector('button[title="Copy to clipboard"]');
+                const origIcon = btn.innerHTML;
+                btn.innerHTML = '<i data-lucide="check" class="w-4 h-4 text-emerald-400"></i>';
+                lucide.createIcons();
+                setTimeout(() => { btn.innerHTML = origIcon; lucide.createIcons(); }, 2000);
+            });
+        }
+
+        // Cookie Pill Logic
+        function checkCookieConsent() {
+            const consent = getCookie('spatial_cookie_consent') || localStorage.getItem('spatial_cookie_consent');
+            if (!consent) {
+                const pill = document.getElementById('cookiePill');
+                pill.classList.remove('hidden');
+                setTimeout(() => pill.classList.remove('translate-y-20'), 100);
+            }
+        }
+
+        function acceptCookies() {
+            setCookie('spatial_cookie_consent', 'accepted', 30);
+            localStorage.setItem('spatial_cookie_consent', 'accepted');
+            hideCookiePill();
+        }
+
+        function rejectCookies() {
+            setCookie('spatial_cookie_consent', 'essential_only', 7);
+            localStorage.setItem('spatial_cookie_consent', 'essential_only');
+            hideCookiePill();
+        }
+
+        function hideCookiePill() {
+            const pill = document.getElementById('cookiePill');
+            pill.classList.add('translate-y-20');
+            setTimeout(() => pill.classList.add('hidden'), 300);
+        }
+
+        function setCookie(name, value, days) {
+            const d = new Date();
+            d.setTime(d.getTime() + (days * 24 * 60 * 60 * 1000));
+            document.cookie = `${name}=${value};expires=${d.toUTCString()};path=/;SameSite=Lax`;
+        }
+
+        function getCookie(name) {
+            const v = document.cookie.match('(^|;) ?' + name + '=([^;]*)(;|$)');
+            return v ? v[2] : null;
+        }
+
+        window.addEventListener('DOMContentLoaded', () => {
+            checkCookieConsent();
+            // We do not auto-run optimization on load to let user see empty state / controls
+        });
+    </script>
+</body>
+</html>

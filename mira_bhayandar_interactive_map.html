@@ -1,0 +1,2070 @@
+<!DOCTYPE html>
+<html>
+<head>
+    
+    <meta http-equiv="content-type" content="text/html; charset=UTF-8" />
+    <script src="https://cdn.jsdelivr.net/npm/leaflet@1.9.3/dist/leaflet.js"></script>
+    <script src="https://code.jquery.com/jquery-3.7.1.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.2/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/Leaflet.awesome-markers/2.0.2/leaflet.awesome-markers.js"></script>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/leaflet@1.9.3/dist/leaflet.css"/>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.2/dist/css/bootstrap.min.css"/>
+    <link rel="stylesheet" href="https://netdna.bootstrapcdn.com/bootstrap/3.0.0/css/bootstrap-glyphicons.css"/>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@6.2.0/css/all.min.css"/>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/Leaflet.awesome-markers/2.0.2/leaflet.awesome-markers.css"/>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/python-visualization/folium/folium/templates/leaflet.awesome.rotate.min.css"/>
+    
+            <meta name="viewport" content="width=device-width,
+                initial-scale=1.0, maximum-scale=1.0, user-scalable=no" />
+            <style>
+                #map_40f7a08ccbd4afb7ad9066604c605a90 {
+                    position: relative;
+                    width: 100.0%;
+                    height: 100.0%;
+                    left: 0.0%;
+                    top: 0.0%;
+                }
+                .leaflet-container { font-size: 1rem; }
+            </style>
+
+            <style>html, body {
+                width: 100%;
+                height: 100%;
+                margin: 0;
+                padding: 0;
+            }
+            </style>
+
+            <style>#map {
+                position:absolute;
+                top:0;
+                bottom:0;
+                right:0;
+                left:0;
+                }
+            </style>
+
+            <script>
+                L_NO_TOUCH = false;
+                L_DISABLE_3D = false;
+            </script>
+
+        
+</head>
+<body>
+    
+    
+            <div class="folium-map" id="map_40f7a08ccbd4afb7ad9066604c605a90" ></div>
+        
+</body>
+<script>
+    
+    
+            var map_40f7a08ccbd4afb7ad9066604c605a90 = L.map(
+                "map_40f7a08ccbd4afb7ad9066604c605a90",
+                {
+                    center: [19.283, 72.858],
+                    crs: L.CRS.EPSG3857,
+                    ...{
+  "zoom": 13,
+  "zoomControl": true,
+  "preferCanvas": false,
+}
+
+                }
+            );
+
+            
+
+        
+    
+            var tile_layer_5db883c9322835e43e166ae303006fa3 = L.tileLayer(
+                "https://tile.openstreetmap.org/{z}/{x}/{y}.png",
+                {
+  "minZoom": 0,
+  "maxZoom": 19,
+  "maxNativeZoom": 19,
+  "noWrap": false,
+  "attribution": "\u0026copy; \u003ca href=\"https://www.openstreetmap.org/copyright\"\u003eOpenStreetMap\u003c/a\u003e contributors",
+  "subdomains": "abc",
+  "detectRetina": false,
+  "tms": false,
+  "opacity": 1,
+}
+
+            );
+        
+    
+            tile_layer_5db883c9322835e43e166ae303006fa3.addTo(map_40f7a08ccbd4afb7ad9066604c605a90);
+        
+    
+            var circle_marker_fa701550bee553bb57be30a8e8754d0d = L.circleMarker(
+                [19.2867, 72.8417],
+                {"bubblingMouseEvents": true, "color": "green", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "green", "fillOpacity": 0.7, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 6, "stroke": true, "weight": 3}
+            ).addTo(map_40f7a08ccbd4afb7ad9066604c605a90);
+        
+    
+        var popup_6412a27090ad47ebdeaded96dc775266 = L.popup({
+  "maxWidth": 250,
+});
+
+        
+            
+                var html_d1a6070442704245011487e5ff89e9dc = $(`<div id="html_d1a6070442704245011487e5ff89e9dc" style="width: 100.0%; height: 100.0%;">     <b>Ward_01 (Bhayandar West)</b><br>     Status: High Blinkit Demand<br>     Population (2011): 11441<br>     Est. Pop (2026): 17061<br>     Hospitals: 2<br>     Blinkit Demand Score: 8.43     </div>`)[0];
+                popup_6412a27090ad47ebdeaded96dc775266.setContent(html_d1a6070442704245011487e5ff89e9dc);
+            
+        
+
+        circle_marker_fa701550bee553bb57be30a8e8754d0d.bindPopup(popup_6412a27090ad47ebdeaded96dc775266)
+        ;
+
+        
+    
+    
+            var circle_marker_c77dffd129344b41fab66892f2d678e6 = L.circleMarker(
+                [19.2835, 72.8613],
+                {"bubblingMouseEvents": true, "color": "blue", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "blue", "fillOpacity": 0.7, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 6, "stroke": true, "weight": 3}
+            ).addTo(map_40f7a08ccbd4afb7ad9066604c605a90);
+        
+    
+        var popup_caf4a78c13c7644ccedae96b72cfd608 = L.popup({
+  "maxWidth": 250,
+});
+
+        
+            
+                var html_6ae2c1428fa60cf352ed0ff69efeacd1 = $(`<div id="html_6ae2c1428fa60cf352ed0ff69efeacd1" style="width: 100.0%; height: 100.0%;">     <b>Ward_02 (Bhayandar West)</b><br>     Status: Standard Ward<br>     Population (2011): 9854<br>     Est. Pop (2026): 14694<br>     Hospitals: 1<br>     Blinkit Demand Score: 3.48     </div>`)[0];
+                popup_caf4a78c13c7644ccedae96b72cfd608.setContent(html_6ae2c1428fa60cf352ed0ff69efeacd1);
+            
+        
+
+        circle_marker_c77dffd129344b41fab66892f2d678e6.bindPopup(popup_caf4a78c13c7644ccedae96b72cfd608)
+        ;
+
+        
+    
+    
+            var circle_marker_83a4736953231e32b8c49e1c411b1fdf = L.circleMarker(
+                [19.2934, 72.845],
+                {"bubblingMouseEvents": true, "color": "blue", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "blue", "fillOpacity": 0.7, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 6, "stroke": true, "weight": 3}
+            ).addTo(map_40f7a08ccbd4afb7ad9066604c605a90);
+        
+    
+        var popup_d3b5d8fcf4e565c8b917799cfba52d5c = L.popup({
+  "maxWidth": 250,
+});
+
+        
+            
+                var html_463d60e68b5c0f5f57dc8c5343fe062d = $(`<div id="html_463d60e68b5c0f5f57dc8c5343fe062d" style="width: 100.0%; height: 100.0%;">     <b>Ward_03 (Bhayandar West)</b><br>     Status: Standard Ward<br>     Population (2011): 9041<br>     Est. Pop (2026): 13482<br>     Hospitals: 1<br>     Blinkit Demand Score: 3.57     </div>`)[0];
+                popup_d3b5d8fcf4e565c8b917799cfba52d5c.setContent(html_463d60e68b5c0f5f57dc8c5343fe062d);
+            
+        
+
+        circle_marker_83a4736953231e32b8c49e1c411b1fdf.bindPopup(popup_d3b5d8fcf4e565c8b917799cfba52d5c)
+        ;
+
+        
+    
+    
+            var circle_marker_6e03e9eb358a2e8697185f12cb736a66 = L.circleMarker(
+                [19.2939, 72.8568],
+                {"bubblingMouseEvents": true, "color": "blue", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "blue", "fillOpacity": 0.7, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 6, "stroke": true, "weight": 3}
+            ).addTo(map_40f7a08ccbd4afb7ad9066604c605a90);
+        
+    
+        var popup_d7478715e6be8543274187b96411dc39 = L.popup({
+  "maxWidth": 250,
+});
+
+        
+            
+                var html_854d1734eb6287b4534ee4d6247c3b63 = $(`<div id="html_854d1734eb6287b4534ee4d6247c3b63" style="width: 100.0%; height: 100.0%;">     <b>Ward_04 (Bhayandar West)</b><br>     Status: Standard Ward<br>     Population (2011): 9035<br>     Est. Pop (2026): 13473<br>     Hospitals: 1<br>     Blinkit Demand Score: 5.22     </div>`)[0];
+                popup_d7478715e6be8543274187b96411dc39.setContent(html_854d1734eb6287b4534ee4d6247c3b63);
+            
+        
+
+        circle_marker_6e03e9eb358a2e8697185f12cb736a66.bindPopup(popup_d7478715e6be8543274187b96411dc39)
+        ;
+
+        
+    
+    
+            var circle_marker_c8553d69305e27bbf66424a8e793213a = L.circleMarker(
+                [19.2846, 72.8608],
+                {"bubblingMouseEvents": true, "color": "red", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "red", "fillOpacity": 0.7, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 6, "stroke": true, "weight": 3}
+            ).addTo(map_40f7a08ccbd4afb7ad9066604c605a90);
+        
+    
+        var popup_f5a6988c8eecd9a12e94f30208f0c90d = L.popup({
+  "maxWidth": 250,
+});
+
+        
+            
+                var html_9ed895d63e5e4958e032859b1b7ff29a = $(`<div id="html_9ed895d63e5e4958e032859b1b7ff29a" style="width: 100.0%; height: 100.0%;">     <b>Ward_05 (Bhayandar West)</b><br>     Status: Healthcare Desert (0 Hospitals)<br>     Population (2011): 8839<br>     Est. Pop (2026): 13181<br>     Hospitals: 0<br>     Blinkit Demand Score: 3.02     </div>`)[0];
+                popup_f5a6988c8eecd9a12e94f30208f0c90d.setContent(html_9ed895d63e5e4958e032859b1b7ff29a);
+            
+        
+
+        circle_marker_c8553d69305e27bbf66424a8e793213a.bindPopup(popup_f5a6988c8eecd9a12e94f30208f0c90d)
+        ;
+
+        
+    
+    
+            var circle_marker_3056dcaeab9617b0c98f8338dd1e4097 = L.circleMarker(
+                [19.2853, 72.8544],
+                {"bubblingMouseEvents": true, "color": "blue", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "blue", "fillOpacity": 0.7, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 6, "stroke": true, "weight": 3}
+            ).addTo(map_40f7a08ccbd4afb7ad9066604c605a90);
+        
+    
+        var popup_03c5ab58dd6f113eee024865990641a9 = L.popup({
+  "maxWidth": 250,
+});
+
+        
+            
+                var html_83c44f03ea2792d08aad5cc31b0f6feb = $(`<div id="html_83c44f03ea2792d08aad5cc31b0f6feb" style="width: 100.0%; height: 100.0%;">     <b>Ward_06 (Bhayandar West)</b><br>     Status: Standard Ward<br>     Population (2011): 10477<br>     Est. Pop (2026): 15624<br>     Hospitals: 1<br>     Blinkit Demand Score: 4.78     </div>`)[0];
+                popup_03c5ab58dd6f113eee024865990641a9.setContent(html_83c44f03ea2792d08aad5cc31b0f6feb);
+            
+        
+
+        circle_marker_3056dcaeab9617b0c98f8338dd1e4097.bindPopup(popup_03c5ab58dd6f113eee024865990641a9)
+        ;
+
+        
+    
+    
+            var circle_marker_d467d0601be5ff91ab44c52002b078f5 = L.circleMarker(
+                [19.2989, 72.8455],
+                {"bubblingMouseEvents": true, "color": "blue", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "blue", "fillOpacity": 0.7, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 6, "stroke": true, "weight": 3}
+            ).addTo(map_40f7a08ccbd4afb7ad9066604c605a90);
+        
+    
+        var popup_ec975b17f66c7bcde7122de8677e0096 = L.popup({
+  "maxWidth": 250,
+});
+
+        
+            
+                var html_d4f2adb840fa7fd5928f3021ced8dc27 = $(`<div id="html_d4f2adb840fa7fd5928f3021ced8dc27" style="width: 100.0%; height: 100.0%;">     <b>Ward_07 (Bhayandar West)</b><br>     Status: Standard Ward<br>     Population (2011): 8865<br>     Est. Pop (2026): 13220<br>     Hospitals: 1<br>     Blinkit Demand Score: 3.83     </div>`)[0];
+                popup_ec975b17f66c7bcde7122de8677e0096.setContent(html_d4f2adb840fa7fd5928f3021ced8dc27);
+            
+        
+
+        circle_marker_d467d0601be5ff91ab44c52002b078f5.bindPopup(popup_ec975b17f66c7bcde7122de8677e0096)
+        ;
+
+        
+    
+    
+            var circle_marker_868842efe5de266c8cc50a73e19eca4c = L.circleMarker(
+                [19.3016, 72.8605],
+                {"bubblingMouseEvents": true, "color": "blue", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "blue", "fillOpacity": 0.7, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 6, "stroke": true, "weight": 3}
+            ).addTo(map_40f7a08ccbd4afb7ad9066604c605a90);
+        
+    
+        var popup_b5f6067ee1e9b7b1a2851c5d3c6c66cc = L.popup({
+  "maxWidth": 250,
+});
+
+        
+            
+                var html_1c50ccbed733a11a29359f2a0066a04c = $(`<div id="html_1c50ccbed733a11a29359f2a0066a04c" style="width: 100.0%; height: 100.0%;">     <b>Ward_08 (Bhayandar West)</b><br>     Status: Standard Ward<br>     Population (2011): 10186<br>     Est. Pop (2026): 15190<br>     Hospitals: 1<br>     Blinkit Demand Score: 3.4     </div>`)[0];
+                popup_b5f6067ee1e9b7b1a2851c5d3c6c66cc.setContent(html_1c50ccbed733a11a29359f2a0066a04c);
+            
+        
+
+        circle_marker_868842efe5de266c8cc50a73e19eca4c.bindPopup(popup_b5f6067ee1e9b7b1a2851c5d3c6c66cc)
+        ;
+
+        
+    
+    
+            var circle_marker_b6549ec41215e816b4963fc5564d4de7 = L.circleMarker(
+                [19.2916, 72.8447],
+                {"bubblingMouseEvents": true, "color": "blue", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "blue", "fillOpacity": 0.7, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 6, "stroke": true, "weight": 3}
+            ).addTo(map_40f7a08ccbd4afb7ad9066604c605a90);
+        
+    
+        var popup_e69c09e7440691a0ebed6f42d9882567 = L.popup({
+  "maxWidth": 250,
+});
+
+        
+            
+                var html_7792dbd89cf6fba480acf18c79f4d14c = $(`<div id="html_7792dbd89cf6fba480acf18c79f4d14c" style="width: 100.0%; height: 100.0%;">     <b>Ward_09 (Bhayandar West)</b><br>     Status: Standard Ward<br>     Population (2011): 7677<br>     Est. Pop (2026): 11448<br>     Hospitals: 1<br>     Blinkit Demand Score: 3.14     </div>`)[0];
+                popup_e69c09e7440691a0ebed6f42d9882567.setContent(html_7792dbd89cf6fba480acf18c79f4d14c);
+            
+        
+
+        circle_marker_b6549ec41215e816b4963fc5564d4de7.bindPopup(popup_e69c09e7440691a0ebed6f42d9882567)
+        ;
+
+        
+    
+    
+            var circle_marker_bc41a602ecb8af855e306954012a90d6 = L.circleMarker(
+                [19.3067, 72.8565],
+                {"bubblingMouseEvents": true, "color": "blue", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "blue", "fillOpacity": 0.7, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 6, "stroke": true, "weight": 3}
+            ).addTo(map_40f7a08ccbd4afb7ad9066604c605a90);
+        
+    
+        var popup_421cee534313a5d0eeea9231f5a8827a = L.popup({
+  "maxWidth": 250,
+});
+
+        
+            
+                var html_b5e71c04013b687ab432d18fa77ada00 = $(`<div id="html_b5e71c04013b687ab432d18fa77ada00" style="width: 100.0%; height: 100.0%;">     <b>Ward_10 (Bhayandar West)</b><br>     Status: Standard Ward<br>     Population (2011): 6241<br>     Est. Pop (2026): 9307<br>     Hospitals: 1<br>     Blinkit Demand Score: 3.68     </div>`)[0];
+                popup_421cee534313a5d0eeea9231f5a8827a.setContent(html_b5e71c04013b687ab432d18fa77ada00);
+            
+        
+
+        circle_marker_bc41a602ecb8af855e306954012a90d6.bindPopup(popup_421cee534313a5d0eeea9231f5a8827a)
+        ;
+
+        
+    
+    
+            var circle_marker_d819d8f21e90bd1fb75e90acfe1bec2a = L.circleMarker(
+                [19.2848, 72.8466],
+                {"bubblingMouseEvents": true, "color": "green", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "green", "fillOpacity": 0.7, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 6, "stroke": true, "weight": 3}
+            ).addTo(map_40f7a08ccbd4afb7ad9066604c605a90);
+        
+    
+        var popup_086fd40d713a40775ce162ba2bf9da95 = L.popup({
+  "maxWidth": 250,
+});
+
+        
+            
+                var html_0308396b353a0228353499e0b723aa63 = $(`<div id="html_0308396b353a0228353499e0b723aa63" style="width: 100.0%; height: 100.0%;">     <b>Ward_11 (Bhayandar West)</b><br>     Status: High Blinkit Demand<br>     Population (2011): 11655<br>     Est. Pop (2026): 17380<br>     Hospitals: 2<br>     Blinkit Demand Score: 7.68     </div>`)[0];
+                popup_086fd40d713a40775ce162ba2bf9da95.setContent(html_0308396b353a0228353499e0b723aa63);
+            
+        
+
+        circle_marker_d819d8f21e90bd1fb75e90acfe1bec2a.bindPopup(popup_086fd40d713a40775ce162ba2bf9da95)
+        ;
+
+        
+    
+    
+            var circle_marker_53636a9f9ae0d6c8bb99be08fdfb40c2 = L.circleMarker(
+                [19.2845, 72.8455],
+                {"bubblingMouseEvents": true, "color": "red", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "red", "fillOpacity": 0.7, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 6, "stroke": true, "weight": 3}
+            ).addTo(map_40f7a08ccbd4afb7ad9066604c605a90);
+        
+    
+        var popup_7004229bc24a2f940ba4a123aeacd8c4 = L.popup({
+  "maxWidth": 250,
+});
+
+        
+            
+                var html_81f38bb22958ea7e1adf43165d00be28 = $(`<div id="html_81f38bb22958ea7e1adf43165d00be28" style="width: 100.0%; height: 100.0%;">     <b>Ward_12 (Bhayandar West)</b><br>     Status: Healthcare Desert (0 Hospitals)<br>     Population (2011): 12419<br>     Est. Pop (2026): 18520<br>     Hospitals: 0<br>     Blinkit Demand Score: 6.25     </div>`)[0];
+                popup_7004229bc24a2f940ba4a123aeacd8c4.setContent(html_81f38bb22958ea7e1adf43165d00be28);
+            
+        
+
+        circle_marker_53636a9f9ae0d6c8bb99be08fdfb40c2.bindPopup(popup_7004229bc24a2f940ba4a123aeacd8c4)
+        ;
+
+        
+    
+    
+            var circle_marker_6f1ad0db8e41f26a2f4336adcc44b4a1 = L.circleMarker(
+                [19.2859, 72.8551],
+                {"bubblingMouseEvents": true, "color": "blue", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "blue", "fillOpacity": 0.7, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 6, "stroke": true, "weight": 3}
+            ).addTo(map_40f7a08ccbd4afb7ad9066604c605a90);
+        
+    
+        var popup_4cfd2a2bc82fa080f4963409b27c8478 = L.popup({
+  "maxWidth": 250,
+});
+
+        
+            
+                var html_bb66204f882fd1bbec0733667272b1ae = $(`<div id="html_bb66204f882fd1bbec0733667272b1ae" style="width: 100.0%; height: 100.0%;">     <b>Ward_13 (Bhayandar West)</b><br>     Status: Standard Ward<br>     Population (2011): 12231<br>     Est. Pop (2026): 18239<br>     Hospitals: 1<br>     Blinkit Demand Score: 4.56     </div>`)[0];
+                popup_4cfd2a2bc82fa080f4963409b27c8478.setContent(html_bb66204f882fd1bbec0733667272b1ae);
+            
+        
+
+        circle_marker_6f1ad0db8e41f26a2f4336adcc44b4a1.bindPopup(popup_4cfd2a2bc82fa080f4963409b27c8478)
+        ;
+
+        
+    
+    
+            var circle_marker_ce9732ed75244309101bd027bcfe6d63 = L.circleMarker(
+                [19.2955, 72.8483],
+                {"bubblingMouseEvents": true, "color": "green", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "green", "fillOpacity": 0.7, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 6, "stroke": true, "weight": 3}
+            ).addTo(map_40f7a08ccbd4afb7ad9066604c605a90);
+        
+    
+        var popup_5582acef83627e17739fa9df4e8cf371 = L.popup({
+  "maxWidth": 250,
+});
+
+        
+            
+                var html_67c4c1b829ca482fdadf6813ff22a853 = $(`<div id="html_67c4c1b829ca482fdadf6813ff22a853" style="width: 100.0%; height: 100.0%;">     <b>Ward_14 (Bhayandar West)</b><br>     Status: High Blinkit Demand<br>     Population (2011): 13590<br>     Est. Pop (2026): 20266<br>     Hospitals: 1<br>     Blinkit Demand Score: 10.75     </div>`)[0];
+                popup_5582acef83627e17739fa9df4e8cf371.setContent(html_67c4c1b829ca482fdadf6813ff22a853);
+            
+        
+
+        circle_marker_ce9732ed75244309101bd027bcfe6d63.bindPopup(popup_5582acef83627e17739fa9df4e8cf371)
+        ;
+
+        
+    
+    
+            var circle_marker_8d472ca0b93f775fd09083d2b89d5c9f = L.circleMarker(
+                [19.3048, 72.844],
+                {"bubblingMouseEvents": true, "color": "blue", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "blue", "fillOpacity": 0.7, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 6, "stroke": true, "weight": 3}
+            ).addTo(map_40f7a08ccbd4afb7ad9066604c605a90);
+        
+    
+        var popup_ef9f73fe1c60c47dec3595e09a898a3d = L.popup({
+  "maxWidth": 250,
+});
+
+        
+            
+                var html_33a186195c88e804271d10370c2070bd = $(`<div id="html_33a186195c88e804271d10370c2070bd" style="width: 100.0%; height: 100.0%;">     <b>Ward_15 (Bhayandar West)</b><br>     Status: Standard Ward<br>     Population (2011): 10417<br>     Est. Pop (2026): 15534<br>     Hospitals: 2<br>     Blinkit Demand Score: 4.77     </div>`)[0];
+                popup_ef9f73fe1c60c47dec3595e09a898a3d.setContent(html_33a186195c88e804271d10370c2070bd);
+            
+        
+
+        circle_marker_8d472ca0b93f775fd09083d2b89d5c9f.bindPopup(popup_ef9f73fe1c60c47dec3595e09a898a3d)
+        ;
+
+        
+    
+    
+            var circle_marker_f8cef786ce5fe2a2d5643b98a5d56326 = L.circleMarker(
+                [19.29, 72.8419],
+                {"bubblingMouseEvents": true, "color": "blue", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "blue", "fillOpacity": 0.7, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 6, "stroke": true, "weight": 3}
+            ).addTo(map_40f7a08ccbd4afb7ad9066604c605a90);
+        
+    
+        var popup_1b9af8ac77a67e0bb779a3f67060467a = L.popup({
+  "maxWidth": 250,
+});
+
+        
+            
+                var html_86af968b68247a65a98123ab6751e0c1 = $(`<div id="html_86af968b68247a65a98123ab6751e0c1" style="width: 100.0%; height: 100.0%;">     <b>Ward_16 (Bhayandar West)</b><br>     Status: Standard Ward<br>     Population (2011): 9452<br>     Est. Pop (2026): 14095<br>     Hospitals: 2<br>     Blinkit Demand Score: 3.23     </div>`)[0];
+                popup_1b9af8ac77a67e0bb779a3f67060467a.setContent(html_86af968b68247a65a98123ab6751e0c1);
+            
+        
+
+        circle_marker_f8cef786ce5fe2a2d5643b98a5d56326.bindPopup(popup_1b9af8ac77a67e0bb779a3f67060467a)
+        ;
+
+        
+    
+    
+            var circle_marker_08fd44978deaca7dd844f97fed105a32 = L.circleMarker(
+                [19.3044, 72.8509],
+                {"bubblingMouseEvents": true, "color": "blue", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "blue", "fillOpacity": 0.7, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 6, "stroke": true, "weight": 3}
+            ).addTo(map_40f7a08ccbd4afb7ad9066604c605a90);
+        
+    
+        var popup_1cd60aebffff7caa6e5d3d6d89a8f852 = L.popup({
+  "maxWidth": 250,
+});
+
+        
+            
+                var html_a3b8f6c7ddb461331f89633807b35cb8 = $(`<div id="html_a3b8f6c7ddb461331f89633807b35cb8" style="width: 100.0%; height: 100.0%;">     <b>Ward_17 (Bhayandar West)</b><br>     Status: Standard Ward<br>     Population (2011): 12488<br>     Est. Pop (2026): 18622<br>     Hospitals: 2<br>     Blinkit Demand Score: 4.59     </div>`)[0];
+                popup_1cd60aebffff7caa6e5d3d6d89a8f852.setContent(html_a3b8f6c7ddb461331f89633807b35cb8);
+            
+        
+
+        circle_marker_08fd44978deaca7dd844f97fed105a32.bindPopup(popup_1cd60aebffff7caa6e5d3d6d89a8f852)
+        ;
+
+        
+    
+    
+            var circle_marker_bb4fc77a4d7fa615da33891b3395ce97 = L.circleMarker(
+                [19.2885, 72.8483],
+                {"bubblingMouseEvents": true, "color": "red", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "red", "fillOpacity": 0.7, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 6, "stroke": true, "weight": 3}
+            ).addTo(map_40f7a08ccbd4afb7ad9066604c605a90);
+        
+    
+        var popup_bcd0865323672a8032b4d4d9a718225a = L.popup({
+  "maxWidth": 250,
+});
+
+        
+            
+                var html_6653e35a8e650376edd9c754cd9e937b = $(`<div id="html_6653e35a8e650376edd9c754cd9e937b" style="width: 100.0%; height: 100.0%;">     <b>Ward_18 (Bhayandar West)</b><br>     Status: Healthcare Desert (0 Hospitals)<br>     Population (2011): 11021<br>     Est. Pop (2026): 16435<br>     Hospitals: 0<br>     Blinkit Demand Score: 3.96     </div>`)[0];
+                popup_bcd0865323672a8032b4d4d9a718225a.setContent(html_6653e35a8e650376edd9c754cd9e937b);
+            
+        
+
+        circle_marker_bb4fc77a4d7fa615da33891b3395ce97.bindPopup(popup_bcd0865323672a8032b4d4d9a718225a)
+        ;
+
+        
+    
+    
+            var circle_marker_6c7b1b353f2452edc849281e0fe86eb4 = L.circleMarker(
+                [19.2911, 72.8606],
+                {"bubblingMouseEvents": true, "color": "blue", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "blue", "fillOpacity": 0.7, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 6, "stroke": true, "weight": 3}
+            ).addTo(map_40f7a08ccbd4afb7ad9066604c605a90);
+        
+    
+        var popup_4b2ad42694ca3ad401cf32b0488dd9f1 = L.popup({
+  "maxWidth": 250,
+});
+
+        
+            
+                var html_bcd5e2daf1977629b64bd6157b72d705 = $(`<div id="html_bcd5e2daf1977629b64bd6157b72d705" style="width: 100.0%; height: 100.0%;">     <b>Ward_19 (Bhayandar West)</b><br>     Status: Standard Ward<br>     Population (2011): 4500<br>     Est. Pop (2026): 6710<br>     Hospitals: 1<br>     Blinkit Demand Score: 2.26     </div>`)[0];
+                popup_4b2ad42694ca3ad401cf32b0488dd9f1.setContent(html_bcd5e2daf1977629b64bd6157b72d705);
+            
+        
+
+        circle_marker_6c7b1b353f2452edc849281e0fe86eb4.bindPopup(popup_4b2ad42694ca3ad401cf32b0488dd9f1)
+        ;
+
+        
+    
+    
+            var circle_marker_4055b1aefb267c067139adcf869023c5 = L.circleMarker(
+                [19.3063, 72.8611],
+                {"bubblingMouseEvents": true, "color": "green", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "green", "fillOpacity": 0.7, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 6, "stroke": true, "weight": 3}
+            ).addTo(map_40f7a08ccbd4afb7ad9066604c605a90);
+        
+    
+        var popup_5bbc6b758d408d5fc5f2723aea8cd345 = L.popup({
+  "maxWidth": 250,
+});
+
+        
+            
+                var html_c6cfed7728b4f0899ed90e9e12bff17b = $(`<div id="html_c6cfed7728b4f0899ed90e9e12bff17b" style="width: 100.0%; height: 100.0%;">     <b>Ward_20 (Bhayandar West)</b><br>     Status: High Blinkit Demand<br>     Population (2011): 11063<br>     Est. Pop (2026): 16497<br>     Hospitals: 1<br>     Blinkit Demand Score: 6.05     </div>`)[0];
+                popup_5bbc6b758d408d5fc5f2723aea8cd345.setContent(html_c6cfed7728b4f0899ed90e9e12bff17b);
+            
+        
+
+        circle_marker_4055b1aefb267c067139adcf869023c5.bindPopup(popup_5bbc6b758d408d5fc5f2723aea8cd345)
+        ;
+
+        
+    
+    
+            var circle_marker_16d7ca8b6823fcc1e746043d5f82d976 = L.circleMarker(
+                [19.3001, 72.8542],
+                {"bubblingMouseEvents": true, "color": "blue", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "blue", "fillOpacity": 0.7, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 6, "stroke": true, "weight": 3}
+            ).addTo(map_40f7a08ccbd4afb7ad9066604c605a90);
+        
+    
+        var popup_1a68aa29934daae815b302b1d1447d75 = L.popup({
+  "maxWidth": 250,
+});
+
+        
+            
+                var html_cf8bd1571d4c897eeb4f84c9f027b880 = $(`<div id="html_cf8bd1571d4c897eeb4f84c9f027b880" style="width: 100.0%; height: 100.0%;">     <b>Ward_21 (Bhayandar East)</b><br>     Status: Standard Ward<br>     Population (2011): 7518<br>     Est. Pop (2026): 11211<br>     Hospitals: 2<br>     Blinkit Demand Score: 3.88     </div>`)[0];
+                popup_1a68aa29934daae815b302b1d1447d75.setContent(html_cf8bd1571d4c897eeb4f84c9f027b880);
+            
+        
+
+        circle_marker_16d7ca8b6823fcc1e746043d5f82d976.bindPopup(popup_1a68aa29934daae815b302b1d1447d75)
+        ;
+
+        
+    
+    
+            var circle_marker_dc32a9b3c112ac313b8aee7946362e54 = L.circleMarker(
+                [19.2997, 72.8767],
+                {"bubblingMouseEvents": true, "color": "blue", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "blue", "fillOpacity": 0.7, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 6, "stroke": true, "weight": 3}
+            ).addTo(map_40f7a08ccbd4afb7ad9066604c605a90);
+        
+    
+        var popup_1315bf48b10e5635beff5d5cec078069 = L.popup({
+  "maxWidth": 250,
+});
+
+        
+            
+                var html_1d3301360dceedc90250f9e2e5bb23d1 = $(`<div id="html_1d3301360dceedc90250f9e2e5bb23d1" style="width: 100.0%; height: 100.0%;">     <b>Ward_22 (Bhayandar East)</b><br>     Status: Standard Ward<br>     Population (2011): 7718<br>     Est. Pop (2026): 11509<br>     Hospitals: 1<br>     Blinkit Demand Score: 4.24     </div>`)[0];
+                popup_1315bf48b10e5635beff5d5cec078069.setContent(html_1d3301360dceedc90250f9e2e5bb23d1);
+            
+        
+
+        circle_marker_dc32a9b3c112ac313b8aee7946362e54.bindPopup(popup_1315bf48b10e5635beff5d5cec078069)
+        ;
+
+        
+    
+    
+            var circle_marker_f8720ae9e29a6b18aede2fb31260ed13 = L.circleMarker(
+                [19.3032, 72.8682],
+                {"bubblingMouseEvents": true, "color": "blue", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "blue", "fillOpacity": 0.7, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 6, "stroke": true, "weight": 3}
+            ).addTo(map_40f7a08ccbd4afb7ad9066604c605a90);
+        
+    
+        var popup_eb7a00d8a9e862463a2f075a19d9467a = L.popup({
+  "maxWidth": 250,
+});
+
+        
+            
+                var html_144ddac46ba6230c56586a69f09a4990 = $(`<div id="html_144ddac46ba6230c56586a69f09a4990" style="width: 100.0%; height: 100.0%;">     <b>Ward_23 (Bhayandar East)</b><br>     Status: Standard Ward<br>     Population (2011): 8261<br>     Est. Pop (2026): 12319<br>     Hospitals: 1<br>     Blinkit Demand Score: 3.5     </div>`)[0];
+                popup_eb7a00d8a9e862463a2f075a19d9467a.setContent(html_144ddac46ba6230c56586a69f09a4990);
+            
+        
+
+        circle_marker_f8720ae9e29a6b18aede2fb31260ed13.bindPopup(popup_eb7a00d8a9e862463a2f075a19d9467a)
+        ;
+
+        
+    
+    
+            var circle_marker_60b6a094b4df7f3c446a98bc573b6667 = L.circleMarker(
+                [19.2925, 72.854],
+                {"bubblingMouseEvents": true, "color": "blue", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "blue", "fillOpacity": 0.7, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 6, "stroke": true, "weight": 3}
+            ).addTo(map_40f7a08ccbd4afb7ad9066604c605a90);
+        
+    
+        var popup_d945de522a338e85f725637dcb7ef68e = L.popup({
+  "maxWidth": 250,
+});
+
+        
+            
+                var html_9ad11b00bd33fbb559ab192a0eaf2580 = $(`<div id="html_9ad11b00bd33fbb559ab192a0eaf2580" style="width: 100.0%; height: 100.0%;">     <b>Ward_24 (Bhayandar East)</b><br>     Status: Standard Ward<br>     Population (2011): 12132<br>     Est. Pop (2026): 18092<br>     Hospitals: 1<br>     Blinkit Demand Score: 4.99     </div>`)[0];
+                popup_d945de522a338e85f725637dcb7ef68e.setContent(html_9ad11b00bd33fbb559ab192a0eaf2580);
+            
+        
+
+        circle_marker_60b6a094b4df7f3c446a98bc573b6667.bindPopup(popup_d945de522a338e85f725637dcb7ef68e)
+        ;
+
+        
+    
+    
+            var circle_marker_fd43ba8f64a339d2b8be95ab63918712 = L.circleMarker(
+                [19.2922, 72.8696],
+                {"bubblingMouseEvents": true, "color": "blue", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "blue", "fillOpacity": 0.7, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 6, "stroke": true, "weight": 3}
+            ).addTo(map_40f7a08ccbd4afb7ad9066604c605a90);
+        
+    
+        var popup_29e4e4eef9d8cde8f6877bb536f539ac = L.popup({
+  "maxWidth": 250,
+});
+
+        
+            
+                var html_6a200b306e194a8d09424176e0f1a3a1 = $(`<div id="html_6a200b306e194a8d09424176e0f1a3a1" style="width: 100.0%; height: 100.0%;">     <b>Ward_25 (Bhayandar East)</b><br>     Status: Standard Ward<br>     Population (2011): 10222<br>     Est. Pop (2026): 15243<br>     Hospitals: 2<br>     Blinkit Demand Score: 4.76     </div>`)[0];
+                popup_29e4e4eef9d8cde8f6877bb536f539ac.setContent(html_6a200b306e194a8d09424176e0f1a3a1);
+            
+        
+
+        circle_marker_fd43ba8f64a339d2b8be95ab63918712.bindPopup(popup_29e4e4eef9d8cde8f6877bb536f539ac)
+        ;
+
+        
+    
+    
+            var circle_marker_f370904880afe3a50d8d663625934037 = L.circleMarker(
+                [19.2907, 72.8752],
+                {"bubblingMouseEvents": true, "color": "blue", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "blue", "fillOpacity": 0.7, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 6, "stroke": true, "weight": 3}
+            ).addTo(map_40f7a08ccbd4afb7ad9066604c605a90);
+        
+    
+        var popup_1a8f1b97312d854a85ef30d8f857cc6f = L.popup({
+  "maxWidth": 250,
+});
+
+        
+            
+                var html_e4b83292c00d16e82fec6f671f1bee3e = $(`<div id="html_e4b83292c00d16e82fec6f671f1bee3e" style="width: 100.0%; height: 100.0%;">     <b>Ward_26 (Bhayandar East)</b><br>     Status: Standard Ward<br>     Population (2011): 9286<br>     Est. Pop (2026): 13847<br>     Hospitals: 1<br>     Blinkit Demand Score: 3.19     </div>`)[0];
+                popup_1a8f1b97312d854a85ef30d8f857cc6f.setContent(html_e4b83292c00d16e82fec6f671f1bee3e);
+            
+        
+
+        circle_marker_f370904880afe3a50d8d663625934037.bindPopup(popup_1a8f1b97312d854a85ef30d8f857cc6f)
+        ;
+
+        
+    
+    
+            var circle_marker_daaa8f2d9b951583a87773d0c586d231 = L.circleMarker(
+                [19.2938, 72.8552],
+                {"bubblingMouseEvents": true, "color": "blue", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "blue", "fillOpacity": 0.7, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 6, "stroke": true, "weight": 3}
+            ).addTo(map_40f7a08ccbd4afb7ad9066604c605a90);
+        
+    
+        var popup_ddd47874119d5303836e894d4ecd623d = L.popup({
+  "maxWidth": 250,
+});
+
+        
+            
+                var html_d8bdc2f7aa63ff25c453212eff6ab52d = $(`<div id="html_d8bdc2f7aa63ff25c453212eff6ab52d" style="width: 100.0%; height: 100.0%;">     <b>Ward_27 (Bhayandar East)</b><br>     Status: Standard Ward<br>     Population (2011): 12809<br>     Est. Pop (2026): 19101<br>     Hospitals: 2<br>     Blinkit Demand Score: 4.42     </div>`)[0];
+                popup_ddd47874119d5303836e894d4ecd623d.setContent(html_d8bdc2f7aa63ff25c453212eff6ab52d);
+            
+        
+
+        circle_marker_daaa8f2d9b951583a87773d0c586d231.bindPopup(popup_ddd47874119d5303836e894d4ecd623d)
+        ;
+
+        
+    
+    
+            var circle_marker_c73cb83dc4544cb521da6152bf33d74b = L.circleMarker(
+                [19.2964, 72.8704],
+                {"bubblingMouseEvents": true, "color": "blue", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "blue", "fillOpacity": 0.7, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 6, "stroke": true, "weight": 3}
+            ).addTo(map_40f7a08ccbd4afb7ad9066604c605a90);
+        
+    
+        var popup_c924b9fc91b3dc6636ed490210d03b8b = L.popup({
+  "maxWidth": 250,
+});
+
+        
+            
+                var html_76bf1f3fe514f30fe6857e68098fe562 = $(`<div id="html_76bf1f3fe514f30fe6857e68098fe562" style="width: 100.0%; height: 100.0%;">     <b>Ward_28 (Bhayandar East)</b><br>     Status: Standard Ward<br>     Population (2011): 11516<br>     Est. Pop (2026): 17173<br>     Hospitals: 2<br>     Blinkit Demand Score: 4.02     </div>`)[0];
+                popup_c924b9fc91b3dc6636ed490210d03b8b.setContent(html_76bf1f3fe514f30fe6857e68098fe562);
+            
+        
+
+        circle_marker_c73cb83dc4544cb521da6152bf33d74b.bindPopup(popup_c924b9fc91b3dc6636ed490210d03b8b)
+        ;
+
+        
+    
+    
+            var circle_marker_2e9ce3e9fdb1e433a9444892a14e8cf9 = L.circleMarker(
+                [19.3096, 72.8676],
+                {"bubblingMouseEvents": true, "color": "green", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "green", "fillOpacity": 0.7, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 6, "stroke": true, "weight": 3}
+            ).addTo(map_40f7a08ccbd4afb7ad9066604c605a90);
+        
+    
+        var popup_ae2bec3e28798557d3a9b15b09a6ee0f = L.popup({
+  "maxWidth": 250,
+});
+
+        
+            
+                var html_a62662cdf2767d098551827139b2918a = $(`<div id="html_a62662cdf2767d098551827139b2918a" style="width: 100.0%; height: 100.0%;">     <b>Ward_29 (Bhayandar East)</b><br>     Status: High Blinkit Demand<br>     Population (2011): 11744<br>     Est. Pop (2026): 17513<br>     Hospitals: 1<br>     Blinkit Demand Score: 9.56     </div>`)[0];
+                popup_ae2bec3e28798557d3a9b15b09a6ee0f.setContent(html_a62662cdf2767d098551827139b2918a);
+            
+        
+
+        circle_marker_2e9ce3e9fdb1e433a9444892a14e8cf9.bindPopup(popup_ae2bec3e28798557d3a9b15b09a6ee0f)
+        ;
+
+        
+    
+    
+            var circle_marker_20246aefa01781478623c274e3223833 = L.circleMarker(
+                [19.2919, 72.8662],
+                {"bubblingMouseEvents": true, "color": "blue", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "blue", "fillOpacity": 0.7, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 6, "stroke": true, "weight": 3}
+            ).addTo(map_40f7a08ccbd4afb7ad9066604c605a90);
+        
+    
+        var popup_de98dd17ae62cc0546e496651c2c7a80 = L.popup({
+  "maxWidth": 250,
+});
+
+        
+            
+                var html_0913810849c185b1308ab17897f93e41 = $(`<div id="html_0913810849c185b1308ab17897f93e41" style="width: 100.0%; height: 100.0%;">     <b>Ward_30 (Bhayandar East)</b><br>     Status: Standard Ward<br>     Population (2011): 13242<br>     Est. Pop (2026): 19747<br>     Hospitals: 1<br>     Blinkit Demand Score: 5.16     </div>`)[0];
+                popup_de98dd17ae62cc0546e496651c2c7a80.setContent(html_0913810849c185b1308ab17897f93e41);
+            
+        
+
+        circle_marker_20246aefa01781478623c274e3223833.bindPopup(popup_de98dd17ae62cc0546e496651c2c7a80)
+        ;
+
+        
+    
+    
+            var circle_marker_cc6be5ded527ddfa2a7816acf6c527cf = L.circleMarker(
+                [19.3059, 72.8686],
+                {"bubblingMouseEvents": true, "color": "blue", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "blue", "fillOpacity": 0.7, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 6, "stroke": true, "weight": 3}
+            ).addTo(map_40f7a08ccbd4afb7ad9066604c605a90);
+        
+    
+        var popup_fd9f5bcce85bbcbe1f4b470f8af61fbb = L.popup({
+  "maxWidth": 250,
+});
+
+        
+            
+                var html_312f5f093581e90b711377790d44bc9e = $(`<div id="html_312f5f093581e90b711377790d44bc9e" style="width: 100.0%; height: 100.0%;">     <b>Ward_31 (Bhayandar East)</b><br>     Status: Standard Ward<br>     Population (2011): 12036<br>     Est. Pop (2026): 17948<br>     Hospitals: 1<br>     Blinkit Demand Score: 4.21     </div>`)[0];
+                popup_fd9f5bcce85bbcbe1f4b470f8af61fbb.setContent(html_312f5f093581e90b711377790d44bc9e);
+            
+        
+
+        circle_marker_cc6be5ded527ddfa2a7816acf6c527cf.bindPopup(popup_fd9f5bcce85bbcbe1f4b470f8af61fbb)
+        ;
+
+        
+    
+    
+            var circle_marker_2dc615d166ec5657702ecff21c1d2382 = L.circleMarker(
+                [19.2968, 72.8594],
+                {"bubblingMouseEvents": true, "color": "blue", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "blue", "fillOpacity": 0.7, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 6, "stroke": true, "weight": 3}
+            ).addTo(map_40f7a08ccbd4afb7ad9066604c605a90);
+        
+    
+        var popup_bf78038ad0b5d41a5b96f00c0e3598d7 = L.popup({
+  "maxWidth": 250,
+});
+
+        
+            
+                var html_46a298dd319f9433911b70091595707c = $(`<div id="html_46a298dd319f9433911b70091595707c" style="width: 100.0%; height: 100.0%;">     <b>Ward_32 (Bhayandar East)</b><br>     Status: Standard Ward<br>     Population (2011): 7813<br>     Est. Pop (2026): 11651<br>     Hospitals: 2<br>     Blinkit Demand Score: 4.34     </div>`)[0];
+                popup_bf78038ad0b5d41a5b96f00c0e3598d7.setContent(html_46a298dd319f9433911b70091595707c);
+            
+        
+
+        circle_marker_2dc615d166ec5657702ecff21c1d2382.bindPopup(popup_bf78038ad0b5d41a5b96f00c0e3598d7)
+        ;
+
+        
+    
+    
+            var circle_marker_01c08447a91a95bebe9091fcdc372c7b = L.circleMarker(
+                [19.3001, 72.8668],
+                {"bubblingMouseEvents": true, "color": "blue", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "blue", "fillOpacity": 0.7, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 6, "stroke": true, "weight": 3}
+            ).addTo(map_40f7a08ccbd4afb7ad9066604c605a90);
+        
+    
+        var popup_9590958d88cd9459e0f822db8c367550 = L.popup({
+  "maxWidth": 250,
+});
+
+        
+            
+                var html_44cb51a26ab0bb8f671a81598354b8a3 = $(`<div id="html_44cb51a26ab0bb8f671a81598354b8a3" style="width: 100.0%; height: 100.0%;">     <b>Ward_33 (Bhayandar East)</b><br>     Status: Standard Ward<br>     Population (2011): 12396<br>     Est. Pop (2026): 18485<br>     Hospitals: 1<br>     Blinkit Demand Score: 5.32     </div>`)[0];
+                popup_9590958d88cd9459e0f822db8c367550.setContent(html_44cb51a26ab0bb8f671a81598354b8a3);
+            
+        
+
+        circle_marker_01c08447a91a95bebe9091fcdc372c7b.bindPopup(popup_9590958d88cd9459e0f822db8c367550)
+        ;
+
+        
+    
+    
+            var circle_marker_b0b73b5e569e8f74f383607180fb2545 = L.circleMarker(
+                [19.2886, 72.8685],
+                {"bubblingMouseEvents": true, "color": "green", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "green", "fillOpacity": 0.7, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 6, "stroke": true, "weight": 3}
+            ).addTo(map_40f7a08ccbd4afb7ad9066604c605a90);
+        
+    
+        var popup_effe9a78e228cc440af52948c1dc96ad = L.popup({
+  "maxWidth": 250,
+});
+
+        
+            
+                var html_04bfef7787c3b760883d892e94573227 = $(`<div id="html_04bfef7787c3b760883d892e94573227" style="width: 100.0%; height: 100.0%;">     <b>Ward_34 (Bhayandar East)</b><br>     Status: High Blinkit Demand<br>     Population (2011): 9601<br>     Est. Pop (2026): 14317<br>     Hospitals: 2<br>     Blinkit Demand Score: 5.79     </div>`)[0];
+                popup_effe9a78e228cc440af52948c1dc96ad.setContent(html_04bfef7787c3b760883d892e94573227);
+            
+        
+
+        circle_marker_b0b73b5e569e8f74f383607180fb2545.bindPopup(popup_effe9a78e228cc440af52948c1dc96ad)
+        ;
+
+        
+    
+    
+            var circle_marker_b92e2ad8c6dab73264479bf46e0c863f = L.circleMarker(
+                [19.3085, 72.8601],
+                {"bubblingMouseEvents": true, "color": "blue", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "blue", "fillOpacity": 0.7, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 6, "stroke": true, "weight": 3}
+            ).addTo(map_40f7a08ccbd4afb7ad9066604c605a90);
+        
+    
+        var popup_1bf44bb466cfbc0dee2b0eca9aaddaa7 = L.popup({
+  "maxWidth": 250,
+});
+
+        
+            
+                var html_939ada0026671dc07c1e9401345d4b51 = $(`<div id="html_939ada0026671dc07c1e9401345d4b51" style="width: 100.0%; height: 100.0%;">     <b>Ward_35 (Bhayandar East)</b><br>     Status: Standard Ward<br>     Population (2011): 9889<br>     Est. Pop (2026): 14747<br>     Hospitals: 2<br>     Blinkit Demand Score: 4.68     </div>`)[0];
+                popup_1bf44bb466cfbc0dee2b0eca9aaddaa7.setContent(html_939ada0026671dc07c1e9401345d4b51);
+            
+        
+
+        circle_marker_b92e2ad8c6dab73264479bf46e0c863f.bindPopup(popup_1bf44bb466cfbc0dee2b0eca9aaddaa7)
+        ;
+
+        
+    
+    
+            var circle_marker_e23c8f251e5ec1bd3cdc3af835ae804a = L.circleMarker(
+                [19.2814, 72.8305],
+                {"bubblingMouseEvents": true, "color": "blue", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "blue", "fillOpacity": 0.7, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 6, "stroke": true, "weight": 3}
+            ).addTo(map_40f7a08ccbd4afb7ad9066604c605a90);
+        
+    
+        var popup_340b1e0e6e3026c01370568f0b0ace47 = L.popup({
+  "maxWidth": 250,
+});
+
+        
+            
+                var html_30c0cf05ad4422df83f4157401115892 = $(`<div id="html_30c0cf05ad4422df83f4157401115892" style="width: 100.0%; height: 100.0%;">     <b>Ward_36 (Mira Road West / Uttan Coastal)</b><br>     Status: Standard Ward<br>     Population (2011): 12050<br>     Est. Pop (2026): 17969<br>     Hospitals: 1<br>     Blinkit Demand Score: 4.59     </div>`)[0];
+                popup_340b1e0e6e3026c01370568f0b0ace47.setContent(html_30c0cf05ad4422df83f4157401115892);
+            
+        
+
+        circle_marker_e23c8f251e5ec1bd3cdc3af835ae804a.bindPopup(popup_340b1e0e6e3026c01370568f0b0ace47)
+        ;
+
+        
+    
+    
+            var circle_marker_7cc296e82d89409afbf7ac6b1c9a40ca = L.circleMarker(
+                [19.2804, 72.8291],
+                {"bubblingMouseEvents": true, "color": "blue", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "blue", "fillOpacity": 0.7, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 6, "stroke": true, "weight": 3}
+            ).addTo(map_40f7a08ccbd4afb7ad9066604c605a90);
+        
+    
+        var popup_9b14d6a44cf1cc453a54099af4da9577 = L.popup({
+  "maxWidth": 250,
+});
+
+        
+            
+                var html_752f56e3b1f8ac84e9b24e32c3609cf7 = $(`<div id="html_752f56e3b1f8ac84e9b24e32c3609cf7" style="width: 100.0%; height: 100.0%;">     <b>Ward_37 (Mira Road West / Uttan Coastal)</b><br>     Status: Standard Ward<br>     Population (2011): 10777<br>     Est. Pop (2026): 16071<br>     Hospitals: 1<br>     Blinkit Demand Score: 4.12     </div>`)[0];
+                popup_9b14d6a44cf1cc453a54099af4da9577.setContent(html_752f56e3b1f8ac84e9b24e32c3609cf7);
+            
+        
+
+        circle_marker_7cc296e82d89409afbf7ac6b1c9a40ca.bindPopup(popup_9b14d6a44cf1cc453a54099af4da9577)
+        ;
+
+        
+    
+    
+            var circle_marker_01e6bc437d7783e61f6042723b3a3cdd = L.circleMarker(
+                [19.275, 72.8274],
+                {"bubblingMouseEvents": true, "color": "blue", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "blue", "fillOpacity": 0.7, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 6, "stroke": true, "weight": 3}
+            ).addTo(map_40f7a08ccbd4afb7ad9066604c605a90);
+        
+    
+        var popup_7ce899f9058f50c3fe18d6d5ca262416 = L.popup({
+  "maxWidth": 250,
+});
+
+        
+            
+                var html_58d21f9a7a4ef53daf68514f9a348e3d = $(`<div id="html_58d21f9a7a4ef53daf68514f9a348e3d" style="width: 100.0%; height: 100.0%;">     <b>Ward_38 (Mira Road West / Uttan Coastal)</b><br>     Status: Standard Ward<br>     Population (2011): 8177<br>     Est. Pop (2026): 12194<br>     Hospitals: 2<br>     Blinkit Demand Score: 2.97     </div>`)[0];
+                popup_7ce899f9058f50c3fe18d6d5ca262416.setContent(html_58d21f9a7a4ef53daf68514f9a348e3d);
+            
+        
+
+        circle_marker_01e6bc437d7783e61f6042723b3a3cdd.bindPopup(popup_7ce899f9058f50c3fe18d6d5ca262416)
+        ;
+
+        
+    
+    
+            var circle_marker_b3ea1d073c4d94693d3a1f2244cec431 = L.circleMarker(
+                [19.2836, 72.8248],
+                {"bubblingMouseEvents": true, "color": "blue", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "blue", "fillOpacity": 0.7, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 6, "stroke": true, "weight": 3}
+            ).addTo(map_40f7a08ccbd4afb7ad9066604c605a90);
+        
+    
+        var popup_06462c569abb4d37f6b41a4d2304cd72 = L.popup({
+  "maxWidth": 250,
+});
+
+        
+            
+                var html_76a539eb334846f74c7bf6ef88811007 = $(`<div id="html_76a539eb334846f74c7bf6ef88811007" style="width: 100.0%; height: 100.0%;">     <b>Ward_39 (Mira Road West / Uttan Coastal)</b><br>     Status: Standard Ward<br>     Population (2011): 10259<br>     Est. Pop (2026): 15298<br>     Hospitals: 2<br>     Blinkit Demand Score: 3.66     </div>`)[0];
+                popup_06462c569abb4d37f6b41a4d2304cd72.setContent(html_76a539eb334846f74c7bf6ef88811007);
+            
+        
+
+        circle_marker_b3ea1d073c4d94693d3a1f2244cec431.bindPopup(popup_06462c569abb4d37f6b41a4d2304cd72)
+        ;
+
+        
+    
+    
+            var circle_marker_b8ceeb3fd4fbe26ec73f3fd1476ea4ed = L.circleMarker(
+                [19.2703, 72.8219],
+                {"bubblingMouseEvents": true, "color": "green", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "green", "fillOpacity": 0.7, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 6, "stroke": true, "weight": 3}
+            ).addTo(map_40f7a08ccbd4afb7ad9066604c605a90);
+        
+    
+        var popup_50ea1abc624dc141d5e50fb700d451ca = L.popup({
+  "maxWidth": 250,
+});
+
+        
+            
+                var html_0a46883f512bdb97544a9f0903bcad0b = $(`<div id="html_0a46883f512bdb97544a9f0903bcad0b" style="width: 100.0%; height: 100.0%;">     <b>Ward_40 (Mira Road West / Uttan Coastal)</b><br>     Status: High Blinkit Demand<br>     Population (2011): 12379<br>     Est. Pop (2026): 18460<br>     Hospitals: 1<br>     Blinkit Demand Score: 9.5     </div>`)[0];
+                popup_50ea1abc624dc141d5e50fb700d451ca.setContent(html_0a46883f512bdb97544a9f0903bcad0b);
+            
+        
+
+        circle_marker_b8ceeb3fd4fbe26ec73f3fd1476ea4ed.bindPopup(popup_50ea1abc624dc141d5e50fb700d451ca)
+        ;
+
+        
+    
+    
+            var circle_marker_6e2fdc490387a00cad74b126a1c2698f = L.circleMarker(
+                [19.2689, 72.8277],
+                {"bubblingMouseEvents": true, "color": "blue", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "blue", "fillOpacity": 0.7, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 6, "stroke": true, "weight": 3}
+            ).addTo(map_40f7a08ccbd4afb7ad9066604c605a90);
+        
+    
+        var popup_a784796599a997359c8a84e3e598d70e = L.popup({
+  "maxWidth": 250,
+});
+
+        
+            
+                var html_29e891ba4db83fa7c0f847d346720367 = $(`<div id="html_29e891ba4db83fa7c0f847d346720367" style="width: 100.0%; height: 100.0%;">     <b>Ward_41 (Mira Road West / Uttan Coastal)</b><br>     Status: Standard Ward<br>     Population (2011): 5728<br>     Est. Pop (2026): 8542<br>     Hospitals: 1<br>     Blinkit Demand Score: 2.82     </div>`)[0];
+                popup_a784796599a997359c8a84e3e598d70e.setContent(html_29e891ba4db83fa7c0f847d346720367);
+            
+        
+
+        circle_marker_6e2fdc490387a00cad74b126a1c2698f.bindPopup(popup_a784796599a997359c8a84e3e598d70e)
+        ;
+
+        
+    
+    
+            var circle_marker_8f630bcec9b37d1c917fc4f81c286720 = L.circleMarker(
+                [19.2732, 72.8229],
+                {"bubblingMouseEvents": true, "color": "green", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "green", "fillOpacity": 0.7, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 6, "stroke": true, "weight": 3}
+            ).addTo(map_40f7a08ccbd4afb7ad9066604c605a90);
+        
+    
+        var popup_c9f6798386ca6fab631030629c99f9c6 = L.popup({
+  "maxWidth": 250,
+});
+
+        
+            
+                var html_3b3f88d0be4ddb98ee3b88811b1d9861 = $(`<div id="html_3b3f88d0be4ddb98ee3b88811b1d9861" style="width: 100.0%; height: 100.0%;">     <b>Ward_42 (Mira Road West / Uttan Coastal)</b><br>     Status: High Blinkit Demand<br>     Population (2011): 11093<br>     Est. Pop (2026): 16542<br>     Hospitals: 1<br>     Blinkit Demand Score: 7.7     </div>`)[0];
+                popup_c9f6798386ca6fab631030629c99f9c6.setContent(html_3b3f88d0be4ddb98ee3b88811b1d9861);
+            
+        
+
+        circle_marker_8f630bcec9b37d1c917fc4f81c286720.bindPopup(popup_c9f6798386ca6fab631030629c99f9c6)
+        ;
+
+        
+    
+    
+            var circle_marker_f78df1ef966c3f1fdaa3469706e15044 = L.circleMarker(
+                [19.2914, 72.8204],
+                {"bubblingMouseEvents": true, "color": "green", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "green", "fillOpacity": 0.7, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 6, "stroke": true, "weight": 3}
+            ).addTo(map_40f7a08ccbd4afb7ad9066604c605a90);
+        
+    
+        var popup_615b6c91406a15ded6b24daafab22b8a = L.popup({
+  "maxWidth": 250,
+});
+
+        
+            
+                var html_60eb4322ea7ded7fd3bb1e6a08857639 = $(`<div id="html_60eb4322ea7ded7fd3bb1e6a08857639" style="width: 100.0%; height: 100.0%;">     <b>Ward_43 (Mira Road West / Uttan Coastal)</b><br>     Status: High Blinkit Demand<br>     Population (2011): 16172<br>     Est. Pop (2026): 24116<br>     Hospitals: 2<br>     Blinkit Demand Score: 8.1     </div>`)[0];
+                popup_615b6c91406a15ded6b24daafab22b8a.setContent(html_60eb4322ea7ded7fd3bb1e6a08857639);
+            
+        
+
+        circle_marker_f78df1ef966c3f1fdaa3469706e15044.bindPopup(popup_615b6c91406a15ded6b24daafab22b8a)
+        ;
+
+        
+    
+    
+            var circle_marker_b6d138442b93ed4887d70e77741980e0 = L.circleMarker(
+                [19.2699, 72.8086],
+                {"bubblingMouseEvents": true, "color": "blue", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "blue", "fillOpacity": 0.7, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 6, "stroke": true, "weight": 3}
+            ).addTo(map_40f7a08ccbd4afb7ad9066604c605a90);
+        
+    
+        var popup_25731757dca7227cb665f06d77e3df98 = L.popup({
+  "maxWidth": 250,
+});
+
+        
+            
+                var html_84f5d5062b07ecaf47440629bdce9a07 = $(`<div id="html_84f5d5062b07ecaf47440629bdce9a07" style="width: 100.0%; height: 100.0%;">     <b>Ward_44 (Mira Road West / Uttan Coastal)</b><br>     Status: Standard Ward<br>     Population (2011): 14808<br>     Est. Pop (2026): 22082<br>     Hospitals: 2<br>     Blinkit Demand Score: 4.93     </div>`)[0];
+                popup_25731757dca7227cb665f06d77e3df98.setContent(html_84f5d5062b07ecaf47440629bdce9a07);
+            
+        
+
+        circle_marker_b6d138442b93ed4887d70e77741980e0.bindPopup(popup_25731757dca7227cb665f06d77e3df98)
+        ;
+
+        
+    
+    
+            var circle_marker_2e7a4420680238d7f4b831575472eb99 = L.circleMarker(
+                [19.274, 72.8212],
+                {"bubblingMouseEvents": true, "color": "blue", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "blue", "fillOpacity": 0.7, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 6, "stroke": true, "weight": 3}
+            ).addTo(map_40f7a08ccbd4afb7ad9066604c605a90);
+        
+    
+        var popup_480f923a59b6e19341cacfc41853955f = L.popup({
+  "maxWidth": 250,
+});
+
+        
+            
+                var html_c4785d62dc1c6aa7dda7d817f0e4b0aa = $(`<div id="html_c4785d62dc1c6aa7dda7d817f0e4b0aa" style="width: 100.0%; height: 100.0%;">     <b>Ward_45 (Mira Road West / Uttan Coastal)</b><br>     Status: Standard Ward<br>     Population (2011): 8270<br>     Est. Pop (2026): 12332<br>     Hospitals: 1<br>     Blinkit Demand Score: 3.1     </div>`)[0];
+                popup_480f923a59b6e19341cacfc41853955f.setContent(html_c4785d62dc1c6aa7dda7d817f0e4b0aa);
+            
+        
+
+        circle_marker_2e7a4420680238d7f4b831575472eb99.bindPopup(popup_480f923a59b6e19341cacfc41853955f)
+        ;
+
+        
+    
+    
+            var circle_marker_8562e3e3809f581d6cf3e97f82ddb83d = L.circleMarker(
+                [19.2887, 72.8593],
+                {"bubblingMouseEvents": true, "color": "blue", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "blue", "fillOpacity": 0.7, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 6, "stroke": true, "weight": 3}
+            ).addTo(map_40f7a08ccbd4afb7ad9066604c605a90);
+        
+    
+        var popup_69d49ade2e7d2f94684808a9aeebd8eb = L.popup({
+  "maxWidth": 250,
+});
+
+        
+            
+                var html_4d3989ec7847643f682dce8916664580 = $(`<div id="html_4d3989ec7847643f682dce8916664580" style="width: 100.0%; height: 100.0%;">     <b>Ward_46 (Mira Road East (Station & Central))</b><br>     Status: Standard Ward<br>     Population (2011): 14353<br>     Est. Pop (2026): 21404<br>     Hospitals: 1<br>     Blinkit Demand Score: 5.59     </div>`)[0];
+                popup_69d49ade2e7d2f94684808a9aeebd8eb.setContent(html_4d3989ec7847643f682dce8916664580);
+            
+        
+
+        circle_marker_8562e3e3809f581d6cf3e97f82ddb83d.bindPopup(popup_69d49ade2e7d2f94684808a9aeebd8eb)
+        ;
+
+        
+    
+    
+            var circle_marker_e98cd3303bfe70013f97bb1785dad248 = L.circleMarker(
+                [19.2738, 72.8471],
+                {"bubblingMouseEvents": true, "color": "green", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "green", "fillOpacity": 0.7, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 6, "stroke": true, "weight": 3}
+            ).addTo(map_40f7a08ccbd4afb7ad9066604c605a90);
+        
+    
+        var popup_0213337f51487b9a5e3832b17028eb0b = L.popup({
+  "maxWidth": 250,
+});
+
+        
+            
+                var html_c7026dfc36eaee715382702109033fd1 = $(`<div id="html_c7026dfc36eaee715382702109033fd1" style="width: 100.0%; height: 100.0%;">     <b>Ward_47 (Mira Road East (Station & Central))</b><br>     Status: High Blinkit Demand<br>     Population (2011): 8373<br>     Est. Pop (2026): 12486<br>     Hospitals: 2<br>     Blinkit Demand Score: 6.45     </div>`)[0];
+                popup_0213337f51487b9a5e3832b17028eb0b.setContent(html_c7026dfc36eaee715382702109033fd1);
+            
+        
+
+        circle_marker_e98cd3303bfe70013f97bb1785dad248.bindPopup(popup_0213337f51487b9a5e3832b17028eb0b)
+        ;
+
+        
+    
+    
+            var circle_marker_41b38bc8dec267f2c1279174320130de = L.circleMarker(
+                [19.2733, 72.8578],
+                {"bubblingMouseEvents": true, "color": "red", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "red", "fillOpacity": 0.7, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 6, "stroke": true, "weight": 3}
+            ).addTo(map_40f7a08ccbd4afb7ad9066604c605a90);
+        
+    
+        var popup_34ef7a4329fa62f67e66e62098546c7d = L.popup({
+  "maxWidth": 250,
+});
+
+        
+            
+                var html_a85b98d703de7956ae26debeef983f89 = $(`<div id="html_a85b98d703de7956ae26debeef983f89" style="width: 100.0%; height: 100.0%;">     <b>Ward_48 (Mira Road East (Station & Central))</b><br>     Status: Healthcare Desert (0 Hospitals)<br>     Population (2011): 7000<br>     Est. Pop (2026): 10438<br>     Hospitals: 0<br>     Blinkit Demand Score: 3.09     </div>`)[0];
+                popup_34ef7a4329fa62f67e66e62098546c7d.setContent(html_a85b98d703de7956ae26debeef983f89);
+            
+        
+
+        circle_marker_41b38bc8dec267f2c1279174320130de.bindPopup(popup_34ef7a4329fa62f67e66e62098546c7d)
+        ;
+
+        
+    
+    
+            var circle_marker_7d12432d2e3d569b3d45a6378ae31836 = L.circleMarker(
+                [19.2862, 72.8471],
+                {"bubblingMouseEvents": true, "color": "blue", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "blue", "fillOpacity": 0.7, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 6, "stroke": true, "weight": 3}
+            ).addTo(map_40f7a08ccbd4afb7ad9066604c605a90);
+        
+    
+        var popup_eaf424c30d3051d9aaecdcc28a7c1af1 = L.popup({
+  "maxWidth": 250,
+});
+
+        
+            
+                var html_61f54f24b86cb0866fb3b662d3e84ed6 = $(`<div id="html_61f54f24b86cb0866fb3b662d3e84ed6" style="width: 100.0%; height: 100.0%;">     <b>Ward_49 (Mira Road East (Station & Central))</b><br>     Status: Standard Ward<br>     Population (2011): 9568<br>     Est. Pop (2026): 14268<br>     Hospitals: 1<br>     Blinkit Demand Score: 4.53     </div>`)[0];
+                popup_eaf424c30d3051d9aaecdcc28a7c1af1.setContent(html_61f54f24b86cb0866fb3b662d3e84ed6);
+            
+        
+
+        circle_marker_7d12432d2e3d569b3d45a6378ae31836.bindPopup(popup_eaf424c30d3051d9aaecdcc28a7c1af1)
+        ;
+
+        
+    
+    
+            var circle_marker_9dc3174a713c14539059b2d39542238c = L.circleMarker(
+                [19.2868, 72.8499],
+                {"bubblingMouseEvents": true, "color": "blue", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "blue", "fillOpacity": 0.7, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 6, "stroke": true, "weight": 3}
+            ).addTo(map_40f7a08ccbd4afb7ad9066604c605a90);
+        
+    
+        var popup_e20516907f8a384b00bfe21285700ed1 = L.popup({
+  "maxWidth": 250,
+});
+
+        
+            
+                var html_bb0f003939f3d9b3a606991aecf08ec2 = $(`<div id="html_bb0f003939f3d9b3a606991aecf08ec2" style="width: 100.0%; height: 100.0%;">     <b>Ward_50 (Mira Road East (Station & Central))</b><br>     Status: Standard Ward<br>     Population (2011): 7080<br>     Est. Pop (2026): 10558<br>     Hospitals: 1<br>     Blinkit Demand Score: 5.06     </div>`)[0];
+                popup_e20516907f8a384b00bfe21285700ed1.setContent(html_bb0f003939f3d9b3a606991aecf08ec2);
+            
+        
+
+        circle_marker_9dc3174a713c14539059b2d39542238c.bindPopup(popup_e20516907f8a384b00bfe21285700ed1)
+        ;
+
+        
+    
+    
+            var circle_marker_1d89a77c87b66021193d271e5b6c7576 = L.circleMarker(
+                [19.2803, 72.8614],
+                {"bubblingMouseEvents": true, "color": "red", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "red", "fillOpacity": 0.7, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 6, "stroke": true, "weight": 3}
+            ).addTo(map_40f7a08ccbd4afb7ad9066604c605a90);
+        
+    
+        var popup_16d4944e1e83ef48685f962cb9b519cb = L.popup({
+  "maxWidth": 250,
+});
+
+        
+            
+                var html_f0db71f071c940cadaca3af5db22a2ee = $(`<div id="html_f0db71f071c940cadaca3af5db22a2ee" style="width: 100.0%; height: 100.0%;">     <b>Ward_51 (Mira Road East (Station & Central))</b><br>     Status: Healthcare Desert (0 Hospitals)<br>     Population (2011): 10374<br>     Est. Pop (2026): 15470<br>     Hospitals: 0<br>     Blinkit Demand Score: 4.66     </div>`)[0];
+                popup_16d4944e1e83ef48685f962cb9b519cb.setContent(html_f0db71f071c940cadaca3af5db22a2ee);
+            
+        
+
+        circle_marker_1d89a77c87b66021193d271e5b6c7576.bindPopup(popup_16d4944e1e83ef48685f962cb9b519cb)
+        ;
+
+        
+    
+    
+            var circle_marker_db388d6914b56879c6a0c8e2e53f5c71 = L.circleMarker(
+                [19.2803, 72.8691],
+                {"bubblingMouseEvents": true, "color": "red", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "red", "fillOpacity": 0.7, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 6, "stroke": true, "weight": 3}
+            ).addTo(map_40f7a08ccbd4afb7ad9066604c605a90);
+        
+    
+        var popup_d8cc92230b528abb03c28d7f25ac46d1 = L.popup({
+  "maxWidth": 250,
+});
+
+        
+            
+                var html_a7a7832759a425c5aa8f3b408d356f81 = $(`<div id="html_a7a7832759a425c5aa8f3b408d356f81" style="width: 100.0%; height: 100.0%;">     <b>Ward_52 (Mira Road East (Station & Central))</b><br>     Status: Healthcare Desert (0 Hospitals)<br>     Population (2011): 9236<br>     Est. Pop (2026): 13773<br>     Hospitals: 0<br>     Blinkit Demand Score: 3.13     </div>`)[0];
+                popup_d8cc92230b528abb03c28d7f25ac46d1.setContent(html_a7a7832759a425c5aa8f3b408d356f81);
+            
+        
+
+        circle_marker_db388d6914b56879c6a0c8e2e53f5c71.bindPopup(popup_d8cc92230b528abb03c28d7f25ac46d1)
+        ;
+
+        
+    
+    
+            var circle_marker_83f8d072600dbabac16ca6892014ecaf = L.circleMarker(
+                [19.2913, 72.8466],
+                {"bubblingMouseEvents": true, "color": "red", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "red", "fillOpacity": 0.7, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 6, "stroke": true, "weight": 3}
+            ).addTo(map_40f7a08ccbd4afb7ad9066604c605a90);
+        
+    
+        var popup_d80f33d1d9e82d920b193f12b8c4bc7f = L.popup({
+  "maxWidth": 250,
+});
+
+        
+            
+                var html_95be9b7139a4a18455e42551276af22b = $(`<div id="html_95be9b7139a4a18455e42551276af22b" style="width: 100.0%; height: 100.0%;">     <b>Ward_53 (Mira Road East (Station & Central))</b><br>     Status: Healthcare Desert (0 Hospitals)<br>     Population (2011): 10902<br>     Est. Pop (2026): 16257<br>     Hospitals: 0<br>     Blinkit Demand Score: 3.84     </div>`)[0];
+                popup_d80f33d1d9e82d920b193f12b8c4bc7f.setContent(html_95be9b7139a4a18455e42551276af22b);
+            
+        
+
+        circle_marker_83f8d072600dbabac16ca6892014ecaf.bindPopup(popup_d80f33d1d9e82d920b193f12b8c4bc7f)
+        ;
+
+        
+    
+    
+            var circle_marker_d118edfc76ec39056ac5c1baca150c0f = L.circleMarker(
+                [19.2877, 72.8611],
+                {"bubblingMouseEvents": true, "color": "blue", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "blue", "fillOpacity": 0.7, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 6, "stroke": true, "weight": 3}
+            ).addTo(map_40f7a08ccbd4afb7ad9066604c605a90);
+        
+    
+        var popup_2a7fb68ad46ab9336d3cdaaac5b91254 = L.popup({
+  "maxWidth": 250,
+});
+
+        
+            
+                var html_cba03899158e82939081d9d423c5b29f = $(`<div id="html_cba03899158e82939081d9d423c5b29f" style="width: 100.0%; height: 100.0%;">     <b>Ward_54 (Mira Road East (Station & Central))</b><br>     Status: Standard Ward<br>     Population (2011): 8643<br>     Est. Pop (2026): 12889<br>     Hospitals: 2<br>     Blinkit Demand Score: 3.02     </div>`)[0];
+                popup_2a7fb68ad46ab9336d3cdaaac5b91254.setContent(html_cba03899158e82939081d9d423c5b29f);
+            
+        
+
+        circle_marker_d118edfc76ec39056ac5c1baca150c0f.bindPopup(popup_2a7fb68ad46ab9336d3cdaaac5b91254)
+        ;
+
+        
+    
+    
+            var circle_marker_d0148321d39cb8555ebd8af942b69262 = L.circleMarker(
+                [19.2904, 72.8698],
+                {"bubblingMouseEvents": true, "color": "red", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "red", "fillOpacity": 0.7, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 6, "stroke": true, "weight": 3}
+            ).addTo(map_40f7a08ccbd4afb7ad9066604c605a90);
+        
+    
+        var popup_099cbf72a42c02de65f81b936aea8ecf = L.popup({
+  "maxWidth": 250,
+});
+
+        
+            
+                var html_a786e3a6d13c82ce789cf8fefefd1362 = $(`<div id="html_a786e3a6d13c82ce789cf8fefefd1362" style="width: 100.0%; height: 100.0%;">     <b>Ward_55 (Mira Road East (Station & Central))</b><br>     Status: Healthcare Desert (0 Hospitals)<br>     Population (2011): 8625<br>     Est. Pop (2026): 12862<br>     Hospitals: 0<br>     Blinkit Demand Score: 3.9     </div>`)[0];
+                popup_099cbf72a42c02de65f81b936aea8ecf.setContent(html_a786e3a6d13c82ce789cf8fefefd1362);
+            
+        
+
+        circle_marker_d0148321d39cb8555ebd8af942b69262.bindPopup(popup_099cbf72a42c02de65f81b936aea8ecf)
+        ;
+
+        
+    
+    
+            var circle_marker_b10ef40a6ef89b48f93614e17c09c344 = L.circleMarker(
+                [19.2792, 72.8683],
+                {"bubblingMouseEvents": true, "color": "blue", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "blue", "fillOpacity": 0.7, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 6, "stroke": true, "weight": 3}
+            ).addTo(map_40f7a08ccbd4afb7ad9066604c605a90);
+        
+    
+        var popup_d829ac4d70d293c35b26084a1df0b692 = L.popup({
+  "maxWidth": 250,
+});
+
+        
+            
+                var html_f76125754d437150c4bdf574343dc7ec = $(`<div id="html_f76125754d437150c4bdf574343dc7ec" style="width: 100.0%; height: 100.0%;">     <b>Ward_56 (Mira Road East (Station & Central))</b><br>     Status: Standard Ward<br>     Population (2011): 12391<br>     Est. Pop (2026): 18478<br>     Hospitals: 1<br>     Blinkit Demand Score: 4.27     </div>`)[0];
+                popup_d829ac4d70d293c35b26084a1df0b692.setContent(html_f76125754d437150c4bdf574343dc7ec);
+            
+        
+
+        circle_marker_b10ef40a6ef89b48f93614e17c09c344.bindPopup(popup_d829ac4d70d293c35b26084a1df0b692)
+        ;
+
+        
+    
+    
+            var circle_marker_a4bffc7a329b1ca241bc322356bedf2e = L.circleMarker(
+                [19.2831, 72.8658],
+                {"bubblingMouseEvents": true, "color": "green", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "green", "fillOpacity": 0.7, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 6, "stroke": true, "weight": 3}
+            ).addTo(map_40f7a08ccbd4afb7ad9066604c605a90);
+        
+    
+        var popup_3cb03d97985597786ce238a3edef40fd = L.popup({
+  "maxWidth": 250,
+});
+
+        
+            
+                var html_c8a6bf0536fac3768518c699eaa2d946 = $(`<div id="html_c8a6bf0536fac3768518c699eaa2d946" style="width: 100.0%; height: 100.0%;">     <b>Ward_57 (Mira Road East (Station & Central))</b><br>     Status: High Blinkit Demand<br>     Population (2011): 12263<br>     Est. Pop (2026): 18287<br>     Hospitals: 2<br>     Blinkit Demand Score: 6.01     </div>`)[0];
+                popup_3cb03d97985597786ce238a3edef40fd.setContent(html_c8a6bf0536fac3768518c699eaa2d946);
+            
+        
+
+        circle_marker_a4bffc7a329b1ca241bc322356bedf2e.bindPopup(popup_3cb03d97985597786ce238a3edef40fd)
+        ;
+
+        
+    
+    
+            var circle_marker_81fe6b29eca0290c06f1e9df44752d1a = L.circleMarker(
+                [19.2927, 72.8482],
+                {"bubblingMouseEvents": true, "color": "red", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "red", "fillOpacity": 0.7, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 6, "stroke": true, "weight": 3}
+            ).addTo(map_40f7a08ccbd4afb7ad9066604c605a90);
+        
+    
+        var popup_5dbe07624eaac4774e72c0ce73cbca88 = L.popup({
+  "maxWidth": 250,
+});
+
+        
+            
+                var html_263261baf9e3342f2b70e3caaa46e861 = $(`<div id="html_263261baf9e3342f2b70e3caaa46e861" style="width: 100.0%; height: 100.0%;">     <b>Ward_58 (Mira Road East (Station & Central))</b><br>     Status: Healthcare Desert (0 Hospitals)<br>     Population (2011): 12233<br>     Est. Pop (2026): 18242<br>     Hospitals: 0<br>     Blinkit Demand Score: 6.2     </div>`)[0];
+                popup_5dbe07624eaac4774e72c0ce73cbca88.setContent(html_263261baf9e3342f2b70e3caaa46e861);
+            
+        
+
+        circle_marker_81fe6b29eca0290c06f1e9df44752d1a.bindPopup(popup_5dbe07624eaac4774e72c0ce73cbca88)
+        ;
+
+        
+    
+    
+            var circle_marker_be5c7f45b5a980fa7283e070a96366b9 = L.circleMarker(
+                [19.2789, 72.8621],
+                {"bubblingMouseEvents": true, "color": "blue", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "blue", "fillOpacity": 0.7, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 6, "stroke": true, "weight": 3}
+            ).addTo(map_40f7a08ccbd4afb7ad9066604c605a90);
+        
+    
+        var popup_2ab846404f0d35267c2c50d602b471e3 = L.popup({
+  "maxWidth": 250,
+});
+
+        
+            
+                var html_e1e615e2536c3a106076f32f758c47c3 = $(`<div id="html_e1e615e2536c3a106076f32f758c47c3" style="width: 100.0%; height: 100.0%;">     <b>Ward_59 (Mira Road East (Station & Central))</b><br>     Status: Standard Ward<br>     Population (2011): 14980<br>     Est. Pop (2026): 22339<br>     Hospitals: 2<br>     Blinkit Demand Score: 5.54     </div>`)[0];
+                popup_2ab846404f0d35267c2c50d602b471e3.setContent(html_e1e615e2536c3a106076f32f758c47c3);
+            
+        
+
+        circle_marker_be5c7f45b5a980fa7283e070a96366b9.bindPopup(popup_2ab846404f0d35267c2c50d602b471e3)
+        ;
+
+        
+    
+    
+            var circle_marker_e7a82078a4506898da0c763a85b74f2f = L.circleMarker(
+                [19.2829, 72.8474],
+                {"bubblingMouseEvents": true, "color": "blue", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "blue", "fillOpacity": 0.7, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 6, "stroke": true, "weight": 3}
+            ).addTo(map_40f7a08ccbd4afb7ad9066604c605a90);
+        
+    
+        var popup_c586329096b9e322a9c07d44d9c28bd6 = L.popup({
+  "maxWidth": 250,
+});
+
+        
+            
+                var html_34d0f9827bbc6202ad114d7048f7ea5d = $(`<div id="html_34d0f9827bbc6202ad114d7048f7ea5d" style="width: 100.0%; height: 100.0%;">     <b>Ward_60 (Mira Road East (Station & Central))</b><br>     Status: Standard Ward<br>     Population (2011): 12863<br>     Est. Pop (2026): 19182<br>     Hospitals: 1<br>     Blinkit Demand Score: 5.47     </div>`)[0];
+                popup_c586329096b9e322a9c07d44d9c28bd6.setContent(html_34d0f9827bbc6202ad114d7048f7ea5d);
+            
+        
+
+        circle_marker_e7a82078a4506898da0c763a85b74f2f.bindPopup(popup_c586329096b9e322a9c07d44d9c28bd6)
+        ;
+
+        
+    
+    
+            var circle_marker_89861ec35a56fea8ee00e86e8a2ac619 = L.circleMarker(
+                [19.2783, 72.8778],
+                {"bubblingMouseEvents": true, "color": "green", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "green", "fillOpacity": 0.7, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 6, "stroke": true, "weight": 3}
+            ).addTo(map_40f7a08ccbd4afb7ad9066604c605a90);
+        
+    
+        var popup_770fbabced900f1f90d6c0303e88e149 = L.popup({
+  "maxWidth": 250,
+});
+
+        
+            
+                var html_1da5c18738c82738897e8740ade736a9 = $(`<div id="html_1da5c18738c82738897e8740ade736a9" style="width: 100.0%; height: 100.0%;">     <b>Ward_61 (Mira Road East (Kanakia & Peripheral))</b><br>     Status: High Blinkit Demand<br>     Population (2011): 9427<br>     Est. Pop (2026): 14058<br>     Hospitals: 1<br>     Blinkit Demand Score: 6.37     </div>`)[0];
+                popup_770fbabced900f1f90d6c0303e88e149.setContent(html_1da5c18738c82738897e8740ade736a9);
+            
+        
+
+        circle_marker_89861ec35a56fea8ee00e86e8a2ac619.bindPopup(popup_770fbabced900f1f90d6c0303e88e149)
+        ;
+
+        
+    
+    
+            var circle_marker_af81e3b85e1519dad3b6e8ce53d2dbcc = L.circleMarker(
+                [19.2797, 72.8799],
+                {"bubblingMouseEvents": true, "color": "red", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "red", "fillOpacity": 0.7, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 6, "stroke": true, "weight": 3}
+            ).addTo(map_40f7a08ccbd4afb7ad9066604c605a90);
+        
+    
+        var popup_c090fe2dc202c7f9733edc0724d128be = L.popup({
+  "maxWidth": 250,
+});
+
+        
+            
+                var html_1c5b32f31be777547c83a47df295841b = $(`<div id="html_1c5b32f31be777547c83a47df295841b" style="width: 100.0%; height: 100.0%;">     <b>Ward_62 (Mira Road East (Kanakia & Peripheral))</b><br>     Status: Healthcare Desert (0 Hospitals)<br>     Population (2011): 12209<br>     Est. Pop (2026): 18206<br>     Hospitals: 0<br>     Blinkit Demand Score: 8.71     </div>`)[0];
+                popup_c090fe2dc202c7f9733edc0724d128be.setContent(html_1c5b32f31be777547c83a47df295841b);
+            
+        
+
+        circle_marker_af81e3b85e1519dad3b6e8ce53d2dbcc.bindPopup(popup_c090fe2dc202c7f9733edc0724d128be)
+        ;
+
+        
+    
+    
+            var circle_marker_a9551dafee181f6b6a624ff111d83995 = L.circleMarker(
+                [19.2837, 72.8811],
+                {"bubblingMouseEvents": true, "color": "blue", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "blue", "fillOpacity": 0.7, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 6, "stroke": true, "weight": 3}
+            ).addTo(map_40f7a08ccbd4afb7ad9066604c605a90);
+        
+    
+        var popup_28c68f29551065d3308c2f7e31ff8a4d = L.popup({
+  "maxWidth": 250,
+});
+
+        
+            
+                var html_58fb8547290680a50011d967bbedd981 = $(`<div id="html_58fb8547290680a50011d967bbedd981" style="width: 100.0%; height: 100.0%;">     <b>Ward_63 (Mira Road East (Kanakia & Peripheral))</b><br>     Status: Standard Ward<br>     Population (2011): 6579<br>     Est. Pop (2026): 9811<br>     Hospitals: 1<br>     Blinkit Demand Score: 3.13     </div>`)[0];
+                popup_28c68f29551065d3308c2f7e31ff8a4d.setContent(html_58fb8547290680a50011d967bbedd981);
+            
+        
+
+        circle_marker_a9551dafee181f6b6a624ff111d83995.bindPopup(popup_28c68f29551065d3308c2f7e31ff8a4d)
+        ;
+
+        
+    
+    
+            var circle_marker_d991122e0c0ba775040fada54726fb9a = L.circleMarker(
+                [19.2702, 72.8848],
+                {"bubblingMouseEvents": true, "color": "red", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "red", "fillOpacity": 0.7, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 6, "stroke": true, "weight": 3}
+            ).addTo(map_40f7a08ccbd4afb7ad9066604c605a90);
+        
+    
+        var popup_6e3c73631e48bca45006a68fc2d2a11a = L.popup({
+  "maxWidth": 250,
+});
+
+        
+            
+                var html_3750cbaa4e2df808acf09918f4124038 = $(`<div id="html_3750cbaa4e2df808acf09918f4124038" style="width: 100.0%; height: 100.0%;">     <b>Ward_64 (Mira Road East (Kanakia & Peripheral))</b><br>     Status: Healthcare Desert (0 Hospitals)<br>     Population (2011): 6681<br>     Est. Pop (2026): 9963<br>     Hospitals: 0<br>     Blinkit Demand Score: 4.47     </div>`)[0];
+                popup_6e3c73631e48bca45006a68fc2d2a11a.setContent(html_3750cbaa4e2df808acf09918f4124038);
+            
+        
+
+        circle_marker_d991122e0c0ba775040fada54726fb9a.bindPopup(popup_6e3c73631e48bca45006a68fc2d2a11a)
+        ;
+
+        
+    
+    
+            var circle_marker_d84ed1d08d09d2b50d1f5771277f2fc7 = L.circleMarker(
+                [19.2629, 72.8658],
+                {"bubblingMouseEvents": true, "color": "red", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "red", "fillOpacity": 0.7, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 6, "stroke": true, "weight": 3}
+            ).addTo(map_40f7a08ccbd4afb7ad9066604c605a90);
+        
+    
+        var popup_2e906cf39989bee13fc13ea3b6de51cc = L.popup({
+  "maxWidth": 250,
+});
+
+        
+            
+                var html_24f99aab3846439afd500e7c5981151f = $(`<div id="html_24f99aab3846439afd500e7c5981151f" style="width: 100.0%; height: 100.0%;">     <b>Ward_65 (Mira Road East (Kanakia & Peripheral))</b><br>     Status: Healthcare Desert (0 Hospitals)<br>     Population (2011): 9444<br>     Est. Pop (2026): 14083<br>     Hospitals: 0<br>     Blinkit Demand Score: 3.73     </div>`)[0];
+                popup_2e906cf39989bee13fc13ea3b6de51cc.setContent(html_24f99aab3846439afd500e7c5981151f);
+            
+        
+
+        circle_marker_d84ed1d08d09d2b50d1f5771277f2fc7.bindPopup(popup_2e906cf39989bee13fc13ea3b6de51cc)
+        ;
+
+        
+    
+    
+            var circle_marker_836c2998bae46726a0b6121d9a270a94 = L.circleMarker(
+                [19.2831, 72.872],
+                {"bubblingMouseEvents": true, "color": "red", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "red", "fillOpacity": 0.7, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 6, "stroke": true, "weight": 3}
+            ).addTo(map_40f7a08ccbd4afb7ad9066604c605a90);
+        
+    
+        var popup_5a9de8a051d0907d30ebe5f522dcd416 = L.popup({
+  "maxWidth": 250,
+});
+
+        
+            
+                var html_41b4030524208b838839643e1cbf02da = $(`<div id="html_41b4030524208b838839643e1cbf02da" style="width: 100.0%; height: 100.0%;">     <b>Ward_66 (Mira Road East (Kanakia & Peripheral))</b><br>     Status: Healthcare Desert (0 Hospitals)<br>     Population (2011): 10188<br>     Est. Pop (2026): 15193<br>     Hospitals: 0<br>     Blinkit Demand Score: 5.35     </div>`)[0];
+                popup_5a9de8a051d0907d30ebe5f522dcd416.setContent(html_41b4030524208b838839643e1cbf02da);
+            
+        
+
+        circle_marker_836c2998bae46726a0b6121d9a270a94.bindPopup(popup_5a9de8a051d0907d30ebe5f522dcd416)
+        ;
+
+        
+    
+    
+            var circle_marker_0df2087176e772d099cffe984cd63efd = L.circleMarker(
+                [19.2833, 72.864],
+                {"bubblingMouseEvents": true, "color": "blue", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "blue", "fillOpacity": 0.7, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 6, "stroke": true, "weight": 3}
+            ).addTo(map_40f7a08ccbd4afb7ad9066604c605a90);
+        
+    
+        var popup_c4e7090412268eecb415b556c9cf25b5 = L.popup({
+  "maxWidth": 250,
+});
+
+        
+            
+                var html_9c5d421af102764ba2ecb6c8f013bbb2 = $(`<div id="html_9c5d421af102764ba2ecb6c8f013bbb2" style="width: 100.0%; height: 100.0%;">     <b>Ward_67 (Mira Road East (Kanakia & Peripheral))</b><br>     Status: Standard Ward<br>     Population (2011): 9341<br>     Est. Pop (2026): 13929<br>     Hospitals: 1<br>     Blinkit Demand Score: 3.36     </div>`)[0];
+                popup_c4e7090412268eecb415b556c9cf25b5.setContent(html_9c5d421af102764ba2ecb6c8f013bbb2);
+            
+        
+
+        circle_marker_0df2087176e772d099cffe984cd63efd.bindPopup(popup_c4e7090412268eecb415b556c9cf25b5)
+        ;
+
+        
+    
+    
+            var circle_marker_3c51decc89f9af6a9f50e50f1d03f750 = L.circleMarker(
+                [19.2733, 72.8863],
+                {"bubblingMouseEvents": true, "color": "red", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "red", "fillOpacity": 0.7, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 6, "stroke": true, "weight": 3}
+            ).addTo(map_40f7a08ccbd4afb7ad9066604c605a90);
+        
+    
+        var popup_dd589e3c4b05e52266ba2c8dc618499f = L.popup({
+  "maxWidth": 250,
+});
+
+        
+            
+                var html_049483255f0d248e2b1e241d15e647d3 = $(`<div id="html_049483255f0d248e2b1e241d15e647d3" style="width: 100.0%; height: 100.0%;">     <b>Ward_68 (Mira Road East (Kanakia & Peripheral))</b><br>     Status: Healthcare Desert (0 Hospitals)<br>     Population (2011): 11344<br>     Est. Pop (2026): 16916<br>     Hospitals: 0<br>     Blinkit Demand Score: 4.95     </div>`)[0];
+                popup_dd589e3c4b05e52266ba2c8dc618499f.setContent(html_049483255f0d248e2b1e241d15e647d3);
+            
+        
+
+        circle_marker_3c51decc89f9af6a9f50e50f1d03f750.bindPopup(popup_dd589e3c4b05e52266ba2c8dc618499f)
+        ;
+
+        
+    
+    
+            var circle_marker_b6aababb0618a557bfdfd414f13c1a73 = L.circleMarker(
+                [19.274, 72.8846],
+                {"bubblingMouseEvents": true, "color": "green", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "green", "fillOpacity": 0.7, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 6, "stroke": true, "weight": 3}
+            ).addTo(map_40f7a08ccbd4afb7ad9066604c605a90);
+        
+    
+        var popup_2a62f1c1a9134254fba94d85e2cdf4e8 = L.popup({
+  "maxWidth": 250,
+});
+
+        
+            
+                var html_569094d003c66e604a1dea768fc1ecbc = $(`<div id="html_569094d003c66e604a1dea768fc1ecbc" style="width: 100.0%; height: 100.0%;">     <b>Ward_69 (Mira Road East (Kanakia & Peripheral))</b><br>     Status: High Blinkit Demand<br>     Population (2011): 13827<br>     Est. Pop (2026): 20619<br>     Hospitals: 1<br>     Blinkit Demand Score: 10.35     </div>`)[0];
+                popup_2a62f1c1a9134254fba94d85e2cdf4e8.setContent(html_569094d003c66e604a1dea768fc1ecbc);
+            
+        
+
+        circle_marker_b6aababb0618a557bfdfd414f13c1a73.bindPopup(popup_2a62f1c1a9134254fba94d85e2cdf4e8)
+        ;
+
+        
+    
+    
+            var circle_marker_c7dcc7a9d2f5e3af2929c40b4060391d = L.circleMarker(
+                [19.2709, 72.8779],
+                {"bubblingMouseEvents": true, "color": "red", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "red", "fillOpacity": 0.7, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 6, "stroke": true, "weight": 3}
+            ).addTo(map_40f7a08ccbd4afb7ad9066604c605a90);
+        
+    
+        var popup_cff5d34a9f0b3937bce9eb72bada5416 = L.popup({
+  "maxWidth": 250,
+});
+
+        
+            
+                var html_ffbd74e12a74d4ea07b884889cdf1d4d = $(`<div id="html_ffbd74e12a74d4ea07b884889cdf1d4d" style="width: 100.0%; height: 100.0%;">     <b>Ward_70 (Mira Road East (Kanakia & Peripheral))</b><br>     Status: Healthcare Desert (0 Hospitals)<br>     Population (2011): 12598<br>     Est. Pop (2026): 18787<br>     Hospitals: 0<br>     Blinkit Demand Score: 6.64     </div>`)[0];
+                popup_cff5d34a9f0b3937bce9eb72bada5416.setContent(html_ffbd74e12a74d4ea07b884889cdf1d4d);
+            
+        
+
+        circle_marker_c7dcc7a9d2f5e3af2929c40b4060391d.bindPopup(popup_cff5d34a9f0b3937bce9eb72bada5416)
+        ;
+
+        
+    
+    
+            var circle_marker_44fdf58dd795d6c857dc9d47486151b2 = L.circleMarker(
+                [19.2619, 72.8864],
+                {"bubblingMouseEvents": true, "color": "blue", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "blue", "fillOpacity": 0.7, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 6, "stroke": true, "weight": 3}
+            ).addTo(map_40f7a08ccbd4afb7ad9066604c605a90);
+        
+    
+        var popup_f6116c6336e4a2d18653ca00a4da9208 = L.popup({
+  "maxWidth": 250,
+});
+
+        
+            
+                var html_06071a7b6d893ef24a829c96449f16fb = $(`<div id="html_06071a7b6d893ef24a829c96449f16fb" style="width: 100.0%; height: 100.0%;">     <b>Ward_71 (Mira Road East (Kanakia & Peripheral))</b><br>     Status: Standard Ward<br>     Population (2011): 9805<br>     Est. Pop (2026): 14621<br>     Hospitals: 1<br>     Blinkit Demand Score: 3.23     </div>`)[0];
+                popup_f6116c6336e4a2d18653ca00a4da9208.setContent(html_06071a7b6d893ef24a829c96449f16fb);
+            
+        
+
+        circle_marker_44fdf58dd795d6c857dc9d47486151b2.bindPopup(popup_f6116c6336e4a2d18653ca00a4da9208)
+        ;
+
+        
+    
+    
+            var circle_marker_c5d28b946940c978512b1527210360f8 = L.circleMarker(
+                [19.2795, 72.8794],
+                {"bubblingMouseEvents": true, "color": "blue", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "blue", "fillOpacity": 0.7, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 6, "stroke": true, "weight": 3}
+            ).addTo(map_40f7a08ccbd4afb7ad9066604c605a90);
+        
+    
+        var popup_f4404af2f610e0317f87a42d71e1693c = L.popup({
+  "maxWidth": 250,
+});
+
+        
+            
+                var html_c8c0466bcd44d7861bd1a5db31febec3 = $(`<div id="html_c8c0466bcd44d7861bd1a5db31febec3" style="width: 100.0%; height: 100.0%;">     <b>Ward_72 (Mira Road East (Kanakia & Peripheral))</b><br>     Status: Standard Ward<br>     Population (2011): 6812<br>     Est. Pop (2026): 10158<br>     Hospitals: 2<br>     Blinkit Demand Score: 4.18     </div>`)[0];
+                popup_f4404af2f610e0317f87a42d71e1693c.setContent(html_c8c0466bcd44d7861bd1a5db31febec3);
+            
+        
+
+        circle_marker_c5d28b946940c978512b1527210360f8.bindPopup(popup_f4404af2f610e0317f87a42d71e1693c)
+        ;
+
+        
+    
+    
+            var circle_marker_3a8715507cca3f9b21fc3427da125665 = L.circleMarker(
+                [19.2668, 72.8711],
+                {"bubblingMouseEvents": true, "color": "green", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "green", "fillOpacity": 0.7, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 6, "stroke": true, "weight": 3}
+            ).addTo(map_40f7a08ccbd4afb7ad9066604c605a90);
+        
+    
+        var popup_4522285184a0c288bc61a4f5cd9eac7c = L.popup({
+  "maxWidth": 250,
+});
+
+        
+            
+                var html_cdac16898148a2718084a245a98f30f5 = $(`<div id="html_cdac16898148a2718084a245a98f30f5" style="width: 100.0%; height: 100.0%;">     <b>Ward_73 (Kashimira & Highway Corridor)</b><br>     Status: High Blinkit Demand<br>     Population (2011): 12054<br>     Est. Pop (2026): 17975<br>     Hospitals: 1<br>     Blinkit Demand Score: 9.4     </div>`)[0];
+                popup_4522285184a0c288bc61a4f5cd9eac7c.setContent(html_cdac16898148a2718084a245a98f30f5);
+            
+        
+
+        circle_marker_3a8715507cca3f9b21fc3427da125665.bindPopup(popup_4522285184a0c288bc61a4f5cd9eac7c)
+        ;
+
+        
+    
+    
+            var circle_marker_31e1373841f029ac4cca32a85d8445be = L.circleMarker(
+                [19.2496, 72.8843],
+                {"bubblingMouseEvents": true, "color": "red", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "red", "fillOpacity": 0.7, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 6, "stroke": true, "weight": 3}
+            ).addTo(map_40f7a08ccbd4afb7ad9066604c605a90);
+        
+    
+        var popup_4d56c0f366e506c5d21669d301cec4ea = L.popup({
+  "maxWidth": 250,
+});
+
+        
+            
+                var html_e295b356f979690e6dfe4973101c6104 = $(`<div id="html_e295b356f979690e6dfe4973101c6104" style="width: 100.0%; height: 100.0%;">     <b>Ward_74 (Kashimira & Highway Corridor)</b><br>     Status: Healthcare Desert (0 Hospitals)<br>     Population (2011): 13891<br>     Est. Pop (2026): 20715<br>     Hospitals: 0<br>     Blinkit Demand Score: 6.57     </div>`)[0];
+                popup_4d56c0f366e506c5d21669d301cec4ea.setContent(html_e295b356f979690e6dfe4973101c6104);
+            
+        
+
+        circle_marker_31e1373841f029ac4cca32a85d8445be.bindPopup(popup_4d56c0f366e506c5d21669d301cec4ea)
+        ;
+
+        
+    
+    
+            var circle_marker_49ee72b0f22e1a2c287e5d2b3bb87ebd = L.circleMarker(
+                [19.2474, 72.8908],
+                {"bubblingMouseEvents": true, "color": "blue", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "blue", "fillOpacity": 0.7, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 6, "stroke": true, "weight": 3}
+            ).addTo(map_40f7a08ccbd4afb7ad9066604c605a90);
+        
+    
+        var popup_e12e93507d2185b2409b73e4bb7ff2d1 = L.popup({
+  "maxWidth": 250,
+});
+
+        
+            
+                var html_f825c975325049d80ae7c203484852ac = $(`<div id="html_f825c975325049d80ae7c203484852ac" style="width: 100.0%; height: 100.0%;">     <b>Ward_75 (Kashimira & Highway Corridor)</b><br>     Status: Standard Ward<br>     Population (2011): 9913<br>     Est. Pop (2026): 14782<br>     Hospitals: 2<br>     Blinkit Demand Score: 3.56     </div>`)[0];
+                popup_e12e93507d2185b2409b73e4bb7ff2d1.setContent(html_f825c975325049d80ae7c203484852ac);
+            
+        
+
+        circle_marker_49ee72b0f22e1a2c287e5d2b3bb87ebd.bindPopup(popup_e12e93507d2185b2409b73e4bb7ff2d1)
+        ;
+
+        
+    
+    
+            var circle_marker_209b3be81f13632ba402bbf633c7076e = L.circleMarker(
+                [19.2645, 72.8927],
+                {"bubblingMouseEvents": true, "color": "blue", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "blue", "fillOpacity": 0.7, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 6, "stroke": true, "weight": 3}
+            ).addTo(map_40f7a08ccbd4afb7ad9066604c605a90);
+        
+    
+        var popup_c5e4641ce587959dbf6df05b4bca78c3 = L.popup({
+  "maxWidth": 250,
+});
+
+        
+            
+                var html_e996df5ba1cbc47e38cb2eeef79b6749 = $(`<div id="html_e996df5ba1cbc47e38cb2eeef79b6749" style="width: 100.0%; height: 100.0%;">     <b>Ward_76 (Kashimira & Highway Corridor)</b><br>     Status: Standard Ward<br>     Population (2011): 13294<br>     Est. Pop (2026): 19824<br>     Hospitals: 1<br>     Blinkit Demand Score: 4.78     </div>`)[0];
+                popup_c5e4641ce587959dbf6df05b4bca78c3.setContent(html_e996df5ba1cbc47e38cb2eeef79b6749);
+            
+        
+
+        circle_marker_209b3be81f13632ba402bbf633c7076e.bindPopup(popup_c5e4641ce587959dbf6df05b4bca78c3)
+        ;
+
+        
+    
+    
+            var circle_marker_c771f3be1919c98b9f203b8d8bfc9c90 = L.circleMarker(
+                [19.2515, 72.8861],
+                {"bubblingMouseEvents": true, "color": "red", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "red", "fillOpacity": 0.7, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 6, "stroke": true, "weight": 3}
+            ).addTo(map_40f7a08ccbd4afb7ad9066604c605a90);
+        
+    
+        var popup_22f7ca5df8b3cb2a70398fe5115a52a6 = L.popup({
+  "maxWidth": 250,
+});
+
+        
+            
+                var html_f0b84dfc927df38a412e2287cb42751f = $(`<div id="html_f0b84dfc927df38a412e2287cb42751f" style="width: 100.0%; height: 100.0%;">     <b>Ward_77 (Kashimira & Highway Corridor)</b><br>     Status: Healthcare Desert (0 Hospitals)<br>     Population (2011): 7530<br>     Est. Pop (2026): 11229<br>     Hospitals: 0<br>     Blinkit Demand Score: 3.03     </div>`)[0];
+                popup_22f7ca5df8b3cb2a70398fe5115a52a6.setContent(html_f0b84dfc927df38a412e2287cb42751f);
+            
+        
+
+        circle_marker_c771f3be1919c98b9f203b8d8bfc9c90.bindPopup(popup_22f7ca5df8b3cb2a70398fe5115a52a6)
+        ;
+
+        
+    
+    
+            var circle_marker_abed294744f5f7a1b90eeb06cb9d9afc = L.circleMarker(
+                [19.2621, 72.8825],
+                {"bubblingMouseEvents": true, "color": "blue", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "blue", "fillOpacity": 0.7, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 6, "stroke": true, "weight": 3}
+            ).addTo(map_40f7a08ccbd4afb7ad9066604c605a90);
+        
+    
+        var popup_d2b86feac30c5a35427b3cfd459fbddf = L.popup({
+  "maxWidth": 250,
+});
+
+        
+            
+                var html_3c8a2ea68d92f74490aa90d6ff44b422 = $(`<div id="html_3c8a2ea68d92f74490aa90d6ff44b422" style="width: 100.0%; height: 100.0%;">     <b>Ward_78 (Kashimira & Highway Corridor)</b><br>     Status: Standard Ward<br>     Population (2011): 9844<br>     Est. Pop (2026): 14680<br>     Hospitals: 1<br>     Blinkit Demand Score: 3.62     </div>`)[0];
+                popup_d2b86feac30c5a35427b3cfd459fbddf.setContent(html_3c8a2ea68d92f74490aa90d6ff44b422);
+            
+        
+
+        circle_marker_abed294744f5f7a1b90eeb06cb9d9afc.bindPopup(popup_d2b86feac30c5a35427b3cfd459fbddf)
+        ;
+
+        
+    
+    
+            var circle_marker_2e8f985d327e7d5bfc97c3adec4aa228 = L.circleMarker(
+                [19.2557, 72.8732],
+                {"bubblingMouseEvents": true, "color": "green", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "green", "fillOpacity": 0.7, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 6, "stroke": true, "weight": 3}
+            ).addTo(map_40f7a08ccbd4afb7ad9066604c605a90);
+        
+    
+        var popup_c637c7d7c4467c26c819f9ec2d64e0c1 = L.popup({
+  "maxWidth": 250,
+});
+
+        
+            
+                var html_fc911b4fa32e53eef487a158eedf8bd9 = $(`<div id="html_fc911b4fa32e53eef487a158eedf8bd9" style="width: 100.0%; height: 100.0%;">     <b>Ward_79 (Kashimira & Highway Corridor)</b><br>     Status: High Blinkit Demand<br>     Population (2011): 10624<br>     Est. Pop (2026): 15843<br>     Hospitals: 2<br>     Blinkit Demand Score: 8.32     </div>`)[0];
+                popup_c637c7d7c4467c26c819f9ec2d64e0c1.setContent(html_fc911b4fa32e53eef487a158eedf8bd9);
+            
+        
+
+        circle_marker_2e8f985d327e7d5bfc97c3adec4aa228.bindPopup(popup_c637c7d7c4467c26c819f9ec2d64e0c1)
+        ;
+
+        
+    
+    
+            var marker_8e5617447418e4477ee69ea547a0ee4b = L.marker(
+                [19.278299999999998, 72.82173333333334],
+                {
+}
+            ).addTo(map_40f7a08ccbd4afb7ad9066604c605a90);
+        
+    
+            var icon_e0206c6939eda22ba21c0950a49e8fe1 = L.AwesomeMarkers.icon(
+                {
+  "markerColor": "darkgreen",
+  "iconColor": "white",
+  "icon": "shopping-cart",
+  "prefix": "glyphicon",
+  "extraClasses": "fa-rotate-0",
+}
+            );
+        
+    
+        var popup_b651640d3e47b582688def0e489879b0 = L.popup({
+  "maxWidth": "100%",
+});
+
+        
+            
+                var html_927310e89a9de1c0173fb1c2ca1c0841 = $(`<div id="html_927310e89a9de1c0173fb1c2ca1c0841" style="width: 100.0%; height: 100.0%;"><b>🛒 Blinkit Dark Store #1</b><br>Optimized 10-Min Delivery Hub</div>`)[0];
+                popup_b651640d3e47b582688def0e489879b0.setContent(html_927310e89a9de1c0173fb1c2ca1c0841);
+            
+        
+
+        marker_8e5617447418e4477ee69ea547a0ee4b.bindPopup(popup_b651640d3e47b582688def0e489879b0)
+        ;
+
+        
+    
+    
+                marker_8e5617447418e4477ee69ea547a0ee4b.setIcon(icon_e0206c6939eda22ba21c0950a49e8fe1);
+            
+    
+            var marker_aa76e30889f883054d2ba1e437a1b31d = L.marker(
+                [19.267857142857142, 72.8784],
+                {
+}
+            ).addTo(map_40f7a08ccbd4afb7ad9066604c605a90);
+        
+    
+            var icon_658f79b38043237bf65ee0166ed6813e = L.AwesomeMarkers.icon(
+                {
+  "markerColor": "darkgreen",
+  "iconColor": "white",
+  "icon": "shopping-cart",
+  "prefix": "glyphicon",
+  "extraClasses": "fa-rotate-0",
+}
+            );
+        
+    
+        var popup_d6402de1acf253401d9c12640e46da73 = L.popup({
+  "maxWidth": "100%",
+});
+
+        
+            
+                var html_79b37d4e1182c2649cf89bb51bfb0d12 = $(`<div id="html_79b37d4e1182c2649cf89bb51bfb0d12" style="width: 100.0%; height: 100.0%;"><b>🛒 Blinkit Dark Store #2</b><br>Optimized 10-Min Delivery Hub</div>`)[0];
+                popup_d6402de1acf253401d9c12640e46da73.setContent(html_79b37d4e1182c2649cf89bb51bfb0d12);
+            
+        
+
+        marker_aa76e30889f883054d2ba1e437a1b31d.bindPopup(popup_d6402de1acf253401d9c12640e46da73)
+        ;
+
+        
+    
+    
+                marker_aa76e30889f883054d2ba1e437a1b31d.setIcon(icon_658f79b38043237bf65ee0166ed6813e);
+            
+    
+            var marker_6e26fc9f380a62eb007586412bf7880c = L.marker(
+                [19.29056, 72.85404],
+                {
+}
+            ).addTo(map_40f7a08ccbd4afb7ad9066604c605a90);
+        
+    
+            var icon_79b03d3bbc9349fb692347a966a8e25b = L.AwesomeMarkers.icon(
+                {
+  "markerColor": "darkgreen",
+  "iconColor": "white",
+  "icon": "shopping-cart",
+  "prefix": "glyphicon",
+  "extraClasses": "fa-rotate-0",
+}
+            );
+        
+    
+        var popup_05e846a3930230dd5f04ee134f849642 = L.popup({
+  "maxWidth": "100%",
+});
+
+        
+            
+                var html_5689a76711375dd411606416f173a9b0 = $(`<div id="html_5689a76711375dd411606416f173a9b0" style="width: 100.0%; height: 100.0%;"><b>🛒 Blinkit Dark Store #3</b><br>Optimized 10-Min Delivery Hub</div>`)[0];
+                popup_05e846a3930230dd5f04ee134f849642.setContent(html_5689a76711375dd411606416f173a9b0);
+            
+        
+
+        marker_6e26fc9f380a62eb007586412bf7880c.bindPopup(popup_05e846a3930230dd5f04ee134f849642)
+        ;
+
+        
+    
+    
+                marker_6e26fc9f380a62eb007586412bf7880c.setIcon(icon_79b03d3bbc9349fb692347a966a8e25b);
+            
+    
+            var marker_51e96cfc1a9e51de91a3060e2a972b72 = L.marker(
+                [19.276033333333334, 72.87114444444445],
+                {
+}
+            ).addTo(map_40f7a08ccbd4afb7ad9066604c605a90);
+        
+    
+            var icon_45215c1220a2851dbae83f8e72fdbc59 = L.AwesomeMarkers.icon(
+                {
+  "markerColor": "red",
+  "iconColor": "white",
+  "icon": "plus-sign",
+  "prefix": "glyphicon",
+  "extraClasses": "fa-rotate-0",
+}
+            );
+        
+    
+        var popup_5de1fb747e7a22d5e245515bc732fadd = L.popup({
+  "maxWidth": "100%",
+});
+
+        
+            
+                var html_07b37b850d178b4ae77a7857087be2c4 = $(`<div id="html_07b37b850d178b4ae77a7857087be2c4" style="width: 100.0%; height: 100.0%;"><b>🚑 Emergency Ambulance Hub</b><br>Optimized Standby Station for Healthcare Deserts</div>`)[0];
+                popup_5de1fb747e7a22d5e245515bc732fadd.setContent(html_07b37b850d178b4ae77a7857087be2c4);
+            
+        
+
+        marker_51e96cfc1a9e51de91a3060e2a972b72.bindPopup(popup_5de1fb747e7a22d5e245515bc732fadd)
+        ;
+
+        
+    
+    
+                marker_51e96cfc1a9e51de91a3060e2a972b72.setIcon(icon_45215c1220a2851dbae83f8e72fdbc59);
+            
+</script>
+</html>

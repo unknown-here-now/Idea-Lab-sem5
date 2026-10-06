@@ -1,0 +1,2300 @@
+<!DOCTYPE html>
+<html>
+<head>
+    
+    <meta http-equiv="content-type" content="text/html; charset=UTF-8" />
+    <script src="https://cdn.jsdelivr.net/npm/leaflet@1.9.3/dist/leaflet.js"></script>
+    <script src="https://code.jquery.com/jquery-3.7.1.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.2/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/Leaflet.awesome-markers/2.0.2/leaflet.awesome-markers.js"></script>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/leaflet@1.9.3/dist/leaflet.css"/>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.2/dist/css/bootstrap.min.css"/>
+    <link rel="stylesheet" href="https://netdna.bootstrapcdn.com/bootstrap/3.0.0/css/bootstrap-glyphicons.css"/>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@6.2.0/css/all.min.css"/>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/Leaflet.awesome-markers/2.0.2/leaflet.awesome-markers.css"/>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/python-visualization/folium/folium/templates/leaflet.awesome.rotate.min.css"/>
+    
+            <meta name="viewport" content="width=device-width,
+                initial-scale=1.0, maximum-scale=1.0, user-scalable=no" />
+            <style>
+                #map_8f59965a00d850a0686bc2af797e1c31 {
+                    position: relative;
+                    width: 100.0%;
+                    height: 100.0%;
+                    left: 0.0%;
+                    top: 0.0%;
+                }
+                .leaflet-container { font-size: 1rem; }
+            </style>
+
+            <style>html, body {
+                width: 100%;
+                height: 100%;
+                margin: 0;
+                padding: 0;
+            }
+            </style>
+
+            <style>#map {
+                position:absolute;
+                top:0;
+                bottom:0;
+                right:0;
+                left:0;
+                }
+            </style>
+
+            <script>
+                L_NO_TOUCH = false;
+                L_DISABLE_3D = false;
+            </script>
+
+        
+    <script src="https://cdn.jsdelivr.net/gh/python-visualization/folium@main/folium/templates/leaflet_heat.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/leaflet-minimap/3.6.1/Control.MiniMap.js"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/leaflet-minimap/3.6.1/Control.MiniMap.css"/>
+</head>
+<body>
+    
+    
+<div style="position: fixed; bottom: 30px; left: 30px; z-index: 1000; background-color: white; 
+            padding: 14px; border-radius: 8px; box-shadow: 0 0 15px rgba(0,0,0,0.2); font-family: Arial; font-size: 12px; width: 230px;">
+    <h4 style="margin: 0 0 8px; font-size: 14px;"><b>MBMC Spatial Analytics</b></h4>
+    <div style="margin-bottom: 4px;"><span style="color: #27ae60; font-size: 16px;">●</span> Blinkit Dark Store (K=3)</div>
+    <div style="margin-bottom: 4px;"><span style="color: #c0392b; font-size: 16px;">●</span> Emergency Ambulance Hub</div>
+    <div style="margin-bottom: 4px;"><span style="color: #e74c3c; font-size: 14px;">●</span> Healthcare Desert Ward</div>
+    <div style="margin-bottom: 4px;"><span style="color: #2ecc71; font-size: 14px;">●</span> High Delivery Demand Ward</div>
+    <div style="margin-bottom: 6px;"><span style="color: #3498db; font-size: 14px;">●</span> Standard Census Ward</div>
+    <hr style="margin: 6px 0;">
+    <small style="color: #7f8c8d;">Total Wards Analyzed: <b>79</b><br>Target City: <b>Mira-Bhayandar</b></small>
+</div>
+    
+            <div class="folium-map" id="map_8f59965a00d850a0686bc2af797e1c31" ></div>
+        
+</body>
+<script>
+    
+    
+            var map_8f59965a00d850a0686bc2af797e1c31 = L.map(
+                "map_8f59965a00d850a0686bc2af797e1c31",
+                {
+                    center: [19.283, 72.858],
+                    crs: L.CRS.EPSG3857,
+                    ...{
+  "zoom": 13,
+  "zoomControl": true,
+  "preferCanvas": false,
+  "name": "Clean Street View",
+}
+
+                }
+            );
+
+            
+
+        
+    
+            var tile_layer_532eb60e326c202f9dca58bc0d7104d7 = L.tileLayer(
+                "https://{s}.basemaps.cartocdn.com/light_all/{z}/{x}/{y}{r}.png",
+                {
+  "minZoom": 0,
+  "maxZoom": 20,
+  "maxNativeZoom": 20,
+  "noWrap": false,
+  "attribution": "\u0026copy; \u003ca href=\"https://www.openstreetmap.org/copyright\"\u003eOpenStreetMap\u003c/a\u003e contributors \u0026copy; \u003ca href=\"https://carto.com/attributions\"\u003eCARTO\u003c/a\u003e",
+  "subdomains": "abcd",
+  "detectRetina": false,
+  "tms": false,
+  "opacity": 1,
+}
+
+            );
+        
+    
+            tile_layer_532eb60e326c202f9dca58bc0d7104d7.addTo(map_8f59965a00d850a0686bc2af797e1c31);
+        
+    
+            var tile_layer_3dbf232e9b07e0d7d030a1d441c4623a = L.tileLayer(
+                "https://tile.openstreetmap.org/{z}/{x}/{y}.png",
+                {
+  "minZoom": 0,
+  "maxZoom": 19,
+  "maxNativeZoom": 19,
+  "noWrap": false,
+  "attribution": "\u0026copy; \u003ca href=\"https://www.openstreetmap.org/copyright\"\u003eOpenStreetMap\u003c/a\u003e contributors",
+  "subdomains": "abc",
+  "detectRetina": false,
+  "tms": false,
+  "opacity": 1,
+}
+
+            );
+        
+    
+            tile_layer_3dbf232e9b07e0d7d030a1d441c4623a.addTo(map_8f59965a00d850a0686bc2af797e1c31);
+        
+    
+            var tile_layer_6d534361e2d003576441c015d0565a1e = L.tileLayer(
+                "https://{s}.basemaps.cartocdn.com/dark_all/{z}/{x}/{y}{r}.png",
+                {
+  "minZoom": 0,
+  "maxZoom": 20,
+  "maxNativeZoom": 20,
+  "noWrap": false,
+  "attribution": "\u0026copy; \u003ca href=\"https://www.openstreetmap.org/copyright\"\u003eOpenStreetMap\u003c/a\u003e contributors \u0026copy; \u003ca href=\"https://carto.com/attributions\"\u003eCARTO\u003c/a\u003e",
+  "subdomains": "abcd",
+  "detectRetina": false,
+  "tms": false,
+  "opacity": 1,
+}
+
+            );
+        
+    
+            tile_layer_6d534361e2d003576441c015d0565a1e.addTo(map_8f59965a00d850a0686bc2af797e1c31);
+        
+    
+            var feature_group_f91579aa15d903cc981015ea2f88fcca = L.featureGroup(
+                {
+}
+            );
+        
+    
+            var circle_marker_a482c2b82772e8cca1bfa72c7c9900e8 = L.circleMarker(
+                [19.2867, 72.8417],
+                {"bubblingMouseEvents": true, "color": "#2ecc71", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "#2ecc71", "fillOpacity": 0.75, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 6, "stroke": true, "weight": 3}
+            ).addTo(feature_group_f91579aa15d903cc981015ea2f88fcca);
+        
+    
+        var popup_03c2f4841f30d640fb26cd2bcf306d2b = L.popup({
+  "maxWidth": 300,
+});
+
+        
+            
+                var html_7d54be58a85aab8dccef95ef84c9d223 = $(`<div id="html_7d54be58a85aab8dccef95ef84c9d223" style="width: 100.0%; height: 100.0%;">     <div style="font-family: Arial; min-width: 180px;">         <h4 style="margin: 0 0 5px; color: #2ecc71;">Ward_01 (Bhayandar West)</h4>         <hr style="margin: 3px 0;">         <b>Est. 2026 Pop:</b> 17,061<br>         <b>Households:</b> 2,624<br>         <b>Hospitals:</b> 2<br>         <b>Blinkit Demand Score:</b> 8.43<br>         <b>Emergency Risk Index:</b> 5.37     </div>     </div>`)[0];
+                popup_03c2f4841f30d640fb26cd2bcf306d2b.setContent(html_7d54be58a85aab8dccef95ef84c9d223);
+            
+        
+
+        circle_marker_a482c2b82772e8cca1bfa72c7c9900e8.bindPopup(popup_03c2f4841f30d640fb26cd2bcf306d2b)
+        ;
+
+        
+    
+    
+            var circle_marker_8367250bbada11bc4671956376a1080f = L.circleMarker(
+                [19.2835, 72.8613],
+                {"bubblingMouseEvents": true, "color": "#3498db", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "#3498db", "fillOpacity": 0.75, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 6, "stroke": true, "weight": 3}
+            ).addTo(feature_group_f91579aa15d903cc981015ea2f88fcca);
+        
+    
+        var popup_0056b8bcfab60eb8c45d37c729a30fb1 = L.popup({
+  "maxWidth": 300,
+});
+
+        
+            
+                var html_51a6211335ee5e2d30266f5fde50719b = $(`<div id="html_51a6211335ee5e2d30266f5fde50719b" style="width: 100.0%; height: 100.0%;">     <div style="font-family: Arial; min-width: 180px;">         <h4 style="margin: 0 0 5px; color: #3498db;">Ward_02 (Bhayandar West)</h4>         <hr style="margin: 3px 0;">         <b>Est. 2026 Pop:</b> 14,694<br>         <b>Households:</b> 2,226<br>         <b>Hospitals:</b> 1<br>         <b>Blinkit Demand Score:</b> 3.48<br>         <b>Emergency Risk Index:</b> 2.26     </div>     </div>`)[0];
+                popup_0056b8bcfab60eb8c45d37c729a30fb1.setContent(html_51a6211335ee5e2d30266f5fde50719b);
+            
+        
+
+        circle_marker_8367250bbada11bc4671956376a1080f.bindPopup(popup_0056b8bcfab60eb8c45d37c729a30fb1)
+        ;
+
+        
+    
+    
+            var circle_marker_6754a11a7aab89550501d52dc85d28af = L.circleMarker(
+                [19.2934, 72.845],
+                {"bubblingMouseEvents": true, "color": "#3498db", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "#3498db", "fillOpacity": 0.75, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 6, "stroke": true, "weight": 3}
+            ).addTo(feature_group_f91579aa15d903cc981015ea2f88fcca);
+        
+    
+        var popup_e53736218a7c27c1fb5df40a66271758 = L.popup({
+  "maxWidth": 300,
+});
+
+        
+            
+                var html_3fde3d7377977f838974f2549e000af8 = $(`<div id="html_3fde3d7377977f838974f2549e000af8" style="width: 100.0%; height: 100.0%;">     <div style="font-family: Arial; min-width: 180px;">         <h4 style="margin: 0 0 5px; color: #3498db;">Ward_03 (Bhayandar West)</h4>         <hr style="margin: 3px 0;">         <b>Est. 2026 Pop:</b> 13,482<br>         <b>Households:</b> 2,095<br>         <b>Hospitals:</b> 1<br>         <b>Blinkit Demand Score:</b> 3.57<br>         <b>Emergency Risk Index:</b> 2.57     </div>     </div>`)[0];
+                popup_e53736218a7c27c1fb5df40a66271758.setContent(html_3fde3d7377977f838974f2549e000af8);
+            
+        
+
+        circle_marker_6754a11a7aab89550501d52dc85d28af.bindPopup(popup_e53736218a7c27c1fb5df40a66271758)
+        ;
+
+        
+    
+    
+            var circle_marker_9ac0c1fa60c11a6848a28df8913f66b6 = L.circleMarker(
+                [19.2939, 72.8568],
+                {"bubblingMouseEvents": true, "color": "#3498db", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "#3498db", "fillOpacity": 0.75, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 6, "stroke": true, "weight": 3}
+            ).addTo(feature_group_f91579aa15d903cc981015ea2f88fcca);
+        
+    
+        var popup_74e3e55d36fcf797c8be3cd54933552d = L.popup({
+  "maxWidth": 300,
+});
+
+        
+            
+                var html_8b02e9ab697f7ffd44204cfb10fd15e9 = $(`<div id="html_8b02e9ab697f7ffd44204cfb10fd15e9" style="width: 100.0%; height: 100.0%;">     <div style="font-family: Arial; min-width: 180px;">         <h4 style="margin: 0 0 5px; color: #3498db;">Ward_04 (Bhayandar West)</h4>         <hr style="margin: 3px 0;">         <b>Est. 2026 Pop:</b> 13,473<br>         <b>Households:</b> 2,141<br>         <b>Hospitals:</b> 1<br>         <b>Blinkit Demand Score:</b> 5.22<br>         <b>Emergency Risk Index:</b> 4.61     </div>     </div>`)[0];
+                popup_74e3e55d36fcf797c8be3cd54933552d.setContent(html_8b02e9ab697f7ffd44204cfb10fd15e9);
+            
+        
+
+        circle_marker_9ac0c1fa60c11a6848a28df8913f66b6.bindPopup(popup_74e3e55d36fcf797c8be3cd54933552d)
+        ;
+
+        
+    
+    
+            var circle_marker_d1384712f99ac6111b8754c8aa995a6d = L.circleMarker(
+                [19.2853, 72.8544],
+                {"bubblingMouseEvents": true, "color": "#3498db", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "#3498db", "fillOpacity": 0.75, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 6, "stroke": true, "weight": 3}
+            ).addTo(feature_group_f91579aa15d903cc981015ea2f88fcca);
+        
+    
+        var popup_c16c1fad75d41979b50232eee44ed23f = L.popup({
+  "maxWidth": 300,
+});
+
+        
+            
+                var html_075ae07f176fb48f9ce00e770466e976 = $(`<div id="html_075ae07f176fb48f9ce00e770466e976" style="width: 100.0%; height: 100.0%;">     <div style="font-family: Arial; min-width: 180px;">         <h4 style="margin: 0 0 5px; color: #3498db;">Ward_06 (Bhayandar West)</h4>         <hr style="margin: 3px 0;">         <b>Est. 2026 Pop:</b> 15,624<br>         <b>Households:</b> 2,504<br>         <b>Hospitals:</b> 1<br>         <b>Blinkit Demand Score:</b> 4.78<br>         <b>Emergency Risk Index:</b> 3.64     </div>     </div>`)[0];
+                popup_c16c1fad75d41979b50232eee44ed23f.setContent(html_075ae07f176fb48f9ce00e770466e976);
+            
+        
+
+        circle_marker_d1384712f99ac6111b8754c8aa995a6d.bindPopup(popup_c16c1fad75d41979b50232eee44ed23f)
+        ;
+
+        
+    
+    
+            var circle_marker_3d5640e4bb625d54f6761cb55b398010 = L.circleMarker(
+                [19.2989, 72.8455],
+                {"bubblingMouseEvents": true, "color": "#3498db", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "#3498db", "fillOpacity": 0.75, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 6, "stroke": true, "weight": 3}
+            ).addTo(feature_group_f91579aa15d903cc981015ea2f88fcca);
+        
+    
+        var popup_32a75accca4c09b873c6a73a3c5d8fb7 = L.popup({
+  "maxWidth": 300,
+});
+
+        
+            
+                var html_9d3821e3a088e3a0807c5c788ea89d34 = $(`<div id="html_9d3821e3a088e3a0807c5c788ea89d34" style="width: 100.0%; height: 100.0%;">     <div style="font-family: Arial; min-width: 180px;">         <h4 style="margin: 0 0 5px; color: #3498db;">Ward_07 (Bhayandar West)</h4>         <hr style="margin: 3px 0;">         <b>Est. 2026 Pop:</b> 13,220<br>         <b>Households:</b> 2,133<br>         <b>Hospitals:</b> 1<br>         <b>Blinkit Demand Score:</b> 3.83<br>         <b>Emergency Risk Index:</b> 2.79     </div>     </div>`)[0];
+                popup_32a75accca4c09b873c6a73a3c5d8fb7.setContent(html_9d3821e3a088e3a0807c5c788ea89d34);
+            
+        
+
+        circle_marker_3d5640e4bb625d54f6761cb55b398010.bindPopup(popup_32a75accca4c09b873c6a73a3c5d8fb7)
+        ;
+
+        
+    
+    
+            var circle_marker_44089f01fc121a189bf682c49ccad21b = L.circleMarker(
+                [19.3016, 72.8605],
+                {"bubblingMouseEvents": true, "color": "#3498db", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "#3498db", "fillOpacity": 0.75, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 6, "stroke": true, "weight": 3}
+            ).addTo(feature_group_f91579aa15d903cc981015ea2f88fcca);
+        
+    
+        var popup_5584e2100f79fa6b69566233e01e37f0 = L.popup({
+  "maxWidth": 300,
+});
+
+        
+            
+                var html_c17c48760d21f8365f7afa68dbe1388e = $(`<div id="html_c17c48760d21f8365f7afa68dbe1388e" style="width: 100.0%; height: 100.0%;">     <div style="font-family: Arial; min-width: 180px;">         <h4 style="margin: 0 0 5px; color: #3498db;">Ward_08 (Bhayandar West)</h4>         <hr style="margin: 3px 0;">         <b>Est. 2026 Pop:</b> 15,190<br>         <b>Households:</b> 2,223<br>         <b>Hospitals:</b> 1<br>         <b>Blinkit Demand Score:</b> 3.4<br>         <b>Emergency Risk Index:</b> 2.21     </div>     </div>`)[0];
+                popup_5584e2100f79fa6b69566233e01e37f0.setContent(html_c17c48760d21f8365f7afa68dbe1388e);
+            
+        
+
+        circle_marker_44089f01fc121a189bf682c49ccad21b.bindPopup(popup_5584e2100f79fa6b69566233e01e37f0)
+        ;
+
+        
+    
+    
+            var circle_marker_aebc60835ffaeb70bff406614e9ea9ca = L.circleMarker(
+                [19.2916, 72.8447],
+                {"bubblingMouseEvents": true, "color": "#3498db", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "#3498db", "fillOpacity": 0.75, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 6, "stroke": true, "weight": 3}
+            ).addTo(feature_group_f91579aa15d903cc981015ea2f88fcca);
+        
+    
+        var popup_0d28a329de5c08eac723a5ad4d21a9eb = L.popup({
+  "maxWidth": 300,
+});
+
+        
+            
+                var html_b436ffcbfb844d373a0c5a96c065d3c0 = $(`<div id="html_b436ffcbfb844d373a0c5a96c065d3c0" style="width: 100.0%; height: 100.0%;">     <div style="font-family: Arial; min-width: 180px;">         <h4 style="margin: 0 0 5px; color: #3498db;">Ward_09 (Bhayandar West)</h4>         <hr style="margin: 3px 0;">         <b>Est. 2026 Pop:</b> 11,448<br>         <b>Households:</b> 1,707<br>         <b>Hospitals:</b> 1<br>         <b>Blinkit Demand Score:</b> 3.14<br>         <b>Emergency Risk Index:</b> 2.35     </div>     </div>`)[0];
+                popup_0d28a329de5c08eac723a5ad4d21a9eb.setContent(html_b436ffcbfb844d373a0c5a96c065d3c0);
+            
+        
+
+        circle_marker_aebc60835ffaeb70bff406614e9ea9ca.bindPopup(popup_0d28a329de5c08eac723a5ad4d21a9eb)
+        ;
+
+        
+    
+    
+            var circle_marker_474dedc754b053280df34ec6664ca807 = L.circleMarker(
+                [19.3067, 72.8565],
+                {"bubblingMouseEvents": true, "color": "#3498db", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "#3498db", "fillOpacity": 0.75, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 6, "stroke": true, "weight": 3}
+            ).addTo(feature_group_f91579aa15d903cc981015ea2f88fcca);
+        
+    
+        var popup_e02ee14b22d6211e3df5095e9e503f35 = L.popup({
+  "maxWidth": 300,
+});
+
+        
+            
+                var html_78ed741fc48d55ba21473251dea12284 = $(`<div id="html_78ed741fc48d55ba21473251dea12284" style="width: 100.0%; height: 100.0%;">     <div style="font-family: Arial; min-width: 180px;">         <h4 style="margin: 0 0 5px; color: #3498db;">Ward_10 (Bhayandar West)</h4>         <hr style="margin: 3px 0;">         <b>Est. 2026 Pop:</b> 9,307<br>         <b>Households:</b> 1,542<br>         <b>Hospitals:</b> 1<br>         <b>Blinkit Demand Score:</b> 3.68<br>         <b>Emergency Risk Index:</b> 3.18     </div>     </div>`)[0];
+                popup_e02ee14b22d6211e3df5095e9e503f35.setContent(html_78ed741fc48d55ba21473251dea12284);
+            
+        
+
+        circle_marker_474dedc754b053280df34ec6664ca807.bindPopup(popup_e02ee14b22d6211e3df5095e9e503f35)
+        ;
+
+        
+    
+    
+            var circle_marker_33fbe9fa0314bb576f12b4fe5c734ea0 = L.circleMarker(
+                [19.2848, 72.8466],
+                {"bubblingMouseEvents": true, "color": "#2ecc71", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "#2ecc71", "fillOpacity": 0.75, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 6, "stroke": true, "weight": 3}
+            ).addTo(feature_group_f91579aa15d903cc981015ea2f88fcca);
+        
+    
+        var popup_f3d084114ae8c0129fd5f0f7c5d17045 = L.popup({
+  "maxWidth": 300,
+});
+
+        
+            
+                var html_405724f420fb99156a9d7a7e703c21c5 = $(`<div id="html_405724f420fb99156a9d7a7e703c21c5" style="width: 100.0%; height: 100.0%;">     <div style="font-family: Arial; min-width: 180px;">         <h4 style="margin: 0 0 5px; color: #2ecc71;">Ward_11 (Bhayandar West)</h4>         <hr style="margin: 3px 0;">         <b>Est. 2026 Pop:</b> 17,380<br>         <b>Households:</b> 2,611<br>         <b>Hospitals:</b> 2<br>         <b>Blinkit Demand Score:</b> 7.68<br>         <b>Emergency Risk Index:</b> 4.74     </div>     </div>`)[0];
+                popup_f3d084114ae8c0129fd5f0f7c5d17045.setContent(html_405724f420fb99156a9d7a7e703c21c5);
+            
+        
+
+        circle_marker_33fbe9fa0314bb576f12b4fe5c734ea0.bindPopup(popup_f3d084114ae8c0129fd5f0f7c5d17045)
+        ;
+
+        
+    
+    
+            var circle_marker_54ee05241fa36e9b6413a1f5827a4ae9 = L.circleMarker(
+                [19.2859, 72.8551],
+                {"bubblingMouseEvents": true, "color": "#3498db", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "#3498db", "fillOpacity": 0.75, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 6, "stroke": true, "weight": 3}
+            ).addTo(feature_group_f91579aa15d903cc981015ea2f88fcca);
+        
+    
+        var popup_b1946deebf5134773f0ba279540f5e62 = L.popup({
+  "maxWidth": 300,
+});
+
+        
+            
+                var html_877b7e427d4d251f09f3f9e24de9e264 = $(`<div id="html_877b7e427d4d251f09f3f9e24de9e264" style="width: 100.0%; height: 100.0%;">     <div style="font-family: Arial; min-width: 180px;">         <h4 style="margin: 0 0 5px; color: #3498db;">Ward_13 (Bhayandar West)</h4>         <hr style="margin: 3px 0;">         <b>Est. 2026 Pop:</b> 18,239<br>         <b>Households:</b> 2,855<br>         <b>Hospitals:</b> 1<br>         <b>Blinkit Demand Score:</b> 4.56<br>         <b>Emergency Risk Index:</b> 2.98     </div>     </div>`)[0];
+                popup_b1946deebf5134773f0ba279540f5e62.setContent(html_877b7e427d4d251f09f3f9e24de9e264);
+            
+        
+
+        circle_marker_54ee05241fa36e9b6413a1f5827a4ae9.bindPopup(popup_b1946deebf5134773f0ba279540f5e62)
+        ;
+
+        
+    
+    
+            var circle_marker_b45079a13427e286a638d4de33d2591d = L.circleMarker(
+                [19.2955, 72.8483],
+                {"bubblingMouseEvents": true, "color": "#2ecc71", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "#2ecc71", "fillOpacity": 0.75, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 6, "stroke": true, "weight": 3}
+            ).addTo(feature_group_f91579aa15d903cc981015ea2f88fcca);
+        
+    
+        var popup_292660ebf660b341b7af7f0e3c479e11 = L.popup({
+  "maxWidth": 300,
+});
+
+        
+            
+                var html_d276a7afd77ca986e013ca6a8626534e = $(`<div id="html_d276a7afd77ca986e013ca6a8626534e" style="width: 100.0%; height: 100.0%;">     <div style="font-family: Arial; min-width: 180px;">         <h4 style="margin: 0 0 5px; color: #2ecc71;">Ward_14 (Bhayandar West)</h4>         <hr style="margin: 3px 0;">         <b>Est. 2026 Pop:</b> 20,266<br>         <b>Households:</b> 3,163<br>         <b>Hospitals:</b> 1<br>         <b>Blinkit Demand Score:</b> 10.75<br>         <b>Emergency Risk Index:</b> 10.45     </div>     </div>`)[0];
+                popup_292660ebf660b341b7af7f0e3c479e11.setContent(html_d276a7afd77ca986e013ca6a8626534e);
+            
+        
+
+        circle_marker_b45079a13427e286a638d4de33d2591d.bindPopup(popup_292660ebf660b341b7af7f0e3c479e11)
+        ;
+
+        
+    
+    
+            var circle_marker_d470ccca2b5d9b08fcd4cf5400913ffa = L.circleMarker(
+                [19.3048, 72.844],
+                {"bubblingMouseEvents": true, "color": "#3498db", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "#3498db", "fillOpacity": 0.75, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 6, "stroke": true, "weight": 3}
+            ).addTo(feature_group_f91579aa15d903cc981015ea2f88fcca);
+        
+    
+        var popup_83e2c1438899cc0f7aff81a252c3d378 = L.popup({
+  "maxWidth": 300,
+});
+
+        
+            
+                var html_2cc0b4f21450ed1befd5cdea4539c7a0 = $(`<div id="html_2cc0b4f21450ed1befd5cdea4539c7a0" style="width: 100.0%; height: 100.0%;">     <div style="font-family: Arial; min-width: 180px;">         <h4 style="margin: 0 0 5px; color: #3498db;">Ward_15 (Bhayandar West)</h4>         <hr style="margin: 3px 0;">         <b>Est. 2026 Pop:</b> 15,534<br>         <b>Households:</b> 2,419<br>         <b>Hospitals:</b> 2<br>         <b>Blinkit Demand Score:</b> 4.77<br>         <b>Emergency Risk Index:</b> 2.52     </div>     </div>`)[0];
+                popup_83e2c1438899cc0f7aff81a252c3d378.setContent(html_2cc0b4f21450ed1befd5cdea4539c7a0);
+            
+        
+
+        circle_marker_d470ccca2b5d9b08fcd4cf5400913ffa.bindPopup(popup_83e2c1438899cc0f7aff81a252c3d378)
+        ;
+
+        
+    
+    
+            var circle_marker_68ccb25707fa765aa926b6c4e2b2d78b = L.circleMarker(
+                [19.29, 72.8419],
+                {"bubblingMouseEvents": true, "color": "#3498db", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "#3498db", "fillOpacity": 0.75, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 6, "stroke": true, "weight": 3}
+            ).addTo(feature_group_f91579aa15d903cc981015ea2f88fcca);
+        
+    
+        var popup_8a79619d3a9f228665d13bb9bc3468c7 = L.popup({
+  "maxWidth": 300,
+});
+
+        
+            
+                var html_060e1f720a61a9de6861296422ea8c84 = $(`<div id="html_060e1f720a61a9de6861296422ea8c84" style="width: 100.0%; height: 100.0%;">     <div style="font-family: Arial; min-width: 180px;">         <h4 style="margin: 0 0 5px; color: #3498db;">Ward_16 (Bhayandar West)</h4>         <hr style="margin: 3px 0;">         <b>Est. 2026 Pop:</b> 14,095<br>         <b>Households:</b> 2,336<br>         <b>Hospitals:</b> 2<br>         <b>Blinkit Demand Score:</b> 3.23<br>         <b>Emergency Risk Index:</b> 1.33     </div>     </div>`)[0];
+                popup_8a79619d3a9f228665d13bb9bc3468c7.setContent(html_060e1f720a61a9de6861296422ea8c84);
+            
+        
+
+        circle_marker_68ccb25707fa765aa926b6c4e2b2d78b.bindPopup(popup_8a79619d3a9f228665d13bb9bc3468c7)
+        ;
+
+        
+    
+    
+            var circle_marker_4714b9c97b8b8bddd26c109e2da6b8fb = L.circleMarker(
+                [19.3044, 72.8509],
+                {"bubblingMouseEvents": true, "color": "#3498db", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "#3498db", "fillOpacity": 0.75, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 6, "stroke": true, "weight": 3}
+            ).addTo(feature_group_f91579aa15d903cc981015ea2f88fcca);
+        
+    
+        var popup_f1d20fab7a657be23b4a69db63dc2ba1 = L.popup({
+  "maxWidth": 300,
+});
+
+        
+            
+                var html_dbd5d8205b4750017b504b4e3ba419c3 = $(`<div id="html_dbd5d8205b4750017b504b4e3ba419c3" style="width: 100.0%; height: 100.0%;">     <div style="font-family: Arial; min-width: 180px;">         <h4 style="margin: 0 0 5px; color: #3498db;">Ward_17 (Bhayandar West)</h4>         <hr style="margin: 3px 0;">         <b>Est. 2026 Pop:</b> 18,622<br>         <b>Households:</b> 3,037<br>         <b>Hospitals:</b> 2<br>         <b>Blinkit Demand Score:</b> 4.59<br>         <b>Emergency Risk Index:</b> 1.95     </div>     </div>`)[0];
+                popup_f1d20fab7a657be23b4a69db63dc2ba1.setContent(html_dbd5d8205b4750017b504b4e3ba419c3);
+            
+        
+
+        circle_marker_4714b9c97b8b8bddd26c109e2da6b8fb.bindPopup(popup_f1d20fab7a657be23b4a69db63dc2ba1)
+        ;
+
+        
+    
+    
+            var circle_marker_7eed432eb16f15f073a569a2e6a2f76a = L.circleMarker(
+                [19.2911, 72.8606],
+                {"bubblingMouseEvents": true, "color": "#3498db", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "#3498db", "fillOpacity": 0.75, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 6, "stroke": true, "weight": 3}
+            ).addTo(feature_group_f91579aa15d903cc981015ea2f88fcca);
+        
+    
+        var popup_6553c0c34c122ecef4744b40c3031d5a = L.popup({
+  "maxWidth": 300,
+});
+
+        
+            
+                var html_9522d9126259cf727e1869537e20cede = $(`<div id="html_9522d9126259cf727e1869537e20cede" style="width: 100.0%; height: 100.0%;">     <div style="font-family: Arial; min-width: 180px;">         <h4 style="margin: 0 0 5px; color: #3498db;">Ward_19 (Bhayandar West)</h4>         <hr style="margin: 3px 0;">         <b>Est. 2026 Pop:</b> 6,710<br>         <b>Households:</b> 1,105<br>         <b>Hospitals:</b> 1<br>         <b>Blinkit Demand Score:</b> 2.26<br>         <b>Emergency Risk Index:</b> 1.86     </div>     </div>`)[0];
+                popup_6553c0c34c122ecef4744b40c3031d5a.setContent(html_9522d9126259cf727e1869537e20cede);
+            
+        
+
+        circle_marker_7eed432eb16f15f073a569a2e6a2f76a.bindPopup(popup_6553c0c34c122ecef4744b40c3031d5a)
+        ;
+
+        
+    
+    
+            var circle_marker_531c67a1ef30fcf01955876426420ac3 = L.circleMarker(
+                [19.3063, 72.8611],
+                {"bubblingMouseEvents": true, "color": "#2ecc71", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "#2ecc71", "fillOpacity": 0.75, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 6, "stroke": true, "weight": 3}
+            ).addTo(feature_group_f91579aa15d903cc981015ea2f88fcca);
+        
+    
+        var popup_cf0bec5fb920ec57a1d8e32b0914655b = L.popup({
+  "maxWidth": 300,
+});
+
+        
+            
+                var html_7166ac17a5526b7d93b6c21fbca82902 = $(`<div id="html_7166ac17a5526b7d93b6c21fbca82902" style="width: 100.0%; height: 100.0%;">     <div style="font-family: Arial; min-width: 180px;">         <h4 style="margin: 0 0 5px; color: #2ecc71;">Ward_20 (Bhayandar West)</h4>         <hr style="margin: 3px 0;">         <b>Est. 2026 Pop:</b> 16,497<br>         <b>Households:</b> 2,622<br>         <b>Hospitals:</b> 1<br>         <b>Blinkit Demand Score:</b> 6.05<br>         <b>Emergency Risk Index:</b> 5.12     </div>     </div>`)[0];
+                popup_cf0bec5fb920ec57a1d8e32b0914655b.setContent(html_7166ac17a5526b7d93b6c21fbca82902);
+            
+        
+
+        circle_marker_531c67a1ef30fcf01955876426420ac3.bindPopup(popup_cf0bec5fb920ec57a1d8e32b0914655b)
+        ;
+
+        
+    
+    
+            var circle_marker_07121b4565f5a440985e6bce438c1287 = L.circleMarker(
+                [19.3001, 72.8542],
+                {"bubblingMouseEvents": true, "color": "#3498db", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "#3498db", "fillOpacity": 0.75, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 6, "stroke": true, "weight": 3}
+            ).addTo(feature_group_f91579aa15d903cc981015ea2f88fcca);
+        
+    
+        var popup_f9d4d0ac03531f42b28346b8d4a865c8 = L.popup({
+  "maxWidth": 300,
+});
+
+        
+            
+                var html_375bef0a6733c7cb876f60d50ae0baa5 = $(`<div id="html_375bef0a6733c7cb876f60d50ae0baa5" style="width: 100.0%; height: 100.0%;">     <div style="font-family: Arial; min-width: 180px;">         <h4 style="margin: 0 0 5px; color: #3498db;">Ward_21 (Bhayandar East)</h4>         <hr style="margin: 3px 0;">         <b>Est. 2026 Pop:</b> 11,211<br>         <b>Households:</b> 1,722<br>         <b>Hospitals:</b> 2<br>         <b>Blinkit Demand Score:</b> 3.88<br>         <b>Emergency Risk Index:</b> 2.22     </div>     </div>`)[0];
+                popup_f9d4d0ac03531f42b28346b8d4a865c8.setContent(html_375bef0a6733c7cb876f60d50ae0baa5);
+            
+        
+
+        circle_marker_07121b4565f5a440985e6bce438c1287.bindPopup(popup_f9d4d0ac03531f42b28346b8d4a865c8)
+        ;
+
+        
+    
+    
+            var circle_marker_96c92d956871297b987634992bb6ff61 = L.circleMarker(
+                [19.2997, 72.8767],
+                {"bubblingMouseEvents": true, "color": "#3498db", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "#3498db", "fillOpacity": 0.75, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 6, "stroke": true, "weight": 3}
+            ).addTo(feature_group_f91579aa15d903cc981015ea2f88fcca);
+        
+    
+        var popup_81bb7db5db70ce4dc6b863c01edb0fdc = L.popup({
+  "maxWidth": 300,
+});
+
+        
+            
+                var html_0b66c431eba85af096e1036c1c9cd8f5 = $(`<div id="html_0b66c431eba85af096e1036c1c9cd8f5" style="width: 100.0%; height: 100.0%;">     <div style="font-family: Arial; min-width: 180px;">         <h4 style="margin: 0 0 5px; color: #3498db;">Ward_22 (Bhayandar East)</h4>         <hr style="margin: 3px 0;">         <b>Est. 2026 Pop:</b> 11,509<br>         <b>Households:</b> 1,888<br>         <b>Hospitals:</b> 1<br>         <b>Blinkit Demand Score:</b> 4.24<br>         <b>Emergency Risk Index:</b> 3.64     </div>     </div>`)[0];
+                popup_81bb7db5db70ce4dc6b863c01edb0fdc.setContent(html_0b66c431eba85af096e1036c1c9cd8f5);
+            
+        
+
+        circle_marker_96c92d956871297b987634992bb6ff61.bindPopup(popup_81bb7db5db70ce4dc6b863c01edb0fdc)
+        ;
+
+        
+    
+    
+            var circle_marker_73f6a0c0d1e1ea10c7583f01faecc10a = L.circleMarker(
+                [19.3032, 72.8682],
+                {"bubblingMouseEvents": true, "color": "#3498db", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "#3498db", "fillOpacity": 0.75, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 6, "stroke": true, "weight": 3}
+            ).addTo(feature_group_f91579aa15d903cc981015ea2f88fcca);
+        
+    
+        var popup_e0129e5483dfedf65e822942e3307c36 = L.popup({
+  "maxWidth": 300,
+});
+
+        
+            
+                var html_50759fcb8867cc3a77fe8a9f2eb13af9 = $(`<div id="html_50759fcb8867cc3a77fe8a9f2eb13af9" style="width: 100.0%; height: 100.0%;">     <div style="font-family: Arial; min-width: 180px;">         <h4 style="margin: 0 0 5px; color: #3498db;">Ward_23 (Bhayandar East)</h4>         <hr style="margin: 3px 0;">         <b>Est. 2026 Pop:</b> 12,319<br>         <b>Households:</b> 1,957<br>         <b>Hospitals:</b> 1<br>         <b>Blinkit Demand Score:</b> 3.5<br>         <b>Emergency Risk Index:</b> 2.55     </div>     </div>`)[0];
+                popup_e0129e5483dfedf65e822942e3307c36.setContent(html_50759fcb8867cc3a77fe8a9f2eb13af9);
+            
+        
+
+        circle_marker_73f6a0c0d1e1ea10c7583f01faecc10a.bindPopup(popup_e0129e5483dfedf65e822942e3307c36)
+        ;
+
+        
+    
+    
+            var circle_marker_32215171d7dc765c64c2985826144735 = L.circleMarker(
+                [19.2925, 72.854],
+                {"bubblingMouseEvents": true, "color": "#3498db", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "#3498db", "fillOpacity": 0.75, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 6, "stroke": true, "weight": 3}
+            ).addTo(feature_group_f91579aa15d903cc981015ea2f88fcca);
+        
+    
+        var popup_77515efa5a917881b03ebd30e62cc39f = L.popup({
+  "maxWidth": 300,
+});
+
+        
+            
+                var html_e02ad9aafdab09d27a39a51f7e6a99f1 = $(`<div id="html_e02ad9aafdab09d27a39a51f7e6a99f1" style="width: 100.0%; height: 100.0%;">     <div style="font-family: Arial; min-width: 180px;">         <h4 style="margin: 0 0 5px; color: #3498db;">Ward_24 (Bhayandar East)</h4>         <hr style="margin: 3px 0;">         <b>Est. 2026 Pop:</b> 18,092<br>         <b>Households:</b> 2,893<br>         <b>Hospitals:</b> 1<br>         <b>Blinkit Demand Score:</b> 4.99<br>         <b>Emergency Risk Index:</b> 3.53     </div>     </div>`)[0];
+                popup_77515efa5a917881b03ebd30e62cc39f.setContent(html_e02ad9aafdab09d27a39a51f7e6a99f1);
+            
+        
+
+        circle_marker_32215171d7dc765c64c2985826144735.bindPopup(popup_77515efa5a917881b03ebd30e62cc39f)
+        ;
+
+        
+    
+    
+            var circle_marker_3c2b0c465abb5b2bb799932a70a0129f = L.circleMarker(
+                [19.2922, 72.8696],
+                {"bubblingMouseEvents": true, "color": "#3498db", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "#3498db", "fillOpacity": 0.75, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 6, "stroke": true, "weight": 3}
+            ).addTo(feature_group_f91579aa15d903cc981015ea2f88fcca);
+        
+    
+        var popup_1cf8a860d3022cfd26463e33a9137185 = L.popup({
+  "maxWidth": 300,
+});
+
+        
+            
+                var html_401a8ec75978f87cda5806ea0516a4cd = $(`<div id="html_401a8ec75978f87cda5806ea0516a4cd" style="width: 100.0%; height: 100.0%;">     <div style="font-family: Arial; min-width: 180px;">         <h4 style="margin: 0 0 5px; color: #3498db;">Ward_25 (Bhayandar East)</h4>         <hr style="margin: 3px 0;">         <b>Est. 2026 Pop:</b> 15,243<br>         <b>Households:</b> 2,330<br>         <b>Hospitals:</b> 2<br>         <b>Blinkit Demand Score:</b> 4.76<br>         <b>Emergency Risk Index:</b> 2.56     </div>     </div>`)[0];
+                popup_1cf8a860d3022cfd26463e33a9137185.setContent(html_401a8ec75978f87cda5806ea0516a4cd);
+            
+        
+
+        circle_marker_3c2b0c465abb5b2bb799932a70a0129f.bindPopup(popup_1cf8a860d3022cfd26463e33a9137185)
+        ;
+
+        
+    
+    
+            var circle_marker_7676dc8f50cdfef2fdee3cb78cfa230c = L.circleMarker(
+                [19.2907, 72.8752],
+                {"bubblingMouseEvents": true, "color": "#3498db", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "#3498db", "fillOpacity": 0.75, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 6, "stroke": true, "weight": 3}
+            ).addTo(feature_group_f91579aa15d903cc981015ea2f88fcca);
+        
+    
+        var popup_c897dda60899aba7090b5dceca295dee = L.popup({
+  "maxWidth": 300,
+});
+
+        
+            
+                var html_a3c3612b13d81c1777953bc5a68388e4 = $(`<div id="html_a3c3612b13d81c1777953bc5a68388e4" style="width: 100.0%; height: 100.0%;">     <div style="font-family: Arial; min-width: 180px;">         <h4 style="margin: 0 0 5px; color: #3498db;">Ward_26 (Bhayandar East)</h4>         <hr style="margin: 3px 0;">         <b>Est. 2026 Pop:</b> 13,847<br>         <b>Households:</b> 2,208<br>         <b>Hospitals:</b> 1<br>         <b>Blinkit Demand Score:</b> 3.19<br>         <b>Emergency Risk Index:</b> 2.05     </div>     </div>`)[0];
+                popup_c897dda60899aba7090b5dceca295dee.setContent(html_a3c3612b13d81c1777953bc5a68388e4);
+            
+        
+
+        circle_marker_7676dc8f50cdfef2fdee3cb78cfa230c.bindPopup(popup_c897dda60899aba7090b5dceca295dee)
+        ;
+
+        
+    
+    
+            var circle_marker_9a62872f70fa52c9f4f39da78409f25b = L.circleMarker(
+                [19.2938, 72.8552],
+                {"bubblingMouseEvents": true, "color": "#3498db", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "#3498db", "fillOpacity": 0.75, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 6, "stroke": true, "weight": 3}
+            ).addTo(feature_group_f91579aa15d903cc981015ea2f88fcca);
+        
+    
+        var popup_58510b5a827cb7d0cbfc469c8c66f346 = L.popup({
+  "maxWidth": 300,
+});
+
+        
+            
+                var html_c5ca3ca63d02382fcc1f2f73d7eb522c = $(`<div id="html_c5ca3ca63d02382fcc1f2f73d7eb522c" style="width: 100.0%; height: 100.0%;">     <div style="font-family: Arial; min-width: 180px;">         <h4 style="margin: 0 0 5px; color: #3498db;">Ward_27 (Bhayandar East)</h4>         <hr style="margin: 3px 0;">         <b>Est. 2026 Pop:</b> 19,101<br>         <b>Households:</b> 2,966<br>         <b>Hospitals:</b> 2<br>         <b>Blinkit Demand Score:</b> 4.42<br>         <b>Emergency Risk Index:</b> 1.86     </div>     </div>`)[0];
+                popup_58510b5a827cb7d0cbfc469c8c66f346.setContent(html_c5ca3ca63d02382fcc1f2f73d7eb522c);
+            
+        
+
+        circle_marker_9a62872f70fa52c9f4f39da78409f25b.bindPopup(popup_58510b5a827cb7d0cbfc469c8c66f346)
+        ;
+
+        
+    
+    
+            var circle_marker_2466e528a8e3c8f384365a9e4b3653ef = L.circleMarker(
+                [19.2964, 72.8704],
+                {"bubblingMouseEvents": true, "color": "#3498db", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "#3498db", "fillOpacity": 0.75, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 6, "stroke": true, "weight": 3}
+            ).addTo(feature_group_f91579aa15d903cc981015ea2f88fcca);
+        
+    
+        var popup_695888578899e46f7a04e955d9451793 = L.popup({
+  "maxWidth": 300,
+});
+
+        
+            
+                var html_b4d2c798565be4b65e7c1063c4b49c97 = $(`<div id="html_b4d2c798565be4b65e7c1063c4b49c97" style="width: 100.0%; height: 100.0%;">     <div style="font-family: Arial; min-width: 180px;">         <h4 style="margin: 0 0 5px; color: #3498db;">Ward_28 (Bhayandar East)</h4>         <hr style="margin: 3px 0;">         <b>Est. 2026 Pop:</b> 17,173<br>         <b>Households:</b> 2,739<br>         <b>Hospitals:</b> 2<br>         <b>Blinkit Demand Score:</b> 4.02<br>         <b>Emergency Risk Index:</b> 1.67     </div>     </div>`)[0];
+                popup_695888578899e46f7a04e955d9451793.setContent(html_b4d2c798565be4b65e7c1063c4b49c97);
+            
+        
+
+        circle_marker_2466e528a8e3c8f384365a9e4b3653ef.bindPopup(popup_695888578899e46f7a04e955d9451793)
+        ;
+
+        
+    
+    
+            var circle_marker_0b3024809cc5d503e27b20617275f1a6 = L.circleMarker(
+                [19.3096, 72.8676],
+                {"bubblingMouseEvents": true, "color": "#2ecc71", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "#2ecc71", "fillOpacity": 0.75, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 6, "stroke": true, "weight": 3}
+            ).addTo(feature_group_f91579aa15d903cc981015ea2f88fcca);
+        
+    
+        var popup_9cb369ddd1a51e572046dcad57d77979 = L.popup({
+  "maxWidth": 300,
+});
+
+        
+            
+                var html_4442be37d2bc6de74fa9e5069b2a9b4f = $(`<div id="html_4442be37d2bc6de74fa9e5069b2a9b4f" style="width: 100.0%; height: 100.0%;">     <div style="font-family: Arial; min-width: 180px;">         <h4 style="margin: 0 0 5px; color: #2ecc71;">Ward_29 (Bhayandar East)</h4>         <hr style="margin: 3px 0;">         <b>Est. 2026 Pop:</b> 17,513<br>         <b>Households:</b> 2,866<br>         <b>Hospitals:</b> 1<br>         <b>Blinkit Demand Score:</b> 9.56<br>         <b>Emergency Risk Index:</b> 9.47     </div>     </div>`)[0];
+                popup_9cb369ddd1a51e572046dcad57d77979.setContent(html_4442be37d2bc6de74fa9e5069b2a9b4f);
+            
+        
+
+        circle_marker_0b3024809cc5d503e27b20617275f1a6.bindPopup(popup_9cb369ddd1a51e572046dcad57d77979)
+        ;
+
+        
+    
+    
+            var circle_marker_c04db6afe3a9435cfc5ff8b80cfa76e8 = L.circleMarker(
+                [19.2919, 72.8662],
+                {"bubblingMouseEvents": true, "color": "#3498db", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "#3498db", "fillOpacity": 0.75, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 6, "stroke": true, "weight": 3}
+            ).addTo(feature_group_f91579aa15d903cc981015ea2f88fcca);
+        
+    
+        var popup_df80e67e93d053657e74e7d16e867e37 = L.popup({
+  "maxWidth": 300,
+});
+
+        
+            
+                var html_c3b194ce19c00f23e73426e8217b49b3 = $(`<div id="html_c3b194ce19c00f23e73426e8217b49b3" style="width: 100.0%; height: 100.0%;">     <div style="font-family: Arial; min-width: 180px;">         <h4 style="margin: 0 0 5px; color: #3498db;">Ward_30 (Bhayandar East)</h4>         <hr style="margin: 3px 0;">         <b>Est. 2026 Pop:</b> 19,747<br>         <b>Households:</b> 3,307<br>         <b>Hospitals:</b> 1<br>         <b>Blinkit Demand Score:</b> 5.16<br>         <b>Emergency Risk Index:</b> 3.47     </div>     </div>`)[0];
+                popup_df80e67e93d053657e74e7d16e867e37.setContent(html_c3b194ce19c00f23e73426e8217b49b3);
+            
+        
+
+        circle_marker_c04db6afe3a9435cfc5ff8b80cfa76e8.bindPopup(popup_df80e67e93d053657e74e7d16e867e37)
+        ;
+
+        
+    
+    
+            var circle_marker_df7dad47db9a85accde26bdc9d729742 = L.circleMarker(
+                [19.3059, 72.8686],
+                {"bubblingMouseEvents": true, "color": "#3498db", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "#3498db", "fillOpacity": 0.75, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 6, "stroke": true, "weight": 3}
+            ).addTo(feature_group_f91579aa15d903cc981015ea2f88fcca);
+        
+    
+        var popup_fbd7ffaae91d9e01b90498ce012b3a58 = L.popup({
+  "maxWidth": 300,
+});
+
+        
+            
+                var html_19cc780337ceea2841b7320cda5fc702 = $(`<div id="html_19cc780337ceea2841b7320cda5fc702" style="width: 100.0%; height: 100.0%;">     <div style="font-family: Arial; min-width: 180px;">         <h4 style="margin: 0 0 5px; color: #3498db;">Ward_31 (Bhayandar East)</h4>         <hr style="margin: 3px 0;">         <b>Est. 2026 Pop:</b> 17,948<br>         <b>Households:</b> 2,868<br>         <b>Hospitals:</b> 1<br>         <b>Blinkit Demand Score:</b> 4.21<br>         <b>Emergency Risk Index:</b> 2.72     </div>     </div>`)[0];
+                popup_fbd7ffaae91d9e01b90498ce012b3a58.setContent(html_19cc780337ceea2841b7320cda5fc702);
+            
+        
+
+        circle_marker_df7dad47db9a85accde26bdc9d729742.bindPopup(popup_fbd7ffaae91d9e01b90498ce012b3a58)
+        ;
+
+        
+    
+    
+            var circle_marker_69e136c26c64f8e85fa73e25d5986606 = L.circleMarker(
+                [19.2968, 72.8594],
+                {"bubblingMouseEvents": true, "color": "#3498db", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "#3498db", "fillOpacity": 0.75, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 6, "stroke": true, "weight": 3}
+            ).addTo(feature_group_f91579aa15d903cc981015ea2f88fcca);
+        
+    
+        var popup_03d50dbf75b01e071f49ae8b0a09f81d = L.popup({
+  "maxWidth": 300,
+});
+
+        
+            
+                var html_d7ab86cdb93bf905d5d3d1c138118eae = $(`<div id="html_d7ab86cdb93bf905d5d3d1c138118eae" style="width: 100.0%; height: 100.0%;">     <div style="font-family: Arial; min-width: 180px;">         <h4 style="margin: 0 0 5px; color: #3498db;">Ward_32 (Bhayandar East)</h4>         <hr style="margin: 3px 0;">         <b>Est. 2026 Pop:</b> 11,651<br>         <b>Households:</b> 1,926<br>         <b>Hospitals:</b> 2<br>         <b>Blinkit Demand Score:</b> 4.34<br>         <b>Emergency Risk Index:</b> 2.46     </div>     </div>`)[0];
+                popup_03d50dbf75b01e071f49ae8b0a09f81d.setContent(html_d7ab86cdb93bf905d5d3d1c138118eae);
+            
+        
+
+        circle_marker_69e136c26c64f8e85fa73e25d5986606.bindPopup(popup_03d50dbf75b01e071f49ae8b0a09f81d)
+        ;
+
+        
+    
+    
+            var circle_marker_a555fb8cf5c28c97c0e5b9b80c8b97b5 = L.circleMarker(
+                [19.3001, 72.8668],
+                {"bubblingMouseEvents": true, "color": "#3498db", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "#3498db", "fillOpacity": 0.75, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 6, "stroke": true, "weight": 3}
+            ).addTo(feature_group_f91579aa15d903cc981015ea2f88fcca);
+        
+    
+        var popup_b31d93e65ab42f8497a57c8ce26ad5a0 = L.popup({
+  "maxWidth": 300,
+});
+
+        
+            
+                var html_629339f246e8679226f08570ad154fda = $(`<div id="html_629339f246e8679226f08570ad154fda" style="width: 100.0%; height: 100.0%;">     <div style="font-family: Arial; min-width: 180px;">         <h4 style="margin: 0 0 5px; color: #3498db;">Ward_33 (Bhayandar East)</h4>         <hr style="margin: 3px 0;">         <b>Est. 2026 Pop:</b> 18,485<br>         <b>Households:</b> 2,768<br>         <b>Hospitals:</b> 1<br>         <b>Blinkit Demand Score:</b> 5.32<br>         <b>Emergency Risk Index:</b> 4.02     </div>     </div>`)[0];
+                popup_b31d93e65ab42f8497a57c8ce26ad5a0.setContent(html_629339f246e8679226f08570ad154fda);
+            
+        
+
+        circle_marker_a555fb8cf5c28c97c0e5b9b80c8b97b5.bindPopup(popup_b31d93e65ab42f8497a57c8ce26ad5a0)
+        ;
+
+        
+    
+    
+            var circle_marker_27b19085ed95a0e5d4cb302961a7451a = L.circleMarker(
+                [19.2886, 72.8685],
+                {"bubblingMouseEvents": true, "color": "#2ecc71", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "#2ecc71", "fillOpacity": 0.75, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 6, "stroke": true, "weight": 3}
+            ).addTo(feature_group_f91579aa15d903cc981015ea2f88fcca);
+        
+    
+        var popup_7a094ee683690240d5e3fa48dc994f75 = L.popup({
+  "maxWidth": 300,
+});
+
+        
+            
+                var html_7c83abe96fde509522f8ff294883dcd0 = $(`<div id="html_7c83abe96fde509522f8ff294883dcd0" style="width: 100.0%; height: 100.0%;">     <div style="font-family: Arial; min-width: 180px;">         <h4 style="margin: 0 0 5px; color: #2ecc71;">Ward_34 (Bhayandar East)</h4>         <hr style="margin: 3px 0;">         <b>Est. 2026 Pop:</b> 14,317<br>         <b>Households:</b> 2,303<br>         <b>Hospitals:</b> 2<br>         <b>Blinkit Demand Score:</b> 5.79<br>         <b>Emergency Risk Index:</b> 3.4     </div>     </div>`)[0];
+                popup_7a094ee683690240d5e3fa48dc994f75.setContent(html_7c83abe96fde509522f8ff294883dcd0);
+            
+        
+
+        circle_marker_27b19085ed95a0e5d4cb302961a7451a.bindPopup(popup_7a094ee683690240d5e3fa48dc994f75)
+        ;
+
+        
+    
+    
+            var circle_marker_eae61676324932e8ebaab088364f7484 = L.circleMarker(
+                [19.3085, 72.8601],
+                {"bubblingMouseEvents": true, "color": "#3498db", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "#3498db", "fillOpacity": 0.75, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 6, "stroke": true, "weight": 3}
+            ).addTo(feature_group_f91579aa15d903cc981015ea2f88fcca);
+        
+    
+        var popup_665d71de01e7c9cb9f4710a00f68af5a = L.popup({
+  "maxWidth": 300,
+});
+
+        
+            
+                var html_d030f329f60207ead06b23b49d5f47a2 = $(`<div id="html_d030f329f60207ead06b23b49d5f47a2" style="width: 100.0%; height: 100.0%;">     <div style="font-family: Arial; min-width: 180px;">         <h4 style="margin: 0 0 5px; color: #3498db;">Ward_35 (Bhayandar East)</h4>         <hr style="margin: 3px 0;">         <b>Est. 2026 Pop:</b> 14,747<br>         <b>Households:</b> 2,160<br>         <b>Hospitals:</b> 2<br>         <b>Blinkit Demand Score:</b> 4.68<br>         <b>Emergency Risk Index:</b> 2.48     </div>     </div>`)[0];
+                popup_665d71de01e7c9cb9f4710a00f68af5a.setContent(html_d030f329f60207ead06b23b49d5f47a2);
+            
+        
+
+        circle_marker_eae61676324932e8ebaab088364f7484.bindPopup(popup_665d71de01e7c9cb9f4710a00f68af5a)
+        ;
+
+        
+    
+    
+            var circle_marker_eac527c3d46cba26d5171c002e51e29f = L.circleMarker(
+                [19.2814, 72.8305],
+                {"bubblingMouseEvents": true, "color": "#3498db", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "#3498db", "fillOpacity": 0.75, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 6, "stroke": true, "weight": 3}
+            ).addTo(feature_group_f91579aa15d903cc981015ea2f88fcca);
+        
+    
+        var popup_f48d5ecc163e501e5d8aaa5e7374dca5 = L.popup({
+  "maxWidth": 300,
+});
+
+        
+            
+                var html_563316c53e3b9354ddc16da48a5503b9 = $(`<div id="html_563316c53e3b9354ddc16da48a5503b9" style="width: 100.0%; height: 100.0%;">     <div style="font-family: Arial; min-width: 180px;">         <h4 style="margin: 0 0 5px; color: #3498db;">Ward_36 (Mira Road West / Uttan Coastal)</h4>         <hr style="margin: 3px 0;">         <b>Est. 2026 Pop:</b> 17,969<br>         <b>Households:</b> 2,937<br>         <b>Hospitals:</b> 1<br>         <b>Blinkit Demand Score:</b> 4.59<br>         <b>Emergency Risk Index:</b> 3.14     </div>     </div>`)[0];
+                popup_f48d5ecc163e501e5d8aaa5e7374dca5.setContent(html_563316c53e3b9354ddc16da48a5503b9);
+            
+        
+
+        circle_marker_eac527c3d46cba26d5171c002e51e29f.bindPopup(popup_f48d5ecc163e501e5d8aaa5e7374dca5)
+        ;
+
+        
+    
+    
+            var circle_marker_b67b79729beaab56f072b1bcefca3276 = L.circleMarker(
+                [19.2804, 72.8291],
+                {"bubblingMouseEvents": true, "color": "#3498db", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "#3498db", "fillOpacity": 0.75, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 6, "stroke": true, "weight": 3}
+            ).addTo(feature_group_f91579aa15d903cc981015ea2f88fcca);
+        
+    
+        var popup_2c26fdefa539ad7afa6a98c184ad0b53 = L.popup({
+  "maxWidth": 300,
+});
+
+        
+            
+                var html_d224c606d292856f2f4bf6727d3308d9 = $(`<div id="html_d224c606d292856f2f4bf6727d3308d9" style="width: 100.0%; height: 100.0%;">     <div style="font-family: Arial; min-width: 180px;">         <h4 style="margin: 0 0 5px; color: #3498db;">Ward_37 (Mira Road West / Uttan Coastal)</h4>         <hr style="margin: 3px 0;">         <b>Est. 2026 Pop:</b> 16,071<br>         <b>Households:</b> 2,638<br>         <b>Hospitals:</b> 1<br>         <b>Blinkit Demand Score:</b> 4.12<br>         <b>Emergency Risk Index:</b> 2.68     </div>     </div>`)[0];
+                popup_2c26fdefa539ad7afa6a98c184ad0b53.setContent(html_d224c606d292856f2f4bf6727d3308d9);
+            
+        
+
+        circle_marker_b67b79729beaab56f072b1bcefca3276.bindPopup(popup_2c26fdefa539ad7afa6a98c184ad0b53)
+        ;
+
+        
+    
+    
+            var circle_marker_697d2f301a92953bc93f1da4743b9d39 = L.circleMarker(
+                [19.275, 72.8274],
+                {"bubblingMouseEvents": true, "color": "#3498db", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "#3498db", "fillOpacity": 0.75, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 6, "stroke": true, "weight": 3}
+            ).addTo(feature_group_f91579aa15d903cc981015ea2f88fcca);
+        
+    
+        var popup_ea47ecf1c27347a0b2a9663828903489 = L.popup({
+  "maxWidth": 300,
+});
+
+        
+            
+                var html_593412698a9b0f9733005378528f4a30 = $(`<div id="html_593412698a9b0f9733005378528f4a30" style="width: 100.0%; height: 100.0%;">     <div style="font-family: Arial; min-width: 180px;">         <h4 style="margin: 0 0 5px; color: #3498db;">Ward_38 (Mira Road West / Uttan Coastal)</h4>         <hr style="margin: 3px 0;">         <b>Est. 2026 Pop:</b> 12,194<br>         <b>Households:</b> 1,939<br>         <b>Hospitals:</b> 2<br>         <b>Blinkit Demand Score:</b> 2.97<br>         <b>Emergency Risk Index:</b> 1.27     </div>     </div>`)[0];
+                popup_ea47ecf1c27347a0b2a9663828903489.setContent(html_593412698a9b0f9733005378528f4a30);
+            
+        
+
+        circle_marker_697d2f301a92953bc93f1da4743b9d39.bindPopup(popup_ea47ecf1c27347a0b2a9663828903489)
+        ;
+
+        
+    
+    
+            var circle_marker_0d4df638b3133889b9e485c110d08307 = L.circleMarker(
+                [19.2836, 72.8248],
+                {"bubblingMouseEvents": true, "color": "#3498db", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "#3498db", "fillOpacity": 0.75, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 6, "stroke": true, "weight": 3}
+            ).addTo(feature_group_f91579aa15d903cc981015ea2f88fcca);
+        
+    
+        var popup_a60d2cae1c8385c56dad2c837b01bfb2 = L.popup({
+  "maxWidth": 300,
+});
+
+        
+            
+                var html_33689cc125919ec6afc8ce4706579fe1 = $(`<div id="html_33689cc125919ec6afc8ce4706579fe1" style="width: 100.0%; height: 100.0%;">     <div style="font-family: Arial; min-width: 180px;">         <h4 style="margin: 0 0 5px; color: #3498db;">Ward_39 (Mira Road West / Uttan Coastal)</h4>         <hr style="margin: 3px 0;">         <b>Est. 2026 Pop:</b> 15,298<br>         <b>Households:</b> 2,290<br>         <b>Hospitals:</b> 2<br>         <b>Blinkit Demand Score:</b> 3.66<br>         <b>Emergency Risk Index:</b> 1.62     </div>     </div>`)[0];
+                popup_a60d2cae1c8385c56dad2c837b01bfb2.setContent(html_33689cc125919ec6afc8ce4706579fe1);
+            
+        
+
+        circle_marker_0d4df638b3133889b9e485c110d08307.bindPopup(popup_a60d2cae1c8385c56dad2c837b01bfb2)
+        ;
+
+        
+    
+    
+            var circle_marker_a05df05c53ca84c415960f23ce9cd15f = L.circleMarker(
+                [19.2703, 72.8219],
+                {"bubblingMouseEvents": true, "color": "#2ecc71", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "#2ecc71", "fillOpacity": 0.75, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 6, "stroke": true, "weight": 3}
+            ).addTo(feature_group_f91579aa15d903cc981015ea2f88fcca);
+        
+    
+        var popup_8234c1fa811235b828d7496a45232a05 = L.popup({
+  "maxWidth": 300,
+});
+
+        
+            
+                var html_24cb26d78b9d8b4d735fc268bb184b0d = $(`<div id="html_24cb26d78b9d8b4d735fc268bb184b0d" style="width: 100.0%; height: 100.0%;">     <div style="font-family: Arial; min-width: 180px;">         <h4 style="margin: 0 0 5px; color: #2ecc71;">Ward_40 (Mira Road West / Uttan Coastal)</h4>         <hr style="margin: 3px 0;">         <b>Est. 2026 Pop:</b> 18,460<br>         <b>Households:</b> 2,929<br>         <b>Hospitals:</b> 1<br>         <b>Blinkit Demand Score:</b> 9.5<br>         <b>Emergency Risk Index:</b> 9.24     </div>     </div>`)[0];
+                popup_8234c1fa811235b828d7496a45232a05.setContent(html_24cb26d78b9d8b4d735fc268bb184b0d);
+            
+        
+
+        circle_marker_a05df05c53ca84c415960f23ce9cd15f.bindPopup(popup_8234c1fa811235b828d7496a45232a05)
+        ;
+
+        
+    
+    
+            var circle_marker_6c83086088906893fe1a97478eb10f70 = L.circleMarker(
+                [19.2689, 72.8277],
+                {"bubblingMouseEvents": true, "color": "#3498db", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "#3498db", "fillOpacity": 0.75, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 6, "stroke": true, "weight": 3}
+            ).addTo(feature_group_f91579aa15d903cc981015ea2f88fcca);
+        
+    
+        var popup_51bb3d8ab9104ffa98b0c3ca8767ae8a = L.popup({
+  "maxWidth": 300,
+});
+
+        
+            
+                var html_4b82dd63fc9352c5af934493edf67070 = $(`<div id="html_4b82dd63fc9352c5af934493edf67070" style="width: 100.0%; height: 100.0%;">     <div style="font-family: Arial; min-width: 180px;">         <h4 style="margin: 0 0 5px; color: #3498db;">Ward_41 (Mira Road West / Uttan Coastal)</h4>         <hr style="margin: 3px 0;">         <b>Est. 2026 Pop:</b> 8,542<br>         <b>Households:</b> 1,425<br>         <b>Hospitals:</b> 1<br>         <b>Blinkit Demand Score:</b> 2.82<br>         <b>Emergency Risk Index:</b> 2.24     </div>     </div>`)[0];
+                popup_51bb3d8ab9104ffa98b0c3ca8767ae8a.setContent(html_4b82dd63fc9352c5af934493edf67070);
+            
+        
+
+        circle_marker_6c83086088906893fe1a97478eb10f70.bindPopup(popup_51bb3d8ab9104ffa98b0c3ca8767ae8a)
+        ;
+
+        
+    
+    
+            var circle_marker_6ebd6dd95f4d3c2ce47469568547de18 = L.circleMarker(
+                [19.2732, 72.8229],
+                {"bubblingMouseEvents": true, "color": "#2ecc71", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "#2ecc71", "fillOpacity": 0.75, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 6, "stroke": true, "weight": 3}
+            ).addTo(feature_group_f91579aa15d903cc981015ea2f88fcca);
+        
+    
+        var popup_77c15b7f8c5901c937819041729ff3d4 = L.popup({
+  "maxWidth": 300,
+});
+
+        
+            
+                var html_9a3243867803c3cadbfcee95d96f2836 = $(`<div id="html_9a3243867803c3cadbfcee95d96f2836" style="width: 100.0%; height: 100.0%;">     <div style="font-family: Arial; min-width: 180px;">         <h4 style="margin: 0 0 5px; color: #2ecc71;">Ward_42 (Mira Road West / Uttan Coastal)</h4>         <hr style="margin: 3px 0;">         <b>Est. 2026 Pop:</b> 16,542<br>         <b>Households:</b> 2,486<br>         <b>Hospitals:</b> 1<br>         <b>Blinkit Demand Score:</b> 7.7<br>         <b>Emergency Risk Index:</b> 7.3     </div>     </div>`)[0];
+                popup_77c15b7f8c5901c937819041729ff3d4.setContent(html_9a3243867803c3cadbfcee95d96f2836);
+            
+        
+
+        circle_marker_6ebd6dd95f4d3c2ce47469568547de18.bindPopup(popup_77c15b7f8c5901c937819041729ff3d4)
+        ;
+
+        
+    
+    
+            var circle_marker_0a4c679113d4e34164a8c9d10891c760 = L.circleMarker(
+                [19.2914, 72.8204],
+                {"bubblingMouseEvents": true, "color": "#2ecc71", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "#2ecc71", "fillOpacity": 0.75, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 6, "stroke": true, "weight": 3}
+            ).addTo(feature_group_f91579aa15d903cc981015ea2f88fcca);
+        
+    
+        var popup_b416ef0897569e4994b6287e0999e9ac = L.popup({
+  "maxWidth": 300,
+});
+
+        
+            
+                var html_2beccf0d89f365181453ee12511cdffc = $(`<div id="html_2beccf0d89f365181453ee12511cdffc" style="width: 100.0%; height: 100.0%;">     <div style="font-family: Arial; min-width: 180px;">         <h4 style="margin: 0 0 5px; color: #2ecc71;">Ward_43 (Mira Road West / Uttan Coastal)</h4>         <hr style="margin: 3px 0;">         <b>Est. 2026 Pop:</b> 24,116<br>         <b>Households:</b> 3,645<br>         <b>Hospitals:</b> 2<br>         <b>Blinkit Demand Score:</b> 8.1<br>         <b>Emergency Risk Index:</b> 4.46     </div>     </div>`)[0];
+                popup_b416ef0897569e4994b6287e0999e9ac.setContent(html_2beccf0d89f365181453ee12511cdffc);
+            
+        
+
+        circle_marker_0a4c679113d4e34164a8c9d10891c760.bindPopup(popup_b416ef0897569e4994b6287e0999e9ac)
+        ;
+
+        
+    
+    
+            var circle_marker_2f0191a762fe5c0ce3b3578755d8bbd5 = L.circleMarker(
+                [19.2699, 72.8086],
+                {"bubblingMouseEvents": true, "color": "#3498db", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "#3498db", "fillOpacity": 0.75, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 6, "stroke": true, "weight": 3}
+            ).addTo(feature_group_f91579aa15d903cc981015ea2f88fcca);
+        
+    
+        var popup_2537ab0b8c889c93b064422d12671bd5 = L.popup({
+  "maxWidth": 300,
+});
+
+        
+            
+                var html_44bb8113ea7fe4adbe6aa7d2e99509c6 = $(`<div id="html_44bb8113ea7fe4adbe6aa7d2e99509c6" style="width: 100.0%; height: 100.0%;">     <div style="font-family: Arial; min-width: 180px;">         <h4 style="margin: 0 0 5px; color: #3498db;">Ward_44 (Mira Road West / Uttan Coastal)</h4>         <hr style="margin: 3px 0;">         <b>Est. 2026 Pop:</b> 22,082<br>         <b>Households:</b> 3,473<br>         <b>Hospitals:</b> 2<br>         <b>Blinkit Demand Score:</b> 4.93<br>         <b>Emergency Risk Index:</b> 2.03     </div>     </div>`)[0];
+                popup_2537ab0b8c889c93b064422d12671bd5.setContent(html_44bb8113ea7fe4adbe6aa7d2e99509c6);
+            
+        
+
+        circle_marker_2f0191a762fe5c0ce3b3578755d8bbd5.bindPopup(popup_2537ab0b8c889c93b064422d12671bd5)
+        ;
+
+        
+    
+    
+            var circle_marker_81d3d1572e88c5073df1b5500d226251 = L.circleMarker(
+                [19.274, 72.8212],
+                {"bubblingMouseEvents": true, "color": "#3498db", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "#3498db", "fillOpacity": 0.75, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 6, "stroke": true, "weight": 3}
+            ).addTo(feature_group_f91579aa15d903cc981015ea2f88fcca);
+        
+    
+        var popup_be09e803ee95da041d4c70c6f0269075 = L.popup({
+  "maxWidth": 300,
+});
+
+        
+            
+                var html_9e0beb148fb9a820075dfeca2457c915 = $(`<div id="html_9e0beb148fb9a820075dfeca2457c915" style="width: 100.0%; height: 100.0%;">     <div style="font-family: Arial; min-width: 180px;">         <h4 style="margin: 0 0 5px; color: #3498db;">Ward_45 (Mira Road West / Uttan Coastal)</h4>         <hr style="margin: 3px 0;">         <b>Est. 2026 Pop:</b> 12,332<br>         <b>Households:</b> 2,020<br>         <b>Hospitals:</b> 1<br>         <b>Blinkit Demand Score:</b> 3.1<br>         <b>Emergency Risk Index:</b> 2.11     </div>     </div>`)[0];
+                popup_be09e803ee95da041d4c70c6f0269075.setContent(html_9e0beb148fb9a820075dfeca2457c915);
+            
+        
+
+        circle_marker_81d3d1572e88c5073df1b5500d226251.bindPopup(popup_be09e803ee95da041d4c70c6f0269075)
+        ;
+
+        
+    
+    
+            var circle_marker_9508291b4153693ffa6afcf4f84f6c8e = L.circleMarker(
+                [19.2887, 72.8593],
+                {"bubblingMouseEvents": true, "color": "#3498db", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "#3498db", "fillOpacity": 0.75, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 6, "stroke": true, "weight": 3}
+            ).addTo(feature_group_f91579aa15d903cc981015ea2f88fcca);
+        
+    
+        var popup_9ad5e1a7fd2b7f35987d8310a64b243a = L.popup({
+  "maxWidth": 300,
+});
+
+        
+            
+                var html_a92a9c21275bbad4c18785633003062b = $(`<div id="html_a92a9c21275bbad4c18785633003062b" style="width: 100.0%; height: 100.0%;">     <div style="font-family: Arial; min-width: 180px;">         <h4 style="margin: 0 0 5px; color: #3498db;">Ward_46 (Mira Road East (Station & Central))</h4>         <hr style="margin: 3px 0;">         <b>Est. 2026 Pop:</b> 21,404<br>         <b>Households:</b> 3,138<br>         <b>Hospitals:</b> 1<br>         <b>Blinkit Demand Score:</b> 5.59<br>         <b>Emergency Risk Index:</b> 4.08     </div>     </div>`)[0];
+                popup_9ad5e1a7fd2b7f35987d8310a64b243a.setContent(html_a92a9c21275bbad4c18785633003062b);
+            
+        
+
+        circle_marker_9508291b4153693ffa6afcf4f84f6c8e.bindPopup(popup_9ad5e1a7fd2b7f35987d8310a64b243a)
+        ;
+
+        
+    
+    
+            var circle_marker_60c44e7e6080f9e75d294ac253706839 = L.circleMarker(
+                [19.2738, 72.8471],
+                {"bubblingMouseEvents": true, "color": "#2ecc71", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "#2ecc71", "fillOpacity": 0.75, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 6, "stroke": true, "weight": 3}
+            ).addTo(feature_group_f91579aa15d903cc981015ea2f88fcca);
+        
+    
+        var popup_ef87dc426831cab5218ad910ee0ff23b = L.popup({
+  "maxWidth": 300,
+});
+
+        
+            
+                var html_16057e5cc38b7ac945563e0fa47af06f = $(`<div id="html_16057e5cc38b7ac945563e0fa47af06f" style="width: 100.0%; height: 100.0%;">     <div style="font-family: Arial; min-width: 180px;">         <h4 style="margin: 0 0 5px; color: #2ecc71;">Ward_47 (Mira Road East (Station & Central))</h4>         <hr style="margin: 3px 0;">         <b>Est. 2026 Pop:</b> 12,486<br>         <b>Households:</b> 2,088<br>         <b>Hospitals:</b> 2<br>         <b>Blinkit Demand Score:</b> 6.45<br>         <b>Emergency Risk Index:</b> 4.1     </div>     </div>`)[0];
+                popup_ef87dc426831cab5218ad910ee0ff23b.setContent(html_16057e5cc38b7ac945563e0fa47af06f);
+            
+        
+
+        circle_marker_60c44e7e6080f9e75d294ac253706839.bindPopup(popup_ef87dc426831cab5218ad910ee0ff23b)
+        ;
+
+        
+    
+    
+            var circle_marker_b99a59b85474f0e783037b2e48f21dbb = L.circleMarker(
+                [19.2862, 72.8471],
+                {"bubblingMouseEvents": true, "color": "#3498db", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "#3498db", "fillOpacity": 0.75, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 6, "stroke": true, "weight": 3}
+            ).addTo(feature_group_f91579aa15d903cc981015ea2f88fcca);
+        
+    
+        var popup_91f5c4d3563df38ac80a3f4aea7ad93e = L.popup({
+  "maxWidth": 300,
+});
+
+        
+            
+                var html_6b1ea55e33147058f1f34ca931f7b28c = $(`<div id="html_6b1ea55e33147058f1f34ca931f7b28c" style="width: 100.0%; height: 100.0%;">     <div style="font-family: Arial; min-width: 180px;">         <h4 style="margin: 0 0 5px; color: #3498db;">Ward_49 (Mira Road East (Station & Central))</h4>         <hr style="margin: 3px 0;">         <b>Est. 2026 Pop:</b> 14,268<br>         <b>Households:</b> 2,189<br>         <b>Hospitals:</b> 1<br>         <b>Blinkit Demand Score:</b> 4.53<br>         <b>Emergency Risk Index:</b> 3.65     </div>     </div>`)[0];
+                popup_91f5c4d3563df38ac80a3f4aea7ad93e.setContent(html_6b1ea55e33147058f1f34ca931f7b28c);
+            
+        
+
+        circle_marker_b99a59b85474f0e783037b2e48f21dbb.bindPopup(popup_91f5c4d3563df38ac80a3f4aea7ad93e)
+        ;
+
+        
+    
+    
+            var circle_marker_a6036047f504b60980312ccf52dd8ea9 = L.circleMarker(
+                [19.2868, 72.8499],
+                {"bubblingMouseEvents": true, "color": "#3498db", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "#3498db", "fillOpacity": 0.75, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 6, "stroke": true, "weight": 3}
+            ).addTo(feature_group_f91579aa15d903cc981015ea2f88fcca);
+        
+    
+        var popup_b9a631f24753fdcee0014cba32bd4d50 = L.popup({
+  "maxWidth": 300,
+});
+
+        
+            
+                var html_f9409fdec84b6e185d8455da13ec9f4e = $(`<div id="html_f9409fdec84b6e185d8455da13ec9f4e" style="width: 100.0%; height: 100.0%;">     <div style="font-family: Arial; min-width: 180px;">         <h4 style="margin: 0 0 5px; color: #3498db;">Ward_50 (Mira Road East (Station & Central))</h4>         <hr style="margin: 3px 0;">         <b>Est. 2026 Pop:</b> 10,558<br>         <b>Households:</b> 1,568<br>         <b>Hospitals:</b> 1<br>         <b>Blinkit Demand Score:</b> 5.06<br>         <b>Emergency Risk Index:</b> 4.85     </div>     </div>`)[0];
+                popup_b9a631f24753fdcee0014cba32bd4d50.setContent(html_f9409fdec84b6e185d8455da13ec9f4e);
+            
+        
+
+        circle_marker_a6036047f504b60980312ccf52dd8ea9.bindPopup(popup_b9a631f24753fdcee0014cba32bd4d50)
+        ;
+
+        
+    
+    
+            var circle_marker_4f16c141a609fe9b013d862ad8e1451e = L.circleMarker(
+                [19.2877, 72.8611],
+                {"bubblingMouseEvents": true, "color": "#3498db", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "#3498db", "fillOpacity": 0.75, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 6, "stroke": true, "weight": 3}
+            ).addTo(feature_group_f91579aa15d903cc981015ea2f88fcca);
+        
+    
+        var popup_e8a7fc240f59b802230e3c0bf59f0201 = L.popup({
+  "maxWidth": 300,
+});
+
+        
+            
+                var html_431b1acdffbaa65a6143a080c37ff9d9 = $(`<div id="html_431b1acdffbaa65a6143a080c37ff9d9" style="width: 100.0%; height: 100.0%;">     <div style="font-family: Arial; min-width: 180px;">         <h4 style="margin: 0 0 5px; color: #3498db;">Ward_54 (Mira Road East (Station & Central))</h4>         <hr style="margin: 3px 0;">         <b>Est. 2026 Pop:</b> 12,889<br>         <b>Households:</b> 2,123<br>         <b>Hospitals:</b> 2<br>         <b>Blinkit Demand Score:</b> 3.02<br>         <b>Emergency Risk Index:</b> 1.27     </div>     </div>`)[0];
+                popup_e8a7fc240f59b802230e3c0bf59f0201.setContent(html_431b1acdffbaa65a6143a080c37ff9d9);
+            
+        
+
+        circle_marker_4f16c141a609fe9b013d862ad8e1451e.bindPopup(popup_e8a7fc240f59b802230e3c0bf59f0201)
+        ;
+
+        
+    
+    
+            var circle_marker_f38a1ee8d6f520364fa76525b6b5943c = L.circleMarker(
+                [19.2792, 72.8683],
+                {"bubblingMouseEvents": true, "color": "#3498db", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "#3498db", "fillOpacity": 0.75, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 6, "stroke": true, "weight": 3}
+            ).addTo(feature_group_f91579aa15d903cc981015ea2f88fcca);
+        
+    
+        var popup_c2fff68f77edbd57e1da3c01f7d37e4c = L.popup({
+  "maxWidth": 300,
+});
+
+        
+            
+                var html_e2cffcde0a0e89ba938c9be8b9955ac4 = $(`<div id="html_e2cffcde0a0e89ba938c9be8b9955ac4" style="width: 100.0%; height: 100.0%;">     <div style="font-family: Arial; min-width: 180px;">         <h4 style="margin: 0 0 5px; color: #3498db;">Ward_56 (Mira Road East (Station & Central))</h4>         <hr style="margin: 3px 0;">         <b>Est. 2026 Pop:</b> 18,478<br>         <b>Households:</b> 2,774<br>         <b>Hospitals:</b> 1<br>         <b>Blinkit Demand Score:</b> 4.27<br>         <b>Emergency Risk Index:</b> 2.78     </div>     </div>`)[0];
+                popup_c2fff68f77edbd57e1da3c01f7d37e4c.setContent(html_e2cffcde0a0e89ba938c9be8b9955ac4);
+            
+        
+
+        circle_marker_f38a1ee8d6f520364fa76525b6b5943c.bindPopup(popup_c2fff68f77edbd57e1da3c01f7d37e4c)
+        ;
+
+        
+    
+    
+            var circle_marker_58e935ee08701ea51d7eba0c5935ecf9 = L.circleMarker(
+                [19.2831, 72.8658],
+                {"bubblingMouseEvents": true, "color": "#2ecc71", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "#2ecc71", "fillOpacity": 0.75, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 6, "stroke": true, "weight": 3}
+            ).addTo(feature_group_f91579aa15d903cc981015ea2f88fcca);
+        
+    
+        var popup_5685c0c75d5fd42436af7bd1b2a04dfd = L.popup({
+  "maxWidth": 300,
+});
+
+        
+            
+                var html_6e40b0a586cd6ac557941cb523477392 = $(`<div id="html_6e40b0a586cd6ac557941cb523477392" style="width: 100.0%; height: 100.0%;">     <div style="font-family: Arial; min-width: 180px;">         <h4 style="margin: 0 0 5px; color: #2ecc71;">Ward_57 (Mira Road East (Station & Central))</h4>         <hr style="margin: 3px 0;">         <b>Est. 2026 Pop:</b> 18,287<br>         <b>Households:</b> 2,700<br>         <b>Hospitals:</b> 2<br>         <b>Blinkit Demand Score:</b> 6.01<br>         <b>Emergency Risk Index:</b> 3.38     </div>     </div>`)[0];
+                popup_5685c0c75d5fd42436af7bd1b2a04dfd.setContent(html_6e40b0a586cd6ac557941cb523477392);
+            
+        
+
+        circle_marker_58e935ee08701ea51d7eba0c5935ecf9.bindPopup(popup_5685c0c75d5fd42436af7bd1b2a04dfd)
+        ;
+
+        
+    
+    
+            var circle_marker_064fc1dbf09d712fb2d6faa616d16001 = L.circleMarker(
+                [19.2789, 72.8621],
+                {"bubblingMouseEvents": true, "color": "#3498db", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "#3498db", "fillOpacity": 0.75, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 6, "stroke": true, "weight": 3}
+            ).addTo(feature_group_f91579aa15d903cc981015ea2f88fcca);
+        
+    
+        var popup_b0ae47ae61ae696c73154a0e3ca348d6 = L.popup({
+  "maxWidth": 300,
+});
+
+        
+            
+                var html_bd088da67311ed6e125807ef7db28e07 = $(`<div id="html_bd088da67311ed6e125807ef7db28e07" style="width: 100.0%; height: 100.0%;">     <div style="font-family: Arial; min-width: 180px;">         <h4 style="margin: 0 0 5px; color: #3498db;">Ward_59 (Mira Road East (Station & Central))</h4>         <hr style="margin: 3px 0;">         <b>Est. 2026 Pop:</b> 22,339<br>         <b>Households:</b> 3,587<br>         <b>Hospitals:</b> 2<br>         <b>Blinkit Demand Score:</b> 5.54<br>         <b>Emergency Risk Index:</b> 2.46     </div>     </div>`)[0];
+                popup_b0ae47ae61ae696c73154a0e3ca348d6.setContent(html_bd088da67311ed6e125807ef7db28e07);
+            
+        
+
+        circle_marker_064fc1dbf09d712fb2d6faa616d16001.bindPopup(popup_b0ae47ae61ae696c73154a0e3ca348d6)
+        ;
+
+        
+    
+    
+            var circle_marker_e592325dd5d24caf08cb8e4c22c22a11 = L.circleMarker(
+                [19.2829, 72.8474],
+                {"bubblingMouseEvents": true, "color": "#3498db", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "#3498db", "fillOpacity": 0.75, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 6, "stroke": true, "weight": 3}
+            ).addTo(feature_group_f91579aa15d903cc981015ea2f88fcca);
+        
+    
+        var popup_7e83f813190f2ae33ec3c7ca9666a29f = L.popup({
+  "maxWidth": 300,
+});
+
+        
+            
+                var html_bd9584452fc9237c81ac3459b4c3c34a = $(`<div id="html_bd9584452fc9237c81ac3459b4c3c34a" style="width: 100.0%; height: 100.0%;">     <div style="font-family: Arial; min-width: 180px;">         <h4 style="margin: 0 0 5px; color: #3498db;">Ward_60 (Mira Road East (Station & Central))</h4>         <hr style="margin: 3px 0;">         <b>Est. 2026 Pop:</b> 19,182<br>         <b>Households:</b> 3,172<br>         <b>Hospitals:</b> 1<br>         <b>Blinkit Demand Score:</b> 5.47<br>         <b>Emergency Risk Index:</b> 3.92     </div>     </div>`)[0];
+                popup_7e83f813190f2ae33ec3c7ca9666a29f.setContent(html_bd9584452fc9237c81ac3459b4c3c34a);
+            
+        
+
+        circle_marker_e592325dd5d24caf08cb8e4c22c22a11.bindPopup(popup_7e83f813190f2ae33ec3c7ca9666a29f)
+        ;
+
+        
+    
+    
+            var circle_marker_d3905c6f0a7ea1c55e388332ade6e979 = L.circleMarker(
+                [19.2783, 72.8778],
+                {"bubblingMouseEvents": true, "color": "#2ecc71", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "#2ecc71", "fillOpacity": 0.75, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 6, "stroke": true, "weight": 3}
+            ).addTo(feature_group_f91579aa15d903cc981015ea2f88fcca);
+        
+    
+        var popup_98558c1a3652e17fedc9452ec2782cb4 = L.popup({
+  "maxWidth": 300,
+});
+
+        
+            
+                var html_d95fc45b9f286ae7405ab6554e7746cd = $(`<div id="html_d95fc45b9f286ae7405ab6554e7746cd" style="width: 100.0%; height: 100.0%;">     <div style="font-family: Arial; min-width: 180px;">         <h4 style="margin: 0 0 5px; color: #2ecc71;">Ward_61 (Mira Road East (Kanakia & Peripheral))</h4>         <hr style="margin: 3px 0;">         <b>Est. 2026 Pop:</b> 14,058<br>         <b>Households:</b> 2,307<br>         <b>Hospitals:</b> 1<br>         <b>Blinkit Demand Score:</b> 6.37<br>         <b>Emergency Risk Index:</b> 5.97     </div>     </div>`)[0];
+                popup_98558c1a3652e17fedc9452ec2782cb4.setContent(html_d95fc45b9f286ae7405ab6554e7746cd);
+            
+        
+
+        circle_marker_d3905c6f0a7ea1c55e388332ade6e979.bindPopup(popup_98558c1a3652e17fedc9452ec2782cb4)
+        ;
+
+        
+    
+    
+            var circle_marker_f114eebfedb622b0e901c06e60fc3c52 = L.circleMarker(
+                [19.2837, 72.8811],
+                {"bubblingMouseEvents": true, "color": "#3498db", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "#3498db", "fillOpacity": 0.75, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 6, "stroke": true, "weight": 3}
+            ).addTo(feature_group_f91579aa15d903cc981015ea2f88fcca);
+        
+    
+        var popup_eb4a3d885050b5e0f92f15a262b1b955 = L.popup({
+  "maxWidth": 300,
+});
+
+        
+            
+                var html_c2d57931310930b259b74a8fd92db4a0 = $(`<div id="html_c2d57931310930b259b74a8fd92db4a0" style="width: 100.0%; height: 100.0%;">     <div style="font-family: Arial; min-width: 180px;">         <h4 style="margin: 0 0 5px; color: #3498db;">Ward_63 (Mira Road East (Kanakia & Peripheral))</h4>         <hr style="margin: 3px 0;">         <b>Est. 2026 Pop:</b> 9,811<br>         <b>Households:</b> 1,440<br>         <b>Hospitals:</b> 1<br>         <b>Blinkit Demand Score:</b> 3.13<br>         <b>Emergency Risk Index:</b> 2.51     </div>     </div>`)[0];
+                popup_eb4a3d885050b5e0f92f15a262b1b955.setContent(html_c2d57931310930b259b74a8fd92db4a0);
+            
+        
+
+        circle_marker_f114eebfedb622b0e901c06e60fc3c52.bindPopup(popup_eb4a3d885050b5e0f92f15a262b1b955)
+        ;
+
+        
+    
+    
+            var circle_marker_8042ca1ffc6b6f6d2b8b5dd1b38eb11a = L.circleMarker(
+                [19.2833, 72.864],
+                {"bubblingMouseEvents": true, "color": "#3498db", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "#3498db", "fillOpacity": 0.75, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 6, "stroke": true, "weight": 3}
+            ).addTo(feature_group_f91579aa15d903cc981015ea2f88fcca);
+        
+    
+        var popup_8a19d878f5f34e985d75e6e34ca1b517 = L.popup({
+  "maxWidth": 300,
+});
+
+        
+            
+                var html_8e7059e4eb871d42d88887eb0ea43803 = $(`<div id="html_8e7059e4eb871d42d88887eb0ea43803" style="width: 100.0%; height: 100.0%;">     <div style="font-family: Arial; min-width: 180px;">         <h4 style="margin: 0 0 5px; color: #3498db;">Ward_67 (Mira Road East (Kanakia & Peripheral))</h4>         <hr style="margin: 3px 0;">         <b>Est. 2026 Pop:</b> 13,929<br>         <b>Households:</b> 2,331<br>         <b>Hospitals:</b> 1<br>         <b>Blinkit Demand Score:</b> 3.36<br>         <b>Emergency Risk Index:</b> 2.04     </div>     </div>`)[0];
+                popup_8a19d878f5f34e985d75e6e34ca1b517.setContent(html_8e7059e4eb871d42d88887eb0ea43803);
+            
+        
+
+        circle_marker_8042ca1ffc6b6f6d2b8b5dd1b38eb11a.bindPopup(popup_8a19d878f5f34e985d75e6e34ca1b517)
+        ;
+
+        
+    
+    
+            var circle_marker_6d30ce740d2ea1c66c8868e6101f12a3 = L.circleMarker(
+                [19.274, 72.8846],
+                {"bubblingMouseEvents": true, "color": "#2ecc71", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "#2ecc71", "fillOpacity": 0.75, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 6, "stroke": true, "weight": 3}
+            ).addTo(feature_group_f91579aa15d903cc981015ea2f88fcca);
+        
+    
+        var popup_1dbf35c8b72b081fcae8025ba2517f10 = L.popup({
+  "maxWidth": 300,
+});
+
+        
+            
+                var html_0e66af3347b9321525833d5a62c174bb = $(`<div id="html_0e66af3347b9321525833d5a62c174bb" style="width: 100.0%; height: 100.0%;">     <div style="font-family: Arial; min-width: 180px;">         <h4 style="margin: 0 0 5px; color: #2ecc71;">Ward_69 (Mira Road East (Kanakia & Peripheral))</h4>         <hr style="margin: 3px 0;">         <b>Est. 2026 Pop:</b> 20,619<br>         <b>Households:</b> 3,159<br>         <b>Hospitals:</b> 1<br>         <b>Blinkit Demand Score:</b> 10.35<br>         <b>Emergency Risk Index:</b> 10.02     </div>     </div>`)[0];
+                popup_1dbf35c8b72b081fcae8025ba2517f10.setContent(html_0e66af3347b9321525833d5a62c174bb);
+            
+        
+
+        circle_marker_6d30ce740d2ea1c66c8868e6101f12a3.bindPopup(popup_1dbf35c8b72b081fcae8025ba2517f10)
+        ;
+
+        
+    
+    
+            var circle_marker_1f6c36b6a1e5d54647afd7e9951c7da1 = L.circleMarker(
+                [19.2619, 72.8864],
+                {"bubblingMouseEvents": true, "color": "#3498db", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "#3498db", "fillOpacity": 0.75, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 6, "stroke": true, "weight": 3}
+            ).addTo(feature_group_f91579aa15d903cc981015ea2f88fcca);
+        
+    
+        var popup_639349f928bbc514388a69d6448cad62 = L.popup({
+  "maxWidth": 300,
+});
+
+        
+            
+                var html_7b360606e223e48820a56bfbfa671a47 = $(`<div id="html_7b360606e223e48820a56bfbfa671a47" style="width: 100.0%; height: 100.0%;">     <div style="font-family: Arial; min-width: 180px;">         <h4 style="margin: 0 0 5px; color: #3498db;">Ward_71 (Mira Road East (Kanakia & Peripheral))</h4>         <hr style="margin: 3px 0;">         <b>Est. 2026 Pop:</b> 14,621<br>         <b>Households:</b> 2,253<br>         <b>Hospitals:</b> 1<br>         <b>Blinkit Demand Score:</b> 3.23<br>         <b>Emergency Risk Index:</b> 1.98     </div>     </div>`)[0];
+                popup_639349f928bbc514388a69d6448cad62.setContent(html_7b360606e223e48820a56bfbfa671a47);
+            
+        
+
+        circle_marker_1f6c36b6a1e5d54647afd7e9951c7da1.bindPopup(popup_639349f928bbc514388a69d6448cad62)
+        ;
+
+        
+    
+    
+            var circle_marker_04af36f418ee4f364e12f5fbec548e0c = L.circleMarker(
+                [19.2795, 72.8794],
+                {"bubblingMouseEvents": true, "color": "#3498db", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "#3498db", "fillOpacity": 0.75, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 6, "stroke": true, "weight": 3}
+            ).addTo(feature_group_f91579aa15d903cc981015ea2f88fcca);
+        
+    
+        var popup_9c31b9fc88935fd881c3f5e603ffc2c2 = L.popup({
+  "maxWidth": 300,
+});
+
+        
+            
+                var html_924e9b10b181218dd04660e80085d8be = $(`<div id="html_924e9b10b181218dd04660e80085d8be" style="width: 100.0%; height: 100.0%;">     <div style="font-family: Arial; min-width: 180px;">         <h4 style="margin: 0 0 5px; color: #3498db;">Ward_72 (Mira Road East (Kanakia & Peripheral))</h4>         <hr style="margin: 3px 0;">         <b>Est. 2026 Pop:</b> 10,158<br>         <b>Households:</b> 1,627<br>         <b>Hospitals:</b> 2<br>         <b>Blinkit Demand Score:</b> 4.18<br>         <b>Emergency Risk Index:</b> 2.5     </div>     </div>`)[0];
+                popup_9c31b9fc88935fd881c3f5e603ffc2c2.setContent(html_924e9b10b181218dd04660e80085d8be);
+            
+        
+
+        circle_marker_04af36f418ee4f364e12f5fbec548e0c.bindPopup(popup_9c31b9fc88935fd881c3f5e603ffc2c2)
+        ;
+
+        
+    
+    
+            var circle_marker_37884087e7d1654fd9efe40d461c5d26 = L.circleMarker(
+                [19.2668, 72.8711],
+                {"bubblingMouseEvents": true, "color": "#2ecc71", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "#2ecc71", "fillOpacity": 0.75, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 6, "stroke": true, "weight": 3}
+            ).addTo(feature_group_f91579aa15d903cc981015ea2f88fcca);
+        
+    
+        var popup_18d087c4bf9bccbad88f586517316ebe = L.popup({
+  "maxWidth": 300,
+});
+
+        
+            
+                var html_792aec16c3711130ed9fff40d81d8ddd = $(`<div id="html_792aec16c3711130ed9fff40d81d8ddd" style="width: 100.0%; height: 100.0%;">     <div style="font-family: Arial; min-width: 180px;">         <h4 style="margin: 0 0 5px; color: #2ecc71;">Ward_73 (Kashimira & Highway Corridor)</h4>         <hr style="margin: 3px 0;">         <b>Est. 2026 Pop:</b> 17,975<br>         <b>Households:</b> 2,643<br>         <b>Hospitals:</b> 1<br>         <b>Blinkit Demand Score:</b> 9.4<br>         <b>Emergency Risk Index:</b> 9.27     </div>     </div>`)[0];
+                popup_18d087c4bf9bccbad88f586517316ebe.setContent(html_792aec16c3711130ed9fff40d81d8ddd);
+            
+        
+
+        circle_marker_37884087e7d1654fd9efe40d461c5d26.bindPopup(popup_18d087c4bf9bccbad88f586517316ebe)
+        ;
+
+        
+    
+    
+            var circle_marker_cfecee6c0dc8ac39ca476dd7f6ba0566 = L.circleMarker(
+                [19.2474, 72.8908],
+                {"bubblingMouseEvents": true, "color": "#3498db", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "#3498db", "fillOpacity": 0.75, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 6, "stroke": true, "weight": 3}
+            ).addTo(feature_group_f91579aa15d903cc981015ea2f88fcca);
+        
+    
+        var popup_45df7de6132ce7ce4bddc45156c9af61 = L.popup({
+  "maxWidth": 300,
+});
+
+        
+            
+                var html_bb76ec21a93ce60c3fdbaeb7fc491705 = $(`<div id="html_bb76ec21a93ce60c3fdbaeb7fc491705" style="width: 100.0%; height: 100.0%;">     <div style="font-family: Arial; min-width: 180px;">         <h4 style="margin: 0 0 5px; color: #3498db;">Ward_75 (Kashimira & Highway Corridor)</h4>         <hr style="margin: 3px 0;">         <b>Est. 2026 Pop:</b> 14,782<br>         <b>Households:</b> 2,380<br>         <b>Hospitals:</b> 2<br>         <b>Blinkit Demand Score:</b> 3.56<br>         <b>Emergency Risk Index:</b> 1.54     </div>     </div>`)[0];
+                popup_45df7de6132ce7ce4bddc45156c9af61.setContent(html_bb76ec21a93ce60c3fdbaeb7fc491705);
+            
+        
+
+        circle_marker_cfecee6c0dc8ac39ca476dd7f6ba0566.bindPopup(popup_45df7de6132ce7ce4bddc45156c9af61)
+        ;
+
+        
+    
+    
+            var circle_marker_f46e67f92d4455b3f491b80b26793fcf = L.circleMarker(
+                [19.2645, 72.8927],
+                {"bubblingMouseEvents": true, "color": "#3498db", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "#3498db", "fillOpacity": 0.75, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 6, "stroke": true, "weight": 3}
+            ).addTo(feature_group_f91579aa15d903cc981015ea2f88fcca);
+        
+    
+        var popup_69c2833e630240fef2c198acee0eebb0 = L.popup({
+  "maxWidth": 300,
+});
+
+        
+            
+                var html_57b513c53eceef7e62689548c122060b = $(`<div id="html_57b513c53eceef7e62689548c122060b" style="width: 100.0%; height: 100.0%;">     <div style="font-family: Arial; min-width: 180px;">         <h4 style="margin: 0 0 5px; color: #3498db;">Ward_76 (Kashimira & Highway Corridor)</h4>         <hr style="margin: 3px 0;">         <b>Est. 2026 Pop:</b> 19,824<br>         <b>Households:</b> 3,067<br>         <b>Hospitals:</b> 1<br>         <b>Blinkit Demand Score:</b> 4.78<br>         <b>Emergency Risk Index:</b> 3.01     </div>     </div>`)[0];
+                popup_69c2833e630240fef2c198acee0eebb0.setContent(html_57b513c53eceef7e62689548c122060b);
+            
+        
+
+        circle_marker_f46e67f92d4455b3f491b80b26793fcf.bindPopup(popup_69c2833e630240fef2c198acee0eebb0)
+        ;
+
+        
+    
+    
+            var circle_marker_9cc68d397c6c380f18c3172813ed677a = L.circleMarker(
+                [19.2621, 72.8825],
+                {"bubblingMouseEvents": true, "color": "#3498db", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "#3498db", "fillOpacity": 0.75, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 6, "stroke": true, "weight": 3}
+            ).addTo(feature_group_f91579aa15d903cc981015ea2f88fcca);
+        
+    
+        var popup_9a2153cb54431646c7c22e69980cf96b = L.popup({
+  "maxWidth": 300,
+});
+
+        
+            
+                var html_68d263f18cff7ac2c1bccec87bba948f = $(`<div id="html_68d263f18cff7ac2c1bccec87bba948f" style="width: 100.0%; height: 100.0%;">     <div style="font-family: Arial; min-width: 180px;">         <h4 style="margin: 0 0 5px; color: #3498db;">Ward_78 (Kashimira & Highway Corridor)</h4>         <hr style="margin: 3px 0;">         <b>Est. 2026 Pop:</b> 14,680<br>         <b>Households:</b> 2,419<br>         <b>Hospitals:</b> 1<br>         <b>Blinkit Demand Score:</b> 3.62<br>         <b>Emergency Risk Index:</b> 2.38     </div>     </div>`)[0];
+                popup_9a2153cb54431646c7c22e69980cf96b.setContent(html_68d263f18cff7ac2c1bccec87bba948f);
+            
+        
+
+        circle_marker_9cc68d397c6c380f18c3172813ed677a.bindPopup(popup_9a2153cb54431646c7c22e69980cf96b)
+        ;
+
+        
+    
+    
+            var circle_marker_c25d33232b762eb5b1f6681a230d3cfa = L.circleMarker(
+                [19.2557, 72.8732],
+                {"bubblingMouseEvents": true, "color": "#2ecc71", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "#2ecc71", "fillOpacity": 0.75, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 6, "stroke": true, "weight": 3}
+            ).addTo(feature_group_f91579aa15d903cc981015ea2f88fcca);
+        
+    
+        var popup_44245ba515d57efde895bc3582327cd2 = L.popup({
+  "maxWidth": 300,
+});
+
+        
+            
+                var html_a6f2c4081ea8b7493a640b8230ecc7d5 = $(`<div id="html_a6f2c4081ea8b7493a640b8230ecc7d5" style="width: 100.0%; height: 100.0%;">     <div style="font-family: Arial; min-width: 180px;">         <h4 style="margin: 0 0 5px; color: #2ecc71;">Ward_79 (Kashimira & Highway Corridor)</h4>         <hr style="margin: 3px 0;">         <b>Est. 2026 Pop:</b> 15,843<br>         <b>Households:</b> 2,347<br>         <b>Hospitals:</b> 2<br>         <b>Blinkit Demand Score:</b> 8.32<br>         <b>Emergency Risk Index:</b> 5.45     </div>     </div>`)[0];
+                popup_44245ba515d57efde895bc3582327cd2.setContent(html_a6f2c4081ea8b7493a640b8230ecc7d5);
+            
+        
+
+        circle_marker_c25d33232b762eb5b1f6681a230d3cfa.bindPopup(popup_44245ba515d57efde895bc3582327cd2)
+        ;
+
+        
+    
+    
+            feature_group_f91579aa15d903cc981015ea2f88fcca.addTo(map_8f59965a00d850a0686bc2af797e1c31);
+        
+    
+            var feature_group_d62d9b8c2635e8ffe2d38bb4f5d323a8 = L.featureGroup(
+                {
+}
+            );
+        
+    
+            var circle_marker_88451f2e3d047f70f3064941db01819f = L.circleMarker(
+                [19.2846, 72.8608],
+                {"bubblingMouseEvents": true, "color": "#e74c3c", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "#e74c3c", "fillOpacity": 0.75, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 6, "stroke": true, "weight": 3}
+            ).addTo(feature_group_d62d9b8c2635e8ffe2d38bb4f5d323a8);
+        
+    
+        var popup_3fe4400429b1a19f322a602d4def13df = L.popup({
+  "maxWidth": 300,
+});
+
+        
+            
+                var html_2b67669185a2b20fe5c5459327d74849 = $(`<div id="html_2b67669185a2b20fe5c5459327d74849" style="width: 100.0%; height: 100.0%;">     <div style="font-family: Arial; min-width: 180px;">         <h4 style="margin: 0 0 5px; color: #e74c3c;">Ward_05 (Bhayandar West)</h4>         <hr style="margin: 3px 0;">         <b>Est. 2026 Pop:</b> 13,181<br>         <b>Households:</b> 2,154<br>         <b>Hospitals:</b> 0<br>         <b>Blinkit Demand Score:</b> 3.02<br>         <b>Emergency Risk Index:</b> 3.64     </div>     </div>`)[0];
+                popup_3fe4400429b1a19f322a602d4def13df.setContent(html_2b67669185a2b20fe5c5459327d74849);
+            
+        
+
+        circle_marker_88451f2e3d047f70f3064941db01819f.bindPopup(popup_3fe4400429b1a19f322a602d4def13df)
+        ;
+
+        
+    
+    
+            var circle_marker_722b79d2e4bd48531861c9b4153f7e6b = L.circleMarker(
+                [19.2845, 72.8455],
+                {"bubblingMouseEvents": true, "color": "#e74c3c", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "#e74c3c", "fillOpacity": 0.75, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 6, "stroke": true, "weight": 3}
+            ).addTo(feature_group_d62d9b8c2635e8ffe2d38bb4f5d323a8);
+        
+    
+        var popup_e4973cf7f971aadc9faf91a96350be89 = L.popup({
+  "maxWidth": 300,
+});
+
+        
+            
+                var html_3bfa8b9687c69f11df133321e7654f8a = $(`<div id="html_3bfa8b9687c69f11df133321e7654f8a" style="width: 100.0%; height: 100.0%;">     <div style="font-family: Arial; min-width: 180px;">         <h4 style="margin: 0 0 5px; color: #e74c3c;">Ward_12 (Bhayandar West)</h4>         <hr style="margin: 3px 0;">         <b>Est. 2026 Pop:</b> 18,520<br>         <b>Households:</b> 2,957<br>         <b>Hospitals:</b> 0<br>         <b>Blinkit Demand Score:</b> 6.25<br>         <b>Emergency Risk Index:</b> 10.18     </div>     </div>`)[0];
+                popup_e4973cf7f971aadc9faf91a96350be89.setContent(html_3bfa8b9687c69f11df133321e7654f8a);
+            
+        
+
+        circle_marker_722b79d2e4bd48531861c9b4153f7e6b.bindPopup(popup_e4973cf7f971aadc9faf91a96350be89)
+        ;
+
+        
+    
+    
+            var circle_marker_9f3234fd5beb31c3b1e89fe033e4e034 = L.circleMarker(
+                [19.2885, 72.8483],
+                {"bubblingMouseEvents": true, "color": "#e74c3c", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "#e74c3c", "fillOpacity": 0.75, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 6, "stroke": true, "weight": 3}
+            ).addTo(feature_group_d62d9b8c2635e8ffe2d38bb4f5d323a8);
+        
+    
+        var popup_c2190eafede05166cc3381bda076156a = L.popup({
+  "maxWidth": 300,
+});
+
+        
+            
+                var html_a13aad3f195858d0e6e36ef76a4898d0 = $(`<div id="html_a13aad3f195858d0e6e36ef76a4898d0" style="width: 100.0%; height: 100.0%;">     <div style="font-family: Arial; min-width: 180px;">         <h4 style="margin: 0 0 5px; color: #e74c3c;">Ward_18 (Bhayandar West)</h4>         <hr style="margin: 3px 0;">         <b>Est. 2026 Pop:</b> 16,435<br>         <b>Households:</b> 2,710<br>         <b>Hospitals:</b> 0<br>         <b>Blinkit Demand Score:</b> 3.96<br>         <b>Emergency Risk Index:</b> 5.13     </div>     </div>`)[0];
+                popup_c2190eafede05166cc3381bda076156a.setContent(html_a13aad3f195858d0e6e36ef76a4898d0);
+            
+        
+
+        circle_marker_9f3234fd5beb31c3b1e89fe033e4e034.bindPopup(popup_c2190eafede05166cc3381bda076156a)
+        ;
+
+        
+    
+    
+            var circle_marker_7f3e226de7919e5ef9f278e0570ec6ae = L.circleMarker(
+                [19.2733, 72.8578],
+                {"bubblingMouseEvents": true, "color": "#e74c3c", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "#e74c3c", "fillOpacity": 0.75, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 6, "stroke": true, "weight": 3}
+            ).addTo(feature_group_d62d9b8c2635e8ffe2d38bb4f5d323a8);
+        
+    
+        var popup_3f8facad37ff650525b244576f6edcd5 = L.popup({
+  "maxWidth": 300,
+});
+
+        
+            
+                var html_2310bcb60ed3bc9caa3662abcc4d91d8 = $(`<div id="html_2310bcb60ed3bc9caa3662abcc4d91d8" style="width: 100.0%; height: 100.0%;">     <div style="font-family: Arial; min-width: 180px;">         <h4 style="margin: 0 0 5px; color: #e74c3c;">Ward_48 (Mira Road East (Station & Central))</h4>         <hr style="margin: 3px 0;">         <b>Est. 2026 Pop:</b> 10,438<br>         <b>Households:</b> 1,633<br>         <b>Hospitals:</b> 0<br>         <b>Blinkit Demand Score:</b> 3.09<br>         <b>Emergency Risk Index:</b> 4.67     </div>     </div>`)[0];
+                popup_3f8facad37ff650525b244576f6edcd5.setContent(html_2310bcb60ed3bc9caa3662abcc4d91d8);
+            
+        
+
+        circle_marker_7f3e226de7919e5ef9f278e0570ec6ae.bindPopup(popup_3f8facad37ff650525b244576f6edcd5)
+        ;
+
+        
+    
+    
+            var circle_marker_587a876aff36086f8e4ffe456ab61abd = L.circleMarker(
+                [19.2803, 72.8614],
+                {"bubblingMouseEvents": true, "color": "#e74c3c", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "#e74c3c", "fillOpacity": 0.75, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 6, "stroke": true, "weight": 3}
+            ).addTo(feature_group_d62d9b8c2635e8ffe2d38bb4f5d323a8);
+        
+    
+        var popup_cc83c7ced1392be1abcd5fa3018a7307 = L.popup({
+  "maxWidth": 300,
+});
+
+        
+            
+                var html_32b263e592a3d58e9aaec80d6a9d664b = $(`<div id="html_32b263e592a3d58e9aaec80d6a9d664b" style="width: 100.0%; height: 100.0%;">     <div style="font-family: Arial; min-width: 180px;">         <h4 style="margin: 0 0 5px; color: #e74c3c;">Ward_51 (Mira Road East (Station & Central))</h4>         <hr style="margin: 3px 0;">         <b>Est. 2026 Pop:</b> 15,470<br>         <b>Households:</b> 2,387<br>         <b>Hospitals:</b> 0<br>         <b>Blinkit Demand Score:</b> 4.66<br>         <b>Emergency Risk Index:</b> 7.06     </div>     </div>`)[0];
+                popup_cc83c7ced1392be1abcd5fa3018a7307.setContent(html_32b263e592a3d58e9aaec80d6a9d664b);
+            
+        
+
+        circle_marker_587a876aff36086f8e4ffe456ab61abd.bindPopup(popup_cc83c7ced1392be1abcd5fa3018a7307)
+        ;
+
+        
+    
+    
+            var circle_marker_a939f93e95fe493dd97154aad981e4be = L.circleMarker(
+                [19.2803, 72.8691],
+                {"bubblingMouseEvents": true, "color": "#e74c3c", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "#e74c3c", "fillOpacity": 0.75, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 6, "stroke": true, "weight": 3}
+            ).addTo(feature_group_d62d9b8c2635e8ffe2d38bb4f5d323a8);
+        
+    
+        var popup_d42e650a0c29f6edb9f208d3fbc57719 = L.popup({
+  "maxWidth": 300,
+});
+
+        
+            
+                var html_cc1a94eef15401632a8988ceb72a4960 = $(`<div id="html_cc1a94eef15401632a8988ceb72a4960" style="width: 100.0%; height: 100.0%;">     <div style="font-family: Arial; min-width: 180px;">         <h4 style="margin: 0 0 5px; color: #e74c3c;">Ward_52 (Mira Road East (Station & Central))</h4>         <hr style="margin: 3px 0;">         <b>Est. 2026 Pop:</b> 13,773<br>         <b>Households:</b> 2,023<br>         <b>Hospitals:</b> 0<br>         <b>Blinkit Demand Score:</b> 3.13<br>         <b>Emergency Risk Index:</b> 3.98     </div>     </div>`)[0];
+                popup_d42e650a0c29f6edb9f208d3fbc57719.setContent(html_cc1a94eef15401632a8988ceb72a4960);
+            
+        
+
+        circle_marker_a939f93e95fe493dd97154aad981e4be.bindPopup(popup_d42e650a0c29f6edb9f208d3fbc57719)
+        ;
+
+        
+    
+    
+            var circle_marker_241e07a9883839e811f35e06a7eaaff4 = L.circleMarker(
+                [19.2913, 72.8466],
+                {"bubblingMouseEvents": true, "color": "#e74c3c", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "#e74c3c", "fillOpacity": 0.75, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 6, "stroke": true, "weight": 3}
+            ).addTo(feature_group_d62d9b8c2635e8ffe2d38bb4f5d323a8);
+        
+    
+        var popup_a244bca7fafcff53db27c01316af73be = L.popup({
+  "maxWidth": 300,
+});
+
+        
+            
+                var html_4ecb40d27d057d6f909d55ada1c11ad3 = $(`<div id="html_4ecb40d27d057d6f909d55ada1c11ad3" style="width: 100.0%; height: 100.0%;">     <div style="font-family: Arial; min-width: 180px;">         <h4 style="margin: 0 0 5px; color: #e74c3c;">Ward_53 (Mira Road East (Station & Central))</h4>         <hr style="margin: 3px 0;">         <b>Est. 2026 Pop:</b> 16,257<br>         <b>Households:</b> 2,601<br>         <b>Hospitals:</b> 0<br>         <b>Blinkit Demand Score:</b> 3.84<br>         <b>Emergency Risk Index:</b> 5.07     </div>     </div>`)[0];
+                popup_a244bca7fafcff53db27c01316af73be.setContent(html_4ecb40d27d057d6f909d55ada1c11ad3);
+            
+        
+
+        circle_marker_241e07a9883839e811f35e06a7eaaff4.bindPopup(popup_a244bca7fafcff53db27c01316af73be)
+        ;
+
+        
+    
+    
+            var circle_marker_98a1eab38040b34d26a3e78829b7d20b = L.circleMarker(
+                [19.2904, 72.8698],
+                {"bubblingMouseEvents": true, "color": "#e74c3c", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "#e74c3c", "fillOpacity": 0.75, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 6, "stroke": true, "weight": 3}
+            ).addTo(feature_group_d62d9b8c2635e8ffe2d38bb4f5d323a8);
+        
+    
+        var popup_4e667e072a5983f900309912344a98ae = L.popup({
+  "maxWidth": 300,
+});
+
+        
+            
+                var html_75fec67fda11253a551074e88a1e4cf4 = $(`<div id="html_75fec67fda11253a551074e88a1e4cf4" style="width: 100.0%; height: 100.0%;">     <div style="font-family: Arial; min-width: 180px;">         <h4 style="margin: 0 0 5px; color: #e74c3c;">Ward_55 (Mira Road East (Station & Central))</h4>         <hr style="margin: 3px 0;">         <b>Est. 2026 Pop:</b> 12,862<br>         <b>Households:</b> 1,938<br>         <b>Hospitals:</b> 0<br>         <b>Blinkit Demand Score:</b> 3.9<br>         <b>Emergency Risk Index:</b> 6.25     </div>     </div>`)[0];
+                popup_4e667e072a5983f900309912344a98ae.setContent(html_75fec67fda11253a551074e88a1e4cf4);
+            
+        
+
+        circle_marker_98a1eab38040b34d26a3e78829b7d20b.bindPopup(popup_4e667e072a5983f900309912344a98ae)
+        ;
+
+        
+    
+    
+            var circle_marker_71a1d04a70d4fcc19ddb46e0d71cf3ce = L.circleMarker(
+                [19.2927, 72.8482],
+                {"bubblingMouseEvents": true, "color": "#e74c3c", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "#e74c3c", "fillOpacity": 0.75, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 6, "stroke": true, "weight": 3}
+            ).addTo(feature_group_d62d9b8c2635e8ffe2d38bb4f5d323a8);
+        
+    
+        var popup_d005afcfa65a09aacee3c0a7bcfad7dd = L.popup({
+  "maxWidth": 300,
+});
+
+        
+            
+                var html_fa5fa5e9a18577b6c2a1d901cc9f0cf0 = $(`<div id="html_fa5fa5e9a18577b6c2a1d901cc9f0cf0" style="width: 100.0%; height: 100.0%;">     <div style="font-family: Arial; min-width: 180px;">         <h4 style="margin: 0 0 5px; color: #e74c3c;">Ward_58 (Mira Road East (Station & Central))</h4>         <hr style="margin: 3px 0;">         <b>Est. 2026 Pop:</b> 18,242<br>         <b>Households:</b> 3,053<br>         <b>Hospitals:</b> 0<br>         <b>Blinkit Demand Score:</b> 6.2<br>         <b>Emergency Risk Index:</b> 10.11     </div>     </div>`)[0];
+                popup_d005afcfa65a09aacee3c0a7bcfad7dd.setContent(html_fa5fa5e9a18577b6c2a1d901cc9f0cf0);
+            
+        
+
+        circle_marker_71a1d04a70d4fcc19ddb46e0d71cf3ce.bindPopup(popup_d005afcfa65a09aacee3c0a7bcfad7dd)
+        ;
+
+        
+    
+    
+            var circle_marker_c672e61077ac426662139fbe18488a98 = L.circleMarker(
+                [19.2797, 72.8799],
+                {"bubblingMouseEvents": true, "color": "#e74c3c", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "#e74c3c", "fillOpacity": 0.75, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 6, "stroke": true, "weight": 3}
+            ).addTo(feature_group_d62d9b8c2635e8ffe2d38bb4f5d323a8);
+        
+    
+        var popup_d845981911b126d20b54c770f1e704d0 = L.popup({
+  "maxWidth": 300,
+});
+
+        
+            
+                var html_d59e5e1228642437104a13f370a6b12f = $(`<div id="html_d59e5e1228642437104a13f370a6b12f" style="width: 100.0%; height: 100.0%;">     <div style="font-family: Arial; min-width: 180px;">         <h4 style="margin: 0 0 5px; color: #e74c3c;">Ward_62 (Mira Road East (Kanakia & Peripheral))</h4>         <hr style="margin: 3px 0;">         <b>Est. 2026 Pop:</b> 18,206<br>         <b>Households:</b> 3,019<br>         <b>Hospitals:</b> 0<br>         <b>Blinkit Demand Score:</b> 8.71<br>         <b>Emergency Risk Index:</b> 16.28     </div>     </div>`)[0];
+                popup_d845981911b126d20b54c770f1e704d0.setContent(html_d59e5e1228642437104a13f370a6b12f);
+            
+        
+
+        circle_marker_c672e61077ac426662139fbe18488a98.bindPopup(popup_d845981911b126d20b54c770f1e704d0)
+        ;
+
+        
+    
+    
+            var circle_marker_5e26543225acdf96c8e9a053f145bd0a = L.circleMarker(
+                [19.2702, 72.8848],
+                {"bubblingMouseEvents": true, "color": "#e74c3c", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "#e74c3c", "fillOpacity": 0.75, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 6, "stroke": true, "weight": 3}
+            ).addTo(feature_group_d62d9b8c2635e8ffe2d38bb4f5d323a8);
+        
+    
+        var popup_aa86e93130fc8c5c4f276c651c9fb29a = L.popup({
+  "maxWidth": 300,
+});
+
+        
+            
+                var html_f9c4ab1301ac4973080971c61b951dfe = $(`<div id="html_f9c4ab1301ac4973080971c61b951dfe" style="width: 100.0%; height: 100.0%;">     <div style="font-family: Arial; min-width: 180px;">         <h4 style="margin: 0 0 5px; color: #e74c3c;">Ward_64 (Mira Road East (Kanakia & Peripheral))</h4>         <hr style="margin: 3px 0;">         <b>Est. 2026 Pop:</b> 9,963<br>         <b>Households:</b> 1,541<br>         <b>Hospitals:</b> 0<br>         <b>Blinkit Demand Score:</b> 4.47<br>         <b>Emergency Risk Index:</b> 8.25     </div>     </div>`)[0];
+                popup_aa86e93130fc8c5c4f276c651c9fb29a.setContent(html_f9c4ab1301ac4973080971c61b951dfe);
+            
+        
+
+        circle_marker_5e26543225acdf96c8e9a053f145bd0a.bindPopup(popup_aa86e93130fc8c5c4f276c651c9fb29a)
+        ;
+
+        
+    
+    
+            var circle_marker_f1d6ec58eda8a39be6dc7b031c6822f7 = L.circleMarker(
+                [19.2629, 72.8658],
+                {"bubblingMouseEvents": true, "color": "#e74c3c", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "#e74c3c", "fillOpacity": 0.75, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 6, "stroke": true, "weight": 3}
+            ).addTo(feature_group_d62d9b8c2635e8ffe2d38bb4f5d323a8);
+        
+    
+        var popup_1ee09b282d83d5d47b64c210b401ebaf = L.popup({
+  "maxWidth": 300,
+});
+
+        
+            
+                var html_2c862d0a19fd704bc9e40207119e4a3a = $(`<div id="html_2c862d0a19fd704bc9e40207119e4a3a" style="width: 100.0%; height: 100.0%;">     <div style="font-family: Arial; min-width: 180px;">         <h4 style="margin: 0 0 5px; color: #e74c3c;">Ward_65 (Mira Road East (Kanakia & Peripheral))</h4>         <hr style="margin: 3px 0;">         <b>Est. 2026 Pop:</b> 14,083<br>         <b>Households:</b> 2,341<br>         <b>Hospitals:</b> 0<br>         <b>Blinkit Demand Score:</b> 3.73<br>         <b>Emergency Risk Index:</b> 5.16     </div>     </div>`)[0];
+                popup_1ee09b282d83d5d47b64c210b401ebaf.setContent(html_2c862d0a19fd704bc9e40207119e4a3a);
+            
+        
+
+        circle_marker_f1d6ec58eda8a39be6dc7b031c6822f7.bindPopup(popup_1ee09b282d83d5d47b64c210b401ebaf)
+        ;
+
+        
+    
+    
+            var circle_marker_ec3f7a9d674b821c201d708ebe10a85d = L.circleMarker(
+                [19.2831, 72.872],
+                {"bubblingMouseEvents": true, "color": "#e74c3c", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "#e74c3c", "fillOpacity": 0.75, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 6, "stroke": true, "weight": 3}
+            ).addTo(feature_group_d62d9b8c2635e8ffe2d38bb4f5d323a8);
+        
+    
+        var popup_8e0691601d7e1403881ff378b7a0cdec = L.popup({
+  "maxWidth": 300,
+});
+
+        
+            
+                var html_dd95326b6fd4cceb22c46557bde7014e = $(`<div id="html_dd95326b6fd4cceb22c46557bde7014e" style="width: 100.0%; height: 100.0%;">     <div style="font-family: Arial; min-width: 180px;">         <h4 style="margin: 0 0 5px; color: #e74c3c;">Ward_66 (Mira Road East (Kanakia & Peripheral))</h4>         <hr style="margin: 3px 0;">         <b>Est. 2026 Pop:</b> 15,193<br>         <b>Households:</b> 2,342<br>         <b>Hospitals:</b> 0<br>         <b>Blinkit Demand Score:</b> 5.35<br>         <b>Emergency Risk Index:</b> 8.94     </div>     </div>`)[0];
+                popup_8e0691601d7e1403881ff378b7a0cdec.setContent(html_dd95326b6fd4cceb22c46557bde7014e);
+            
+        
+
+        circle_marker_ec3f7a9d674b821c201d708ebe10a85d.bindPopup(popup_8e0691601d7e1403881ff378b7a0cdec)
+        ;
+
+        
+    
+    
+            var circle_marker_2d218f4fd2fdd83c58bfd987c8bdfac1 = L.circleMarker(
+                [19.2733, 72.8863],
+                {"bubblingMouseEvents": true, "color": "#e74c3c", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "#e74c3c", "fillOpacity": 0.75, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 6, "stroke": true, "weight": 3}
+            ).addTo(feature_group_d62d9b8c2635e8ffe2d38bb4f5d323a8);
+        
+    
+        var popup_ae5db876a763908387455460a7581a21 = L.popup({
+  "maxWidth": 300,
+});
+
+        
+            
+                var html_74fc9031392f685eda9896221f7b3f28 = $(`<div id="html_74fc9031392f685eda9896221f7b3f28" style="width: 100.0%; height: 100.0%;">     <div style="font-family: Arial; min-width: 180px;">         <h4 style="margin: 0 0 5px; color: #e74c3c;">Ward_68 (Mira Road East (Kanakia & Peripheral))</h4>         <hr style="margin: 3px 0;">         <b>Est. 2026 Pop:</b> 16,916<br>         <b>Households:</b> 2,804<br>         <b>Hospitals:</b> 0<br>         <b>Blinkit Demand Score:</b> 4.95<br>         <b>Emergency Risk Index:</b> 7.13     </div>     </div>`)[0];
+                popup_ae5db876a763908387455460a7581a21.setContent(html_74fc9031392f685eda9896221f7b3f28);
+            
+        
+
+        circle_marker_2d218f4fd2fdd83c58bfd987c8bdfac1.bindPopup(popup_ae5db876a763908387455460a7581a21)
+        ;
+
+        
+    
+    
+            var circle_marker_a119002bf31193296ca4907b3938c69b = L.circleMarker(
+                [19.2709, 72.8779],
+                {"bubblingMouseEvents": true, "color": "#e74c3c", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "#e74c3c", "fillOpacity": 0.75, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 6, "stroke": true, "weight": 3}
+            ).addTo(feature_group_d62d9b8c2635e8ffe2d38bb4f5d323a8);
+        
+    
+        var popup_989e45731f0e3459049f22687589baaf = L.popup({
+  "maxWidth": 300,
+});
+
+        
+            
+                var html_c1b3dd401edaf21f19393a9ccb6f4635 = $(`<div id="html_c1b3dd401edaf21f19393a9ccb6f4635" style="width: 100.0%; height: 100.0%;">     <div style="font-family: Arial; min-width: 180px;">         <h4 style="margin: 0 0 5px; color: #e74c3c;">Ward_70 (Mira Road East (Kanakia & Peripheral))</h4>         <hr style="margin: 3px 0;">         <b>Est. 2026 Pop:</b> 18,787<br>         <b>Households:</b> 2,778<br>         <b>Hospitals:</b> 0<br>         <b>Blinkit Demand Score:</b> 6.64<br>         <b>Emergency Risk Index:</b> 11.15     </div>     </div>`)[0];
+                popup_989e45731f0e3459049f22687589baaf.setContent(html_c1b3dd401edaf21f19393a9ccb6f4635);
+            
+        
+
+        circle_marker_a119002bf31193296ca4907b3938c69b.bindPopup(popup_989e45731f0e3459049f22687589baaf)
+        ;
+
+        
+    
+    
+            var circle_marker_1d67eaea017cd541edf2922cc35c46ee = L.circleMarker(
+                [19.2496, 72.8843],
+                {"bubblingMouseEvents": true, "color": "#e74c3c", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "#e74c3c", "fillOpacity": 0.75, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 6, "stroke": true, "weight": 3}
+            ).addTo(feature_group_d62d9b8c2635e8ffe2d38bb4f5d323a8);
+        
+    
+        var popup_35a124633aa0d31836c2ee2b6d736334 = L.popup({
+  "maxWidth": 300,
+});
+
+        
+            
+                var html_6ea9df1efb050243d0679c902593f7a6 = $(`<div id="html_6ea9df1efb050243d0679c902593f7a6" style="width: 100.0%; height: 100.0%;">     <div style="font-family: Arial; min-width: 180px;">         <h4 style="margin: 0 0 5px; color: #e74c3c;">Ward_74 (Kashimira & Highway Corridor)</h4>         <hr style="margin: 3px 0;">         <b>Est. 2026 Pop:</b> 20,715<br>         <b>Households:</b> 3,024<br>         <b>Hospitals:</b> 0<br>         <b>Blinkit Demand Score:</b> 6.57<br>         <b>Emergency Risk Index:</b> 10.52     </div>     </div>`)[0];
+                popup_35a124633aa0d31836c2ee2b6d736334.setContent(html_6ea9df1efb050243d0679c902593f7a6);
+            
+        
+
+        circle_marker_1d67eaea017cd541edf2922cc35c46ee.bindPopup(popup_35a124633aa0d31836c2ee2b6d736334)
+        ;
+
+        
+    
+    
+            var circle_marker_20f8e2cfd13a3466e56ea0e79fdfca2f = L.circleMarker(
+                [19.2515, 72.8861],
+                {"bubblingMouseEvents": true, "color": "#e74c3c", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "#e74c3c", "fillOpacity": 0.75, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 6, "stroke": true, "weight": 3}
+            ).addTo(feature_group_d62d9b8c2635e8ffe2d38bb4f5d323a8);
+        
+    
+        var popup_023ef9814ff8015856462e1a70adbc31 = L.popup({
+  "maxWidth": 300,
+});
+
+        
+            
+                var html_6ccbd7a3af26ea6bf91cff9c2f90d86e = $(`<div id="html_6ccbd7a3af26ea6bf91cff9c2f90d86e" style="width: 100.0%; height: 100.0%;">     <div style="font-family: Arial; min-width: 180px;">         <h4 style="margin: 0 0 5px; color: #e74c3c;">Ward_77 (Kashimira & Highway Corridor)</h4>         <hr style="margin: 3px 0;">         <b>Est. 2026 Pop:</b> 11,229<br>         <b>Households:</b> 1,725<br>         <b>Hospitals:</b> 0<br>         <b>Blinkit Demand Score:</b> 3.03<br>         <b>Emergency Risk Index:</b> 4.25     </div>     </div>`)[0];
+                popup_023ef9814ff8015856462e1a70adbc31.setContent(html_6ccbd7a3af26ea6bf91cff9c2f90d86e);
+            
+        
+
+        circle_marker_20f8e2cfd13a3466e56ea0e79fdfca2f.bindPopup(popup_023ef9814ff8015856462e1a70adbc31)
+        ;
+
+        
+    
+    
+            feature_group_d62d9b8c2635e8ffe2d38bb4f5d323a8.addTo(map_8f59965a00d850a0686bc2af797e1c31);
+        
+    
+            var feature_group_6b6c41ee173148aa9620847e33c37dfd = L.featureGroup(
+                {
+}
+            );
+        
+    
+            var marker_5fbe8214d0a36664e2eca3fc2486e855 = L.marker(
+                [19.278299999999998, 72.82173333333334],
+                {
+}
+            ).addTo(feature_group_6b6c41ee173148aa9620847e33c37dfd);
+        
+    
+            var icon_61e055ae687c71111b31d0580d400853 = L.AwesomeMarkers.icon(
+                {
+  "markerColor": "green",
+  "iconColor": "white",
+  "icon": "shopping-cart",
+  "prefix": "fa",
+  "extraClasses": "fa-rotate-0",
+}
+            );
+        
+    
+        var popup_e6b1ee8e48f52fb066ec3aea0191816b = L.popup({
+  "maxWidth": "100%",
+});
+
+        
+            
+                var html_2226112d3baeba82ea4d4da0f90abe72 = $(`<div id="html_2226112d3baeba82ea4d4da0f90abe72" style="width: 100.0%; height: 100.0%;"><b>🛒 Blinkit Dark Store #1</b><br>Coordinates: 19.2783, 72.8217</div>`)[0];
+                popup_e6b1ee8e48f52fb066ec3aea0191816b.setContent(html_2226112d3baeba82ea4d4da0f90abe72);
+            
+        
+
+        marker_5fbe8214d0a36664e2eca3fc2486e855.bindPopup(popup_e6b1ee8e48f52fb066ec3aea0191816b)
+        ;
+
+        
+    
+    
+                marker_5fbe8214d0a36664e2eca3fc2486e855.setIcon(icon_61e055ae687c71111b31d0580d400853);
+            
+    
+            var circle_2adfb4b15eff48ef8d3e19b104b2a9de = L.circle(
+                [19.278299999999998, 72.82173333333334],
+                {"bubblingMouseEvents": true, "color": "#27ae60", "dashArray": "5, 5", "dashOffset": null, "fill": true, "fillColor": "#2ecc71", "fillOpacity": 0.15, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 2200, "stroke": true, "weight": 3}
+            ).addTo(feature_group_6b6c41ee173148aa9620847e33c37dfd);
+        
+    
+            circle_2adfb4b15eff48ef8d3e19b104b2a9de.bindTooltip(
+                `<div>
+                     Blinkit Store #1 10-Min Delivery Radius (2.2 km)
+                 </div>`,
+                {
+  "sticky": true,
+}
+            );
+        
+    
+            var marker_d31a490fb14c54a9288d7e630652a0ee = L.marker(
+                [19.267857142857142, 72.8784],
+                {
+}
+            ).addTo(feature_group_6b6c41ee173148aa9620847e33c37dfd);
+        
+    
+            var icon_deb9b8c2c7948dc4bdb9e24156a1210c = L.AwesomeMarkers.icon(
+                {
+  "markerColor": "green",
+  "iconColor": "white",
+  "icon": "shopping-cart",
+  "prefix": "fa",
+  "extraClasses": "fa-rotate-0",
+}
+            );
+        
+    
+        var popup_7726ee5e93987321e42f21bf71516953 = L.popup({
+  "maxWidth": "100%",
+});
+
+        
+            
+                var html_91e79ecfc99a34c938cccf7fe48191d0 = $(`<div id="html_91e79ecfc99a34c938cccf7fe48191d0" style="width: 100.0%; height: 100.0%;"><b>🛒 Blinkit Dark Store #2</b><br>Coordinates: 19.2679, 72.8784</div>`)[0];
+                popup_7726ee5e93987321e42f21bf71516953.setContent(html_91e79ecfc99a34c938cccf7fe48191d0);
+            
+        
+
+        marker_d31a490fb14c54a9288d7e630652a0ee.bindPopup(popup_7726ee5e93987321e42f21bf71516953)
+        ;
+
+        
+    
+    
+                marker_d31a490fb14c54a9288d7e630652a0ee.setIcon(icon_deb9b8c2c7948dc4bdb9e24156a1210c);
+            
+    
+            var circle_8a3e134ee058a4daf9a1460ac7259367 = L.circle(
+                [19.267857142857142, 72.8784],
+                {"bubblingMouseEvents": true, "color": "#27ae60", "dashArray": "5, 5", "dashOffset": null, "fill": true, "fillColor": "#2ecc71", "fillOpacity": 0.15, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 2200, "stroke": true, "weight": 3}
+            ).addTo(feature_group_6b6c41ee173148aa9620847e33c37dfd);
+        
+    
+            circle_8a3e134ee058a4daf9a1460ac7259367.bindTooltip(
+                `<div>
+                     Blinkit Store #2 10-Min Delivery Radius (2.2 km)
+                 </div>`,
+                {
+  "sticky": true,
+}
+            );
+        
+    
+            var marker_299291633f8debf30d277749643b72de = L.marker(
+                [19.29056, 72.85404],
+                {
+}
+            ).addTo(feature_group_6b6c41ee173148aa9620847e33c37dfd);
+        
+    
+            var icon_5be88b8b8c07e5ff8b73d0badb2c2b98 = L.AwesomeMarkers.icon(
+                {
+  "markerColor": "green",
+  "iconColor": "white",
+  "icon": "shopping-cart",
+  "prefix": "fa",
+  "extraClasses": "fa-rotate-0",
+}
+            );
+        
+    
+        var popup_d9efaf25e9159d86327b8da2f99864de = L.popup({
+  "maxWidth": "100%",
+});
+
+        
+            
+                var html_0e5c681732b7bdd44a561201e6d59392 = $(`<div id="html_0e5c681732b7bdd44a561201e6d59392" style="width: 100.0%; height: 100.0%;"><b>🛒 Blinkit Dark Store #3</b><br>Coordinates: 19.2906, 72.8540</div>`)[0];
+                popup_d9efaf25e9159d86327b8da2f99864de.setContent(html_0e5c681732b7bdd44a561201e6d59392);
+            
+        
+
+        marker_299291633f8debf30d277749643b72de.bindPopup(popup_d9efaf25e9159d86327b8da2f99864de)
+        ;
+
+        
+    
+    
+                marker_299291633f8debf30d277749643b72de.setIcon(icon_5be88b8b8c07e5ff8b73d0badb2c2b98);
+            
+    
+            var circle_86cb2c93e1ab41027d6500c12b9653fd = L.circle(
+                [19.29056, 72.85404],
+                {"bubblingMouseEvents": true, "color": "#27ae60", "dashArray": "5, 5", "dashOffset": null, "fill": true, "fillColor": "#2ecc71", "fillOpacity": 0.15, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 2200, "stroke": true, "weight": 3}
+            ).addTo(feature_group_6b6c41ee173148aa9620847e33c37dfd);
+        
+    
+            circle_86cb2c93e1ab41027d6500c12b9653fd.bindTooltip(
+                `<div>
+                     Blinkit Store #3 10-Min Delivery Radius (2.2 km)
+                 </div>`,
+                {
+  "sticky": true,
+}
+            );
+        
+    
+            feature_group_6b6c41ee173148aa9620847e33c37dfd.addTo(map_8f59965a00d850a0686bc2af797e1c31);
+        
+    
+            var feature_group_e97e9965110e398052abd55087980c30 = L.featureGroup(
+                {
+}
+            );
+        
+    
+            var marker_a05743f8b9ca6b0467c6ccf2f1320937 = L.marker(
+                [19.276033333333334, 72.87114444444445],
+                {
+}
+            ).addTo(feature_group_e97e9965110e398052abd55087980c30);
+        
+    
+            var icon_85a8ad3b0d9ae507f1d94c5486f0da76 = L.AwesomeMarkers.icon(
+                {
+  "markerColor": "red",
+  "iconColor": "white",
+  "icon": "plus",
+  "prefix": "fa",
+  "extraClasses": "fa-rotate-0",
+}
+            );
+        
+    
+        var popup_83208f088c97cbe6fade96dacf390de8 = L.popup({
+  "maxWidth": "100%",
+});
+
+        
+            
+                var html_17c00e0eb248fe055f9c05bfbed5194e = $(`<div id="html_17c00e0eb248fe055f9c05bfbed5194e" style="width: 100.0%; height: 100.0%;"><b>🚑 Emergency Ambulance Hub</b><br>Target Placement: 19.2760, 72.8711</div>`)[0];
+                popup_83208f088c97cbe6fade96dacf390de8.setContent(html_17c00e0eb248fe055f9c05bfbed5194e);
+            
+        
+
+        marker_a05743f8b9ca6b0467c6ccf2f1320937.bindPopup(popup_83208f088c97cbe6fade96dacf390de8)
+        ;
+
+        
+    
+    
+                marker_a05743f8b9ca6b0467c6ccf2f1320937.setIcon(icon_85a8ad3b0d9ae507f1d94c5486f0da76);
+            
+    
+            var circle_19913020cbb543b54a8177059dd1498e = L.circle(
+                [19.276033333333334, 72.87114444444445],
+                {"bubblingMouseEvents": true, "color": "#c0392b", "dashArray": "8, 8", "dashOffset": null, "fill": true, "fillColor": "#e74c3c", "fillOpacity": 0.12, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 3500, "stroke": true, "weight": 3}
+            ).addTo(feature_group_e97e9965110e398052abd55087980c30);
+        
+    
+            circle_19913020cbb543b54a8177059dd1498e.bindTooltip(
+                `<div>
+                     Emergency Rapid Dispatch Zone (3.5 km)
+                 </div>`,
+                {
+  "sticky": true,
+}
+            );
+        
+    
+            feature_group_e97e9965110e398052abd55087980c30.addTo(map_8f59965a00d850a0686bc2af797e1c31);
+        
+    
+            var feature_group_7e66206229aad949176c330ffa538604 = L.featureGroup(
+                {
+}
+            );
+        
+    
+            var heat_map_35bb6ce27ce27d0d8455dfbc8b14c29b = L.heatLayer(
+                [[19.2867, 72.8417, 8.43], [19.2835, 72.8613, 3.48], [19.2934, 72.845, 3.57], [19.2939, 72.8568, 5.22], [19.2846, 72.8608, 3.02], [19.2853, 72.8544, 4.78], [19.2989, 72.8455, 3.83], [19.3016, 72.8605, 3.4], [19.2916, 72.8447, 3.14], [19.3067, 72.8565, 3.68], [19.2848, 72.8466, 7.68], [19.2845, 72.8455, 6.25], [19.2859, 72.8551, 4.56], [19.2955, 72.8483, 10.75], [19.3048, 72.844, 4.77], [19.29, 72.8419, 3.23], [19.3044, 72.8509, 4.59], [19.2885, 72.8483, 3.96], [19.2911, 72.8606, 2.26], [19.3063, 72.8611, 6.05], [19.3001, 72.8542, 3.88], [19.2997, 72.8767, 4.24], [19.3032, 72.8682, 3.5], [19.2925, 72.854, 4.99], [19.2922, 72.8696, 4.76], [19.2907, 72.8752, 3.19], [19.2938, 72.8552, 4.42], [19.2964, 72.8704, 4.02], [19.3096, 72.8676, 9.56], [19.2919, 72.8662, 5.16], [19.3059, 72.8686, 4.21], [19.2968, 72.8594, 4.34], [19.3001, 72.8668, 5.32], [19.2886, 72.8685, 5.79], [19.3085, 72.8601, 4.68], [19.2814, 72.8305, 4.59], [19.2804, 72.8291, 4.12], [19.275, 72.8274, 2.97], [19.2836, 72.8248, 3.66], [19.2703, 72.8219, 9.5], [19.2689, 72.8277, 2.82], [19.2732, 72.8229, 7.7], [19.2914, 72.8204, 8.1], [19.2699, 72.8086, 4.93], [19.274, 72.8212, 3.1], [19.2887, 72.8593, 5.59], [19.2738, 72.8471, 6.45], [19.2733, 72.8578, 3.09], [19.2862, 72.8471, 4.53], [19.2868, 72.8499, 5.06], [19.2803, 72.8614, 4.66], [19.2803, 72.8691, 3.13], [19.2913, 72.8466, 3.84], [19.2877, 72.8611, 3.02], [19.2904, 72.8698, 3.9], [19.2792, 72.8683, 4.27], [19.2831, 72.8658, 6.01], [19.2927, 72.8482, 6.2], [19.2789, 72.8621, 5.54], [19.2829, 72.8474, 5.47], [19.2783, 72.8778, 6.37], [19.2797, 72.8799, 8.71], [19.2837, 72.8811, 3.13], [19.2702, 72.8848, 4.47], [19.2629, 72.8658, 3.73], [19.2831, 72.872, 5.35], [19.2833, 72.864, 3.36], [19.2733, 72.8863, 4.95], [19.274, 72.8846, 10.35], [19.2709, 72.8779, 6.64], [19.2619, 72.8864, 3.23], [19.2795, 72.8794, 4.18], [19.2668, 72.8711, 9.4], [19.2496, 72.8843, 6.57], [19.2474, 72.8908, 3.56], [19.2645, 72.8927, 4.78], [19.2515, 72.8861, 3.03], [19.2621, 72.8825, 3.62], [19.2557, 72.8732, 8.32]],
+                {
+  "minOpacity": 0.4,
+  "maxZoom": 18,
+  "radius": 18,
+  "blur": 15,
+  "gradient": {
+  0.2: "blue",
+  0.6: "lime",
+  1.0: "red",
+},
+}
+            );
+        
+    
+            heat_map_35bb6ce27ce27d0d8455dfbc8b14c29b.addTo(feature_group_7e66206229aad949176c330ffa538604);
+        
+    
+            var tile_layer_dc0478c007173e6038cd7c4552cf9429 = L.tileLayer(
+                "https://tile.openstreetmap.org/{z}/{x}/{y}.png",
+                {"attribution": "\u0026copy; \u003ca href=\"https://www.openstreetmap.org/copyright\"\u003eOpenStreetMap\u003c/a\u003e contributors", "detect_retina": false, "max_native_zoom": 19, "max_zoom": 19, "min_zoom": 0, "no_wrap": false, "opacity": 1, "subdomains": "abc", "tms": false}
+            );
+            var mini_map_cea20a13f0d134ab873c1ad76af8c2b0 = new L.Control.MiniMap(
+                tile_layer_dc0478c007173e6038cd7c4552cf9429,
+                {
+  "position": "bottomright",
+  "width": 150,
+  "height": 150,
+  "collapsedWidth": 25,
+  "collapsedHeight": 25,
+  "zoomLevelOffset": -5,
+  "centerFixed": false,
+  "zoomAnimation": false,
+  "toggleDisplay": true,
+  "autoToggleDisplay": false,
+  "minimized": false,
+}
+            );
+            map_8f59965a00d850a0686bc2af797e1c31.addControl(mini_map_cea20a13f0d134ab873c1ad76af8c2b0);
+        
+    
+            var layer_control_2fa986e67e9fc4df4c5e87986824915a_layers = {
+                base_layers : {
+                    "cartodbpositron" : tile_layer_532eb60e326c202f9dca58bc0d7104d7,
+                    "Detailed Map" : tile_layer_3dbf232e9b07e0d7d030a1d441c4623a,
+                    "Dark Mode View" : tile_layer_6d534361e2d003576441c015d0565a1e,
+                },
+                overlays :  {
+                    "All 79 Census Wards" : feature_group_f91579aa15d903cc981015ea2f88fcca,
+                    "\ud83d\udea8 Healthcare Deserts (0 Hospitals)" : feature_group_d62d9b8c2635e8ffe2d38bb4f5d323a8,
+                    "\ud83d\uded2 Blinkit Hubs \u0026 10-Min Delivery Radii" : feature_group_6b6c41ee173148aa9620847e33c37dfd,
+                    "\ud83d\ude91 Ambulance Hub \u0026 Coverage Zone" : feature_group_e97e9965110e398052abd55087980c30,
+                    "\ud83d\udd25 Demand Heatmap Layer" : feature_group_7e66206229aad949176c330ffa538604,
+                },
+            };
+            let layer_control_2fa986e67e9fc4df4c5e87986824915a = L.control.layers(
+                layer_control_2fa986e67e9fc4df4c5e87986824915a_layers.base_layers,
+                layer_control_2fa986e67e9fc4df4c5e87986824915a_layers.overlays,
+                {
+  "position": "topright",
+  "collapsed": false,
+  "autoZIndex": true,
+}
+            ).addTo(map_8f59965a00d850a0686bc2af797e1c31);
+
+        
+</script>
+</html>
